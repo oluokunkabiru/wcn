@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class RegisterController extends Controller
 {
@@ -54,7 +56,8 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phone' => ['required', 'string',  'max:15', 'unique:users'],
             'born' => ['required', 'string'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:5', 'confirmed'],
+            'avatar' => ['required','image', 'mimes:png,jpg,jpeg'],
         ]);
     }
 
@@ -66,13 +69,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user =  User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'phone' => $data['phone'],
-            'born' => $data['born'],
+            'born_again_status' => $data['born'],
             'role' => 'member',
             'password' => Hash::make($data['password']),
         ]);
-    }
+        // $avatar = new Media();
+        $collection = "avatar";
+             $fileName = $data['name'].'.png';
+             $user->addMediaFromRequest('avatar')->usingFileName($fileName)->toMediaCollection($collection);
+            return $user;
+            }
 }

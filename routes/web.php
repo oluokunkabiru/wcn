@@ -26,3 +26,22 @@ Route::get('/gallery', 'PagesController@gallery')->name('gallery');
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// ============================================================================
+//=======================  admin authentication===========================
+Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
+    Route::get('/dashboard' ,'Admin\AdminController@index')->name('admindashboard');
+
+});
+//=======================  end admin authentication===========================
+
+
+
+// ============================================================================
+//=======================  member authentication===========================
+Route::prefix('members')->middleware(['auth', 'member'])->group(function () {
+    Route::get('/dashboard','Members\MemberController@index')->name('memberdashboard');
+
+});
+//=======================  end member authentication===========================
+

@@ -15,9 +15,19 @@
             <div class="card">
                 <div class="card-header">
                     <h3>{{ __('Become a member') }}</h3></div>
+                    @if ($errors->any())
 
+                    <div class="alert alert-danger alert-dismissible fade show">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong style="font-size:20px;">Oops!
+                            {{ 'Kindly rectify below errors' }}</strong><br />
+                        @foreach ($errors->all() as $error)
+                            {{ $error }} <br />
+                        @endforeach
+                    </div>
+                @endif
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">
@@ -105,6 +115,15 @@
 
 
                         </div>
+
+                        <div class="form-group row">
+                            <label for="avatar" class="col-md-4 col-form-label text-md-right">{{ __('Choose Avatar') }}</label>
+
+                            <div class="col-md-6">
+                                <input type="file" name="avatar" class="form-control-file border">
+                             </div>
+                        </div>
+
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

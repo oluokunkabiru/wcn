@@ -8,7 +8,7 @@
 
   <nav class="navbar  site-wrap navbar-expand-md navbar-dark sticky-top" style="z-index:3;   background-color: black;">
           <div class="container-fluid">
-              <a class="navbar-brand mb-0 p-0" style = "color:#dba928;   font-size: 15px;" href="index.php"><img class="mr-3"  src="{{ asset('assets/images/logo.jpg') }}" alt="church logo">Word Central Network</a>
+              <a class="navbar-brand mb-0 p-0" style = "color:#dba928;   font-size: 15px;" href="{{ route('index') }}"><img class="mr-3"  src="{{ asset('assets/images/logo.jpg') }}" alt="church logo">Word Central Network</a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" >
                   <span class="oi oi-menu fa fa-bars"></span>
               </button>
@@ -38,22 +38,39 @@
                                 </li>
                             @endif
                         @else
+                        @php
+                        switch(Auth::user()->role)
+                        {
+                            case 'admin':
+                            $url =  route('admindashboard');  //'/'.app()->getLocale().'/users/admin';
+                             break;
+                             case 'member':
+                            $url =  route('memberdashboard'); //'/'.app()->getLocale().'/users/dashboard';
+                             break;
+                             default:
+                             $url = route('index');
+                        }
+                        @endphp
                             <li class="nav-item dropdown {{ $pagename=="dashboard"?"active":"" }}">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{ $url }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{--  {{ Auth::user()->name }}  --}}
+                                    <img src="{{ Auth::user()->getMedia('avatar')->first()->getUrl('avatar') }}" class="rounded-circle" alt="{{ ucwords(Auth::user()->name) }}">
                                 </a>
+                                <div class="dropdown-menu bg-dark">
+                                    <a class="dropdown-item nav-item " href="{{ $url }}">Dashboard</a>
+                                    <a class="dropdown-item nav-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                  document.getElementById('logout-form').submit();">
+                                     {{ __('Logout') }}
+                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
+                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                     @csrf
+                                 </form>
                                 </div>
+
+
                             </li>
                         @endguest
                       <button type="button" class="btn btn-warning mr-auto"><a href="#" class="text-dark" >Donate</a></button>
