@@ -15,7 +15,7 @@ class MemberController extends Controller
     public function index()
     {
         //
-        return "hello";
+        return view('users.members.index');
     }
 
     /**
