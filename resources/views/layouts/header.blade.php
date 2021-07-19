@@ -24,7 +24,38 @@
                       <li class="nav-item  {{ $pagename=="event"?"active":"" }}"><a href="{{ route('event') }}" class="nav-link">Events</a></li>
                       <li class="nav-item  {{ $pagename=="contact"?"active":"" }}"><a href="{{ route('contact') }}" class="nav-link">Contact</a></li>
                       <li class="nav-item  {{ $pagename=="nugget"?"active":"" }}"><a href="{{ route('contact') }}" class="nav-link">Nugget</a></li>
-                      <li class="nav-item  {{ $pagename=="blog"?"active":"" }}"><a href="{{ route('contact') }}" class="nav-link">Blog</a></li>
+                      <li class="nav-item  {{ $pagename=="blog"?"active":"" }}"><a href="{{ route('contact') }}" class="nav-link">Blogs</a></li>
+  @guest
+                            @if (Route::has('login'))
+                                <li class="nav-item {{ $pagename=="login"?"active":"" }}">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                            @endif
+
+                            @if (Route::has('register'))
+                                <li class="nav-item {{ $pagename=="register"?"active":"" }}">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown {{ $pagename=="dashboard"?"active":"" }}">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
                       <button type="button" class="btn btn-warning mr-auto"><a href="#" class="text-dark" >Donate</a></button>
                   </ul>
               </div>
@@ -38,7 +69,7 @@
         <div class="row align-items justify-content-center">
           <div class="col-lg-10 text-center mt-2">
           <button type="button" class="btn-lg  " style="background-color: #dba928;" >
-           <a class="text-white"  href="{{ route('become-a-member') }}">Become a Member</a>
+           <a class="text-white"  href="{{ route('register') }}">Become a Member</a>
           </button>
          </div>
  <div class="row ">

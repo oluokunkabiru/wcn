@@ -37,7 +37,7 @@
               </div>
                 <div class="row">
                     <div class="col-md-6">
-                <form onsubmit= "validate()"  name="myForm"  action="add_admin.php" method="post"  class="was-validated">
+                <form name="myForm"  action="add_admin.php" method="post"  class="was-validated">
                   <div class="form-group">
                     <label for="fname">First name:</label>
                     <input type="text" class="form-control" id="fname" placeholder="Enter admin fullname" name="fname" required>
