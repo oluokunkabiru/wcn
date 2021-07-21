@@ -8,7 +8,7 @@
 
   <nav class="navbar  site-wrap navbar-expand-md navbar-dark sticky-top" style="z-index:3;   background-color: black;">
           <div class="container-fluid">
-              <a class="navbar-brand mb-0 p-0" style = "color:#dba928;   font-size: 15px;" href="{{ route('index') }}"><img class="mr-3"  src="{{ asset('assets/images/logo.jpg') }}" alt="church logo">Word Central Network</a>
+              <a class="navbar-brand mb-0 p-0" style = "color:#dba928;   font-size: 15px;" href="{{ route('index') }}"><img class="mr-3"  src="{{ asset('assets/images/logo.png') }}" alt="church logo">Word Central Network</a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" >
                   <span class="oi oi-menu fa fa-bars"></span>
               </button>
