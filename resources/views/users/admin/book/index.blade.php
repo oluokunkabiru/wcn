@@ -1,11 +1,11 @@
 @extends('users.admin.layouts.app')
-@section('title', "Manage nuggets")
+@section('title', "Manage books")
 @section('content')
-<h1>Manage nuggets</h1>
- <a href="{{ route('nugget.create') }}" class="btn btn-dark"> Create new nugget</a>
+<h1>Manage books</h1>
+ <a href="{{ route('books.create') }}" class="btn btn-dark"> Publish new book</a>
  <div class="card mb-4">
     <div class="card-header pb-0 p-3">
-        <h6 class="mb-1">Recent nugget post </h6>
+        <h6 class="mb-1">Recent post</h6>
     </div>
     <div class="card-body p-3">
 
@@ -24,7 +24,7 @@
                         <div class="card-body px-1 pb-0">
                             <a href="javascript:;">
                                 <h5>
-                                    Nugget author
+                                    Book Title <span class="fa fa-comment">he</span>
                                 </h5>
                             </a>
                             <p class="mb-4 text-sm">
@@ -33,9 +33,9 @@
                             <div class="d-flex align-items-center justify-content-between">
                                 {{--  <button type="button" class="btn btn-outline-primary btn-sm mb-0">View
                                     Project</button>  --}}
-                                    <a href="{{ route('nugget.show', 1) }}" data-toggle="tooltip" title="Read full nugget" class="btn btn-success  "><span class="fa fa-eye"></span></a>
-                                    <a href="{{ route('nugget.edit', 1) }}" data-toggle="tooltip" title="Edit nugget" class="btn btn-primary  "><span class="fa fa-edit"></span></a>
-                                    <a href="#confirm" class="btn btn-danger" data-toggle="tooltip" title="Delete nugget"><span class="fa fa-trash"></span></a>
+                                    <a href="{{ route('books.show', 1) }}" data-toggle="tooltip" title="Read book description" class="btn btn-success  "><span class="fa fa-eye"></span></a>
+                                    <a href="{{ route('books.edit', 1) }}" data-toggle="tooltip" title="Edit book details" class="btn btn-primary  "><span class="fa fa-edit"></span></a>
+                                    <a href="#confirm" class="btn btn-danger" data-toggle="tooltip" title="Delete book"><span class="fa fa-trash"></span></a>
                             </div>
                         </div>
                     </div>

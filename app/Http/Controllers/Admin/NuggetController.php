@@ -15,7 +15,7 @@ class NuggetController extends Controller
     public function index()
     {
         //
-        view('users.admin.nugget.index');
+      return  view('users.admin.nugget.index');
     }
 
     /**
@@ -26,6 +26,7 @@ class NuggetController extends Controller
     public function create()
     {
         //
+        return view('users.admin.nugget.create');
     }
 
     /**
@@ -48,6 +49,7 @@ class NuggetController extends Controller
     public function show($id)
     {
         //
+        // return 
     }
 
     /**
@@ -59,6 +61,7 @@ class NuggetController extends Controller
     public function edit($id)
     {
         //
+        return view('users.admin.nugget.update');
     }
 
     /**

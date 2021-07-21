@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class SermonController extends Controller
+class BooksController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,6 +15,7 @@ class SermonController extends Controller
     public function index()
     {
         //
+        return view('users.admin.book.index');
     }
 
     /**
@@ -25,6 +26,7 @@ class SermonController extends Controller
     public function create()
     {
         //
+        return view('users.admin.book.create');
     }
 
     /**
@@ -58,6 +60,7 @@ class SermonController extends Controller
     public function edit($id)
     {
         //
+        return view('users.admin.book.update');
     }
 
     /**

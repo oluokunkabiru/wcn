@@ -1,9 +1,9 @@
 @extends('users.admin.layouts.app')
-@section('title', "Create nugget")
+@section('title', "Create  book")
 @section('content')
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
-      <h1>Create new nugget</h1>
+      <h1>Create new book</h1>
       <div class="card">
           <div class="card-header">
 
@@ -11,12 +11,20 @@
           <div class="card-body">
               <form action="" method="post">
                 <div class="form-group">
-                    <label for="comment">Nugget Qoute</label>
+                    <label for="usr">Book title:</label>
+                    <input type="text" class="form-control" id="usr">
+                </div>
+                <div class="form-group">
+                    <label for="usr">Book picture:</label>
+                    <input type="file" class="form-control" id="usr">
+                </div>
+                <div class="form-group">
+                    <label for="comment">Book description</label>
                     <textarea class="form-control blogarea" rows="3" name="content"></textarea>
                     <span class="text-danger">
                         </span>
                     </div>
-                    <button type="submit" class="btn btn-primary text-uppercase">Add nugget</button>
+                    <button type="submit" class="btn btn-primary text-uppercase">Add blog</button>
               </form>
           </div>
       </div>
@@ -35,7 +43,7 @@
         ['color', ['color']],
         ['para', ['ol', 'ul', 'paragraph']],
         ['table', ['table']],
-        ['insert', ['link']],
+        ['insert', ['link', 'picture']],
         ['view', ['fullscreen', 'help', 'undo', 'redo']],
       ]
 
