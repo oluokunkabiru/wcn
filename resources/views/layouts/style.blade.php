@@ -17,7 +17,8 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/nstyle.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/cstyle.css') }}">
-
+    <link rel="stylesheet" href="{{ asset('assets/css/lc_lightbox.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/minimal.css') }}">
 
 	<link rel="stylesheet" href="admin/plugins/summernote/summernote-bs4.css">
     <style>

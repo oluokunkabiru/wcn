@@ -86,11 +86,14 @@
     background-repeat: no-repeat;" >
         <div class="container mb-4">
         <div class="row align-items justify-content-center">
-          <div class="col-lg-10 text-center mt-2">
-          <button type="button" class="btn-lg  " style="background-color: #dba928;" >
-           <a class="text-white"  href="{{ route('register') }}">Become a Member</a>
-          </button>
-         </div>
+            @guest
+                <div class="col-lg-10 text-center mt-2">
+                <button type="button" class="btn-lg  " style="background-color: #dba928;" >
+                <a class="text-white"  href="{{ route('register') }}">Become a Member</a>
+                </button>
+                </div>
+            @endguest
+
  <div class="row ">
             <div class="col-md-9 bottomleft ">
              <p class="breadcrumbs mt-2"><span class="mr-2"><a href="{{ route('index') }}" class="text-white">Home <i class="fa fa-chevron-right"></i></a></span> <span>{{ $pagename=="index"?"":ucwords($pagename) }}</ <i class="fa fa-chevron-right"></i></span></p>

@@ -11,6 +11,8 @@
     <script src="{{ asset('assets/js/jquery.easing.1.3.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap-datepicker.min.js') }}"></script>
     <script src="{{ asset('assets/js/aos.js') }}"></script>
+    <script src="{{ asset('assets/js/lc_lightbox.lite.min.js') }}"></script>
+ <script src="{{ asset('assets/js/alloy_finger.min.js') }}"></script>
 
 
 

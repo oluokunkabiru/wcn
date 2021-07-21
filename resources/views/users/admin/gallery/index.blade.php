@@ -27,30 +27,27 @@
 	left: -4px;
 }
 
-.elem, .elem * {
-	box-sizing: border-box;
-	margin: 0 !important;
-}
-.elem {
-	display: inline-block;
-	font-size: 0;
-	width: 33%;
-	border: 20px solid transparent;
-	border-bottom: none;
-	background: #fff;
-	padding: 10px;
-	height: auto;
-	background-clip: padding-box;
-}
-.elem > span {
-	display: block;
-	cursor: pointer;
-	height: 0;
-	padding-bottom:	70%;
-	background-size: cover;
-	background-position: center center;
-}
 
+.elem {
+            display: inline-block;
+            font-size: 0;
+            width: 100%;
+            border: 10px solid transparent;
+            border-bottom: none;
+            background: #fff;
+            /* padding: 10px; */
+            height: auto;
+            background-clip: padding-box;
+        }
+
+        .elem span {
+            display: block;
+            cursor: pointer;
+            height: 100%;
+            padding-bottom: 70%;
+            background-size: 100%;
+            background-position: center center;
+        }
 
 
 .lcl_fade_oc.lcl_pre_show #lcl_overlay,
@@ -117,42 +114,22 @@
 
 
                     <div class="card-body">
-                        <div class="content">
-                            <!-- <a href="">hello</a> -->
+                        <div class="row">
+                            @for ($i = 0; $i < 10; $i++)
+                            <div class="col-md-3">
+                                <div class="elem" vboy="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?dpr=1&auto=format&fit=crop&w=2000&q=80&cs=tinysrgb"
+                                    title="image 1" data-lcl-txt="villageboy " data-lcl-author="jhkjk"
+                                    data-lcl-thumb="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?dpr=1&auto=format&fit=crop&w=150&q=80&cs=tinysrgb">
+                                    <span style="background-image: url(https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?dpr=1&auto=format&fit=crop&w=400&q=80&cs=tinysrgb);"></span>
 
-                               <a class="elem" delete="delete" vboy="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?dpr=1&auto=format&fit=crop&w=2000&q=80&cs=tinysrgb" title="image 1" data-lcl-txt="villageboy " data-lcl-author="jhkjk" data-lcl-thumb="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?dpr=1&auto=format&fit=crop&w=150&q=80&cs=tinysrgb">
-                                <span style="background-image: url(https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?dpr=1&auto=format&fit=crop&w=400&q=80&cs=tinysrgb);"></span>
-                            </a>
-                            <!-- <a href="">hello</a> -->
-
-                            <a class="elem" vboy="https://images.unsplash.com/photo-1502082553048-f009c37129b9?dpr=1&auto=format&fit=crop&w=2000&q=80&cs=tinysrgb" title="image 2" data-lcl-txt="lorem ipsum dolor sit amet" data-lcl-author="someone" data-lcl-thumb="https://images.unsplash.com/photo-1502082553048-f009c37129b9?dpr=1&auto=format&fit=crop&w=150&q=80&cs=tinysrgb">
-                                <span style="background-image: url(https://images.unsplash.com/photo-1502082553048-f009c37129b9?dpr=1&auto=format&fit=crop&w=400&q=80&cs=tinysrgb);">
-                                </span>
-                            </a>
-                            <!-- <a href="">hello</a> -->
-
-                            <a class="elem" vboy="https://images.unsplash.com/photo-1442850473887-0fb77cd0b337?dpr=1&auto=format&fit=crop&w=2000&q=80&cs=tinysrgb" title="image 3" data-lcl-txt="lorem ipsum dolor sit amet" data-lcl-author="someone" data-lcl-thumb="https://images.unsplash.com/photo-1442850473887-0fb77cd0b337?dpr=1&auto=format&fit=crop&w=150&q=80&cs=tinysrgb">
-                                <span style="background-image: url(https://images.unsplash.com/photo-1442850473887-0fb77cd0b337?dpr=1&auto=format&fit=crop&w=400&q=80&cs=tinysrgb);"></span>
-                            </a>
-
-
-                            <a class="elem" vboy="https://images.unsplash.com/photo-1431794062232-2a99a5431c6c?dpr=1&auto=format&fit=crop&w=2000&q=80&cs=tinysrgb" title="image 4" data-lcl-txt="lorem ipsum dolor sit amet" data-lcl-author="someone" data-lcl-thumb="https://images.unsplash.com/photo-1431794062232-2a99a5431c6c?dpr=1&auto=format&fit=crop&w=150&q=80&cs=tinysrgb">
-                                <span style="background-image: url(https://images.unsplash.com/photo-1431794062232-2a99a5431c6c?dpr=1&auto=format&fit=crop&w=400&q=80&cs=tinysrgb);"></span>
-                            </a>
-                            <a class="elem" vboy="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?dpr=1&auto=format&fit=crop&w=2000&q=80&cs=tinysrgb" title="image 5" data-lcl-txt="lorem ipsum dolor sit amet" data-lcl-author="someone" data-lcl-thumb="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?dpr=1&auto=format&fit=crop&w=150&q=80&cs=tinysrgb">
-                                <span style="background-image: url(https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?dpr=1&auto=format&fit=crop&w=400&q=80&cs=tinysrgb);"></span>
-                            </a>
-                            <a class="elem" vboy="https://images.unsplash.com/photo-1482192505345-5655af888cc4?dpr=1&auto=format&fit=crop&w=2000&q=80&cs=tinysrgb" title="image 6" data-lcl-txt="lorem ipsum dolor sit amet" data-lcl-author="someone" data-lcl-thumb="https://images.unsplash.com/photo-1482192505345-5655af888cc4?dpr=1&auto=format&fit=crop&w=150&q=80&cs=tinysrgb">
-                                <span style="background-image: url(https://images.unsplash.com/photo-1482192505345-5655af888cc4?dpr=1&auto=format&fit=crop&w=400&q=80&cs=tinysrgb);"></span>
-                            </a>
-
-                               <br/><br/>
-                           </div>
-                            @for ($i=0; $i<10; $i++)
-
-
+                                </div>
+                                <div class="text-center">
+                                    <a href="" class="mx-1 text-danger" data-toggle="tooltip" title="Delete image from gallery"><span class="fa fa-trash"></span></a>
+                                    <a href="" class="mx-1 text-primary" data-toggle="tooltip" title="Disable image from gallery"><span class="fa fa-times"></span></a>
+                                </div>
+                            </div>
                             @endfor
-
+                    </div>
 
                 </div>
 
@@ -206,7 +183,15 @@ $(document).ready(function(e) {
        socials:true,
        download:true,
        src_attr:"vboy",
+       counter:true,
    });
+
+
+
+
+// toolthip
+   $('[data-toggle="tooltip"]').tooltip();
+
 
 });
 </script>
