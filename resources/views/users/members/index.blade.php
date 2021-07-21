@@ -6,26 +6,26 @@
     <nav class="navbar navbar-main navbar-expand-lg bg-transparent shadow-none position-absolute px-4 w-100 z-index-2">
       <div class="container-fluid py-1">
         <nav aria-label="breadcrumb">
-          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 ps-2 me-sm-6 me-5">
+          {{--  <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 ps-2 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="text-white opacity-5" href="javascript:;">Pages</a></li>
             <li class="breadcrumb-item text-sm text-white active" aria-current="page">Profile</li>
-          </ol>
-          <h6 class="text-white font-weight-bolder ms-2">Profile</h6>
+          </ol>  --}}
+          {{--  <h6 class="text-white font-weight-bolder ms-2">Profile</h6>  --}}
         </nav>
         <div class="collapse navbar-collapse me-md-0 me-sm-4 mt-sm-0 mt-2" id="navbar">
-          <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+          {{--  <div class="ms-md-auto pe-md-3 d-flex align-items-center">
             <div class="input-group">
               <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
               <input type="text" class="form-control" placeholder="Type here...">
             </div>
-          </div>
+          </div>  --}}
           <ul class="navbar-nav justify-content-end">
-            <li class="nav-item d-flex align-items-center">
+            {{--  <li class="nav-item d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
                 <span class="d-sm-inline d-none">Sign In</span>
               </a>
-            </li>
+            </li>  --}}
             <li class="nav-item d-xl-none ps-3 pe-0 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-white p-0">
                 <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
@@ -128,7 +128,7 @@
         <div class="row gx-4">
           <div class="col-auto">
             <div class="avatar avatar-xl position-relative">
-              <img src="../assets/img/bruce-mars.jpg" alt="..." class="w-100 border-radius-lg shadow-sm">
+              <img src="{{ Auth::user()->getMedia('avatar')->first()->getUrl() }}" alt="..." class="w-100 border-radius-lg shadow-sm">
               <a href="javascript:;" class="btn btn-sm btn-icon-only bg-gradient-light position-absolute bottom-0 end-0 mb-n2 me-n2">
                 <i class="fa fa-pen top-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Image"></i>
               </a>
@@ -137,16 +137,16 @@
           <div class="col-auto my-auto">
             <div class="h-100">
               <h5 class="mb-1">
-                Alec Thompson
+                {{ ucwords(Auth::user()->name) }}
               </h5>
               <p class="mb-0 font-weight-bold text-sm">
-                CEO / Co-Founder
+                {{ ucwords(Auth::user()->role) }}/{{ Auth::user()->phone }}
               </p>
             </div>
           </div>
           <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
             <div class="nav-wrapper position-relative end-0">
-              <ul class="nav nav-pills nav-fill p-1 bg-transparent" role="tablist">
+              {{--  <ul class="nav nav-pills nav-fill p-1 bg-transparent" role="tablist">
                 <li class="nav-item">
                   <a class="nav-link mb-0 px-0 py-1 active " data-bs-toggle="tab" href="javascript:;" role="tab" aria-controls="overview" aria-selected="true">
                     <svg class="text-dark" width="16px" height="16px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -202,7 +202,7 @@
                     <span class="ms-1">Projects</span>
                   </a>
                 </li>
-              </ul>
+              </ul>  --}}
             </div>
           </div>
         </div>
@@ -210,34 +210,55 @@
     </div>
     <div class="container-fluid py-4">
       <div class="row">
-        <div class="col-12 col-xl-4">
+        <div class="col-12 col-xl-6">
           <div class="card h-100">
             <div class="card-header pb-0 p-3">
               <h6 class="mb-0">Platform Settings</h6>
             </div>
             <div class="card-body p-3">
               <h6 class="text-uppercase text-body text-xs font-weight-bolder">Account</h6>
+              <p><small>Notify me when ....</small> </p>
               <ul class="list-group">
                 <li class="list-group-item border-0 px-0">
                   <div class="form-check form-switch ps-0">
                     <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault" checked>
-                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault">Email me when someone follows me</label>
+                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault">New blog added</label>
                   </div>
                 </li>
                 <li class="list-group-item border-0 px-0">
                   <div class="form-check form-switch ps-0">
                     <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault1">
-                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault1">Email me when someone answers on my post</label>
+                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault1">Someone answers on blog</label>
                   </div>
                 </li>
                 <li class="list-group-item border-0 px-0">
                   <div class="form-check form-switch ps-0">
                     <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault2" checked>
-                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault2">Email me when someone mentions me</label>
+                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault2">New photo add to gallery</label>
+                  </div>
+                </li>
+                 <li class="list-group-item border-0 px-0">
+                  <div class="form-check form-switch ps-0">
+                    <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault2" checked>
+                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault2">Testimony approved</label>
+                  </div>
+                </li>
+
+                 <li class="list-group-item border-0 px-0">
+                  <div class="form-check form-switch ps-0">
+                    <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault2" checked>
+                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault2">New event</label>
+                  </div>
+                </li>
+
+                 <li class="list-group-item border-0 px-0">
+                  <div class="form-check form-switch ps-0">
+                    <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault2" checked>
+                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault2">Email notification</label>
                   </div>
                 </li>
               </ul>
-              <h6 class="text-uppercase text-body text-xs font-weight-bolder mt-4">Application</h6>
+              {{--  <h6 class="text-uppercase text-body text-xs font-weight-bolder mt-4">Application</h6>
               <ul class="list-group">
                 <li class="list-group-item border-0 px-0">
                   <div class="form-check form-switch ps-0">
@@ -257,11 +278,11 @@
                     <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault5">Subscribe to newsletter</label>
                   </div>
                 </li>
-              </ul>
+              </ul>  --}}
             </div>
           </div>
         </div>
-        <div class="col-12 col-xl-4">
+        <div class="col-12 col-xl-6">
           <div class="card h-100">
             <div class="card-header pb-0 p-3">
               <div class="row">
@@ -276,14 +297,14 @@
               </div>
             </div>
             <div class="card-body p-3">
-              <p class="text-sm">
+              {{--  <p class="text-sm">
                 Hi, I’m Alec Thompson, Decisions: If you can’t decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality).
-              </p>
+              </p>  --}}
               <hr class="horizontal gray-light my-4">
               <ul class="list-group">
-                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Full Name:</strong> &nbsp; Alec M. Thompson</li>
-                <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Mobile:</strong> &nbsp; (44) 123 1234 123</li>
-                <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp; alecthompson@mail.com</li>
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Full Name:</strong> &nbsp; {{ ucwords(Auth::user()->name) }}</li>
+                <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Mobile:</strong> &nbsp; {{Auth::user()->phone }}</li>
+                <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp; {{ Auth::user()->email }}</li>
                 <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Location:</strong> &nbsp; USA</li>
                 <li class="list-group-item border-0 ps-0 pb-0">
                   <strong class="text-dark text-sm">Social:</strong> &nbsp;
@@ -301,10 +322,10 @@
             </div>
           </div>
         </div>
-        <div class="col-12 col-xl-4">
+        {{--  <div class="col-12 col-xl-4">
           <div class="card h-100">
             <div class="card-header pb-0 p-3">
-              <h6 class="mb-0">Conversations</h6>
+              <h6 class="mb-0">Recent post</h6>
             </div>
             <div class="card-body p-3">
               <ul class="list-group">
@@ -361,15 +382,19 @@
               </ul>
             </div>
           </div>
-        </div>
+        </div>  --}}
         <div class="col-12 mt-4">
           <div class="card mb-4">
             <div class="card-header pb-0 p-3">
-              <h6 class="mb-1">Projects</h6>
-              <p class="text-sm">Architects design houses</p>
+              <h6 class="mb-1">Recent post</h6>
+              {{--  <p class="text-sm">Architects design houses</p>  --}}
             </div>
             <div class="card-body p-3">
+
               <div class="row">
+                   @for ($i = 0; $i<8; $i++)
+
+
                 <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
                   <div class="card card-blog card-plain">
                     <div class="position-relative">
@@ -378,7 +403,7 @@
                       </a>
                     </div>
                     <div class="card-body px-1 pb-0">
-                      <p class="text-gradient text-dark mb-2 text-sm">Project #2</p>
+                      {{--  <p class="text-gradient text-dark mb-2 text-sm">Project #2</p>  --}}
                       <a href="javascript:;">
                         <h5>
                           Modern
@@ -407,90 +432,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
-                  <div class="card card-blog card-plain">
-                    <div class="position-relative">
-                      <a class="d-block shadow-xl border-radius-xl">
-                        <img src="../assets/img/home-decor-2.jpg" alt="img-blur-shadow" class="img-fluid shadow border-radius-lg">
-                      </a>
-                    </div>
-                    <div class="card-body px-1 pb-0">
-                      <p class="text-gradient text-dark mb-2 text-sm">Project #1</p>
-                      <a href="javascript:;">
-                        <h5>
-                          Scandinavian
-                        </h5>
-                      </a>
-                      <p class="mb-4 text-sm">
-                        Music is something that every person has his or her own specific opinion about.
-                      </p>
-                      <div class="d-flex align-items-center justify-content-between">
-                        <button type="button" class="btn btn-outline-primary btn-sm mb-0">View Project</button>
-                        <div class="avatar-group mt-2">
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Nick Daniel">
-                            <img alt="Image placeholder" src="../assets/img/team-3.jpg">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Peterson">
-                            <img alt="Image placeholder" src="../assets/img/team-4.jpg">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Elena Morison">
-                            <img alt="Image placeholder" src="../assets/img/team-1.jpg">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Milly">
-                            <img alt="Image placeholder" src="../assets/img/team-2.jpg">
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
-                  <div class="card card-blog card-plain">
-                    <div class="position-relative">
-                      <a class="d-block shadow-xl border-radius-xl">
-                        <img src="../assets/img/home-decor-3.jpg" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">
-                      </a>
-                    </div>
-                    <div class="card-body px-1 pb-0">
-                      <p class="text-gradient text-dark mb-2 text-sm">Project #3</p>
-                      <a href="javascript:;">
-                        <h5>
-                          Minimalist
-                        </h5>
-                      </a>
-                      <p class="mb-4 text-sm">
-                        Different people have different taste, and various types of music.
-                      </p>
-                      <div class="d-flex align-items-center justify-content-between">
-                        <button type="button" class="btn btn-outline-primary btn-sm mb-0">View Project</button>
-                        <div class="avatar-group mt-2">
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Peterson">
-                            <img alt="Image placeholder" src="../assets/img/team-4.jpg">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Nick Daniel">
-                            <img alt="Image placeholder" src="../assets/img/team-3.jpg">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Milly">
-                            <img alt="Image placeholder" src="../assets/img/team-2.jpg">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Elena Morison">
-                            <img alt="Image placeholder" src="../assets/img/team-1.jpg">
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
-                  <div class="card h-100 card-plain border">
-                    <div class="card-body d-flex flex-column justify-content-center text-center">
-                      <a href="javascript:;">
-                        <i class="fa fa-plus text-secondary mb-3"></i>
-                        <h5 class=" text-secondary"> New project </h5>
-                      </a>
-                    </div>
-                  </div>
-                </div>
+                @endfor
+            </div>
               </div>
             </div>
           </div>
@@ -537,7 +480,7 @@
     <div class="card shadow-lg ">
       <div class="card-header pb-0 pt-3 ">
         <div class="float-start">
-          <h5 class="mt-3 mb-0">Soft UI Configurator</h5>
+          <h5 class="mt-3 mb-0">Dear {{ ucwords(Auth::user()->name) }}, dashboard Configurator</h5>
           <p>See our dashboard options.</p>
         </div>
         <div class="float-end mt-4">
@@ -575,8 +518,8 @@
         <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
         <!-- Navbar Fixed -->
         <hr class="horizontal dark my-sm-4">
-        <a class="btn bg-gradient-dark w-100" href="https://www.creative-tim.com/product/soft-ui-dashboard">Free download</a>
-        <a class="btn btn-outline-dark w-100" href="https://www.creative-tim.com/learning-lab/bootstrap/license/soft-ui-dashboard">View documentation</a>
+        <a class="btn bg-gradient-dark w-100" href="#">Testimony</a>
+        <a class="btn btn-outline-dark w-100" href="#">Comment history</a>
         <div class="w-100 text-center">
           <a class="github-button" href="https://github.com/creativetimofficial/soft-ui-dashboard" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star creativetimofficial/soft-ui-dashboard on GitHub">Star</a>
           <h6 class="mt-3">Thank you for sharing!</h6>

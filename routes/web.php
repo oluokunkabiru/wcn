@@ -31,6 +31,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //=======================  admin authentication===========================
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/dashboard' ,'Admin\AdminController@index')->name('admindashboard');
+    // blogs
+    Route::resource('blogs', 'Admin\BlogController');
+    Route::resource('events', 'Admin\EventController');
+    Route::resource('testimony', 'Admin\Testimony');
+    Route::resource('gallery', 'Admin\GalleryController');
+    Route::resource('nugget', 'Admin\NuggetController');
+    Route::resource('sermon', 'Admin\SermonController');
 
 });
 //=======================  end admin authentication===========================

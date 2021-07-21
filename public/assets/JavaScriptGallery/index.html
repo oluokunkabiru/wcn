@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="gallery.js"></script>
+<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="gallery.min.css" media="screen" />
+
+    </head>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter',calibri,Arial , sans-serif;
+        }
+        .footer{
+            width: 100%;
+            height: 30px;
+            text-align: center;
+            background-color: rgb(224 224 224);
+            color: black;
+        }
+        .footer p{
+            padding: 8px;
+            font-size: 12px;
+        }
+    </style>
+    <body>
+        <h1>Gallery.js Dynamic Gallery Lightbox Examples</h1>
+        <div id="carbon-block" style="margin:30px auto"></div>
+<div style="margin:30px auto">
+<script type="text/javascript"
+src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+        <p>A responsive, easy-to-use, user-friendly jQuery gallery lightbox plugin designed to provide an elegant image viewing experience on the webpage.</p>
+        <h2>Single Image Lightbox</h2>
+        <img class="codeImage galleryJS" width="600px" height="324px" src="https://source.unsplash.com/800x400/?girl" alt="source code">
+        <h2>Lightbox Gallery</h2>
+<div class="Gallery "></div>
+<script>  
+/*
+* For every Day/Project a new "addGallery"
+*/
+
+    setGalleryTransition("slideAndZoom");
+    enableExtraButtons();
+    //backgroundColor("#000000f7");
+    //setGalleryStyle("mosaic");
+   //enableAutoWidth();
+    json = '{ "Entry": { "Title": "Meine Lieblings Bilder", '+
+       '"Image": ["https://source.unsplash.com/800x400/?nature",'+
+       '"https://source.unsplash.com/800x400/?people",'+
+       '"https://source.unsplash.com/800x400/?yoga",'+
+       '"https://source.unsplash.com/800x400/?people",'+
+       '"https://source.unsplash.com/800x400/?holiday",'+
+       '"https://source.unsplash.com/800x400/?women" ] } }';
+   addGallery(json);
+   json = '{ "Entry": { "Title": "Was ist los mit dir?",  "Image": ["https://source.unsplash.com/800x400/?fitness", "https://source.unsplash.com/800x400/?cat" ] } }';
+   addGallery(json);
+</script>
+
+
+    </body>
+</html>

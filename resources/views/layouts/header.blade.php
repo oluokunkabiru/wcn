@@ -25,6 +25,8 @@
                       <li class="nav-item  {{ $pagename=="contact"?"active":"" }}"><a href="{{ route('contact') }}" class="nav-link">Contact</a></li>
                       <li class="nav-item  {{ $pagename=="nugget"?"active":"" }}"><a href="{{ route('contact') }}" class="nav-link">Nugget</a></li>
                       <li class="nav-item  {{ $pagename=="blog"?"active":"" }}"><a href="{{ route('contact') }}" class="nav-link">Blogs</a></li>
+                      <li class="nav-item  {{ $pagename=="sermon"?"active":"" }}"><a href="{{ route('contact') }}" class="nav-link">Sermon</a></li>
+                      <li class="nav-item  {{ $pagename=="ministers"?"active":"" }}"><a href="{{ route('contact') }}" class="nav-link">Ministers</a></li>
   @guest
                             @if (Route::has('login'))
                                 <li class="nav-item {{ $pagename=="login"?"active":"" }}">
