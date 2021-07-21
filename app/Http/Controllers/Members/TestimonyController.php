@@ -15,6 +15,7 @@ class TestimonyController extends Controller
     public function index()
     {
         //
+        return view('users.members.testimony.index');
     }
 
     /**
@@ -25,6 +26,7 @@ class TestimonyController extends Controller
     public function create()
     {
         //
+        return view('users.members.testimony.create');
     }
 
     /**
@@ -47,6 +49,7 @@ class TestimonyController extends Controller
     public function show($id)
     {
         //
+        // return view('')
     }
 
     /**
@@ -58,6 +61,7 @@ class TestimonyController extends Controller
     public function edit($id)
     {
         //
+        return view('users.members.testimony.update');
     }
 
     /**

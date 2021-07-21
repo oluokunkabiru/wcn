@@ -49,6 +49,8 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
 //=======================  member authentication===========================
 Route::prefix('members')->middleware(['auth', 'member'])->group(function () {
     Route::get('/dashboard','Members\MemberController@index')->name('memberdashboard');
+    Route::resource('members', 'Members\MemberController');
+    Route::resource('memeberstestimony', 'Members\TestimonyController');
 
 });
 //=======================  end member authentication===========================

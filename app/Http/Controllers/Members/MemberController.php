@@ -59,6 +59,7 @@ class MemberController extends Controller
     public function edit($id)
     {
         //
+        return view('users.members.edit');
     }
 
     /**
