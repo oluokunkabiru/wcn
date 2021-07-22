@@ -31,9 +31,21 @@ class PagesController extends Controller
         return view('pages.contact');
     }
 
-    public function become_member()
+    public function nugget()
     {
-        return view('pages.become-a-member');
+        return view('pages.nugget');
+    }
+    public function books()
+    {
+        return view('pages.books');
+    }
+    public function blogs()
+    {
+        return view('pages.blog');
+    }
+    public function minister()
+    {
+        return view('pages.ministers');
     }
     public function gallery()
     {

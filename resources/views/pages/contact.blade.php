@@ -27,7 +27,7 @@
 										<span class="fa fa-map-marker"></span>
 									</div>
 									<div class="text">
-										<p><span>Address:</span>Living Word Evangelical Assembly,behind After fatigue guest house, off Offa Ajase-ipo road, Ijagbo, Kwara State.</p>
+										<p><span>Address:</span>WCN After fatigue guest house, off Offa Ajase-ipo road, Ijagbo, Kwara State.</p>
 									</div>
 								</div>
 							</div>

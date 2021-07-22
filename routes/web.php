@@ -23,6 +23,10 @@ Route::get('/contact', 'PagesController@contact')->name('contact');
 Route::get('/become-a-member', 'PagesController@become_member')->name('become-a-member');
 Route::get('/event', 'PagesController@event')->name('event');
 Route::get('/gallery', 'PagesController@gallery')->name('gallery');
+Route::get('/Our books', 'PagesController@books')->name('ourbooks');
+Route::get('/nuggets', 'PagesController@nugget')->name('nuggetquote');
+Route::get('/ministers', 'PagesController@minister')->name('minister');
+Route::get('/blogs', 'PagesController@blogs')->name('ourblogs');
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
