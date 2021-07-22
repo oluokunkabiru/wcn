@@ -25,20 +25,20 @@
                       <li class="nav-item  {{ $pagename=="contact"?"active":"" }}"><a href="{{ route('contact') }}" class="nav-link">Contact</a></li>
                       <li class="nav-item  {{ $pagename=="nugget"?"active":"" }}"><a href="{{ route('nuggetquote') }}" class="nav-link">Nugget</a></li>
                       <li class="nav-item  {{ $pagename=="blog"?"active":"" }}"><a href="{{ route('ourblogs') }}" class="nav-link">Blogs</a></li>
-                      <li class="nav-item  {{ $pagename=="books"?"active":"" }}"><a href="{{ route('ourbooks') }}" class="nav-link">Books</a></li>
+                      <li class="nav-item  {{ $pagename=="books"?"active":"" }}"><a href="{{ route('ourbooks') }}" class="nav-link">Shop</a></li>
                       <li class="nav-item  {{ $pagename=="ministers"?"active":"" }}"><a href="{{ route('minister') }}" class="nav-link">Ministers</a></li>
   @guest
-                            @if (Route::has('login'))
+                            {{--  @if (Route::has('login'))
                                 <li class="nav-item {{ $pagename=="login"?"active":"" }}">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
-                            @endif
+                            @endif  --}}
 
-                            @if (Route::has('register'))
+                            {{--  @if (Route::has('register'))
                                 <li class="nav-item {{ $pagename=="register"?"active":"" }}">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
-                            @endif
+                            @endif  --}}
                         @else
                         @php
                         switch(Auth::user()->role)
@@ -91,8 +91,14 @@
                 <button type="button" class="btn-lg  " style="background-color: #dba928;" >
                 <a class="text-white"  href="{{ route('register') }}">Become a Member</a>
                 </button>
+                @if (Route::has('login'))
+                <button type="button" class="btn-sm  " style="background-color: #dba928;" >
+                    <a class="text-white" href="{{ route('login') }}">{{ __('Login') }}</a>
+                </button>
+                @endif
                 </div>
             @endguest
+
 
  <div class="row ">
             <div class="col-md-9 bottomleft ">
