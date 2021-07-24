@@ -9,20 +9,32 @@
 
           </div>
           <div class="card-body">
-              <form action="" method="post">
-                <div class="form-group">
-                    <label for="usr">Blog title:</label>
-                    <input type="text" class="form-control" id="usr">
+            <form action="{{ route('blogs.update', $blog->id) }}" method="post" enctype="multipart/form-data">
+              <div class="form-group">
+                  <label for="usr">Blog title:</label>
+                  <input type="text" value="{{ $blog->title }}" class="form-control {{ $errors->has('title') ? ' is-invalid' : '' }}" name="title">
+                  @if ($errors->has('title'))
+                  <span class="invalid-feedback" role="alert">
+                       <strong>{{ $errors->first('title') }}</strong>
+                  </span>
+                  @endif
+              </div>
+              {{ csrf_field() }}
+              @method("PATCH")
+              <div class="form-group">
+                  <label for="content">Blog content</label>
+                  <textarea class="form-control blogarea {{ $errors->has('content') ? ' is-invalid' : '' }}" rows="3" name="content">
+                {!! $blog->content !!}
+                </textarea>
+                  @if ($errors->has('content'))
+                  <span class="invalid-feedback" role="alert">
+                       <strong>{{ $errors->first('content') }}</strong>
+                  </span>
+                  @endif
                   </div>
-                <div class="form-group">
-                    <label for="comment">Blog content</label>
-                    <textarea class="form-control blogarea" rows="3" name="content"></textarea>
-                    <span class="text-danger">
-                        </span>
-                    </div>
-                    <button type="submit" class="btn btn-primary text-uppercase">Add blog</button>
-              </form>
-          </div>
+                  <button type="submit" class="btn btn-primary text-uppercase">Add blog</button>
+            </form>
+        </div>
       </div>
     </div>
   </div>
@@ -41,9 +53,35 @@
         ['table', ['table']],
         ['insert', ['link', 'picture']],
         ['view', ['fullscreen', 'help', 'undo', 'redo']],
-      ]
+      ],
+      callbacks: {
+            // },
+            // callbacks: {
+            onMediaDelete: function(target) {
+                deleteFile(target[0].src);
+            }
+        },
 
     })
+    function deleteFile(src) {
+        // alert(src);
+        var pos = src.search("uploads");
+        extr = src.slice(pos);
+        if(confirm("Are you sure you want delete this image, deletion can not be refers again")){
+        $.ajax({
+            headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+            data: { src: extr },
+            type: "POST",
+            url: "{{ route('delete-image-from-blog') }}",
+            cache: false,
+            success: function(response) {
+                // alert(response);
+            }
+        })
+        }
+    }
 
   })
 </script>
