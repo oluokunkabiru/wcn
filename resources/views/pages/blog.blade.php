@@ -14,35 +14,43 @@
     <div class="container">
 
         <div class="row">
-            @for ($i = 0; $i < 10; $i++)
+            @foreach ($blogs as $blog )
+
+
+
+
             <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
                 <div class="card card-blog card-plain">
                     <div class="position-relative">
                         <a class="d-block shadow-xl border-radius-xl">
-                            <img src="../assets/img/home-decor-1.jpg" alt="img-blur-shadow"
+                            <img src="{{ $blog->getImage($blog->content) != "" ?  $blog->getImage($blog->content):"../assets/img/home-decor-1.jpg" }}" alt="{{ $blog->title }}"
                                 class="img-fluid shadow border-radius-xl">
                         </a>
                     </div>
                     <div class="card-body px-1 pb-0">
                         <a href="javascript:;">
                             <h5>
-                                Modern <span class="fa fa-comment">he</span>
+                                {{ $blog->title }} <span class="fa fa-comment text-danger mx-2">{{ $blog->getNumbersOfComment($blog->id) }}</span>
                             </h5>
                         </a>
-                        <p class="mb-4 text-sm">
-                            As Uber works through a huge amount of internal management turmoil.
-                        </p>
-                        <div class="d-flex float-right">
+                            {!! $blog->getLimitedContent($blog->content) !!}
+                        <div class="d-flex align-items-center justify-content-between">
                             {{--  <button type="button" class="btn btn-outline-primary btn-sm mb-0">View
                                 Project</button>  --}}
-                                <a href="{{ route('blogs.show', 1) }}" data-toggle="tooltip" title="Read full content" class="btn btn-warning"><span class="fa fa-angle-double-right display-5"></span></a>
+                                <a href="{{ route('readblog', [$blog->id, str_replace(" ", '_', $blog->title)]) }}" data-toggle="tooltip" title="Read full content" class="btn btn-success  ">... Continue reading</a>
 
                         </div>
                     </div>
                 </div>
             </div>
-            @endfor
+         @endforeach
             </div>
+            {{-- <div class="card"> --}}
+                <div class="float-right my-2">
+                    {{ $blogs->links() }}
+                </div>
+            {{-- </div> --}}
+
         </div>
     </div>
     </section>

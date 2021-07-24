@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Blog;
+use App\Http\Requests\CommentRequest;
 use App\Models\Comments;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class PagesController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,54 +17,8 @@ class PagesController extends Controller
     public function index()
     {
         //
-        return view('pages.index');
-    }
-
-    public function about(){
-        return view('pages.about');
-    }
-
-    public function event()
-    {
-        return view('pages.event');
-    }
-
-    public function contact()
-    {
-        return view('pages.contact');
-    }
-
-    public function nugget()
-    {
-        return view('pages.nugget');
-    }
-    public function books()
-    {
-        return view('pages.books');
-    }
-    public function blogs()
-    {
-        $blogs = Blog::with(['user'])->orderBy('id', 'desc')->paginate(8);
-        // return $blogs;
-        return view('pages.blog', compact(['blogs']));
-    }
-    public function minister()
-    {
-        return view('pages.ministers');
-    }
-    public function gallery()
-    {
-        return view('pages.gallery');
-        // strlen(trim());
-
-    }
-    public function viewBlog($id, $title){
-        $blog = Blog::with(['user'])->where('id', $id)->first();
-        // return $blog;
-        $comments = Comments::with(['user'])->orderBy('id', 'desc')->where(['blog_id'=>$id])->paginate(2);
-
-        return view('pages.view-blog', compact(['blog', 'comments']));
-
+        $comments = Comments::with(['user'])->orderBy('id', 'desc')->get();
+        return view('pages.comments', compact(['comments']));
     }
 
     /**
@@ -82,9 +37,16 @@ class PagesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CommentRequest $request)
     {
         //
+        $comment = new Comments();
+        $comment->blog_id = $request->blogid;
+        $comment->comment = $request->comment;
+        $comment->user_id = Auth::user()->id;
+        $comment->status = 0;
+        $comment->save();
+        return redirect()->back()->with('success', 'New comment added successfully');
     }
 
     /**

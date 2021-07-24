@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/lc_lightbox.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/minimal.css') }}">
 
-	<link rel="stylesheet" href="admin/plugins/summernote/summernote-bs4.css">
+	<link rel="stylesheet" href="{{ asset('assets/summernote/summernote-bs4.css') }}">
     <style>
 		#more {display: none;}
 		nav div ul li a {

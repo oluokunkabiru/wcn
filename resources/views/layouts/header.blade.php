@@ -28,17 +28,7 @@
                       <li class="nav-item  {{ $pagename=="books"?"active":"" }}"><a href="{{ route('ourbooks') }}" class="nav-link">Shop</a></li>
                       <li class="nav-item  {{ $pagename=="ministers"?"active":"" }}"><a href="{{ route('minister') }}" class="nav-link">Ministers</a></li>
   @guest
-                            {{--  @if (Route::has('login'))
-                                <li class="nav-item {{ $pagename=="login"?"active":"" }}">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif  --}}
-
-                            {{--  @if (Route::has('register'))
-                                <li class="nav-item {{ $pagename=="register"?"active":"" }}">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif  --}}
+                           
                         @else
                         @php
                         switch(Auth::user()->role)

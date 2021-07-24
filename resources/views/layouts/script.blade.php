@@ -13,6 +13,7 @@
     <script src="{{ asset('assets/js/aos.js') }}"></script>
     <script src="{{ asset('assets/js/lc_lightbox.lite.min.js') }}"></script>
  <script src="{{ asset('assets/js/alloy_finger.min.js') }}"></script>
+ <script src="{{ asset('assets/summernote/summernote-bs4.js') }}"></script>
 
 
 

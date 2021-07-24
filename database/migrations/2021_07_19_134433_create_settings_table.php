@@ -23,7 +23,7 @@ class CreateSettingsTable extends Migration
             $table->integer("testimony_notification");
             $table->integer("comment_notification");
             $table->integer("event_notification");
-
+            // $table->foreign('user_id')->references('users')->on('id');
             $table->timestamps();
         });
     }

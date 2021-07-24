@@ -27,9 +27,16 @@ Route::get('/Our books', 'PagesController@books')->name('ourbooks');
 Route::get('/nuggets', 'PagesController@nugget')->name('nuggetquote');
 Route::get('/ministers', 'PagesController@minister')->name('minister');
 Route::get('/blogs', 'PagesController@blogs')->name('ourblogs');
+Route::get('blog/{id}/read/{title}', 'PagesController@viewBlog')->name('readblog');
+// Route::resource('comment', CommentController::class);
+
+
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::prefix('comment')->middleware(['auth'])->group(function () {
+Route::resource('comment', CommentController::class);
+});
 
 // ============================================================================
 //=======================  admin authentication===========================
@@ -43,6 +50,8 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::resource('gallery', 'Admin\GalleryController');
     Route::resource('nugget', 'Admin\NuggetController');
     Route::resource('books', 'Admin\BooksController');
+    // Route::resource('comment', CommentController::class);
+
 
 });
 //=======================  end admin authentication===========================
@@ -55,6 +64,8 @@ Route::prefix('members')->middleware(['auth', 'member'])->group(function () {
     Route::get('/dashboard','Members\MemberController@index')->name('memberdashboard');
     Route::resource('members', 'Members\MemberController');
     Route::resource('memeberstestimony', 'Members\TestimonyController');
+    // Route::resource('comment', CommentController::class);
+
 
 });
 //=======================  end member authentication===========================

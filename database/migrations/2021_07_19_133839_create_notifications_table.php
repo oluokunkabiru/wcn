@@ -18,6 +18,8 @@ class CreateNotificationsTable extends Migration
             $table->unsignedBigInteger("user_id");
             $table->unsignedBigInteger("sender_id");
             $table->string('notification');
+            // $table->foreign('user_id')->references('users')->on('id');
+            // $table->foreign('sender_id')->references('users')->on('id');
             $table->timestamps();
         });
     }
