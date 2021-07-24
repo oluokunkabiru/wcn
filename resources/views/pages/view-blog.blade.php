@@ -95,6 +95,15 @@
                     ['para', ['paragraph']]
                 ]
             });
+
+          // delete modal
+          $('#confirm').on('show.bs.modal', function(e){
+        //   var mycat = $(e.relatedTarget).attr('blog-title');
+          var url = $(e.relatedTarget).attr('deleteurl');
+        // $("#delname").text(mycat);
+          $("#delcategoryform").attr("action", url);
+
+     })
     });
 
     </script>

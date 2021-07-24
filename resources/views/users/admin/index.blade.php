@@ -118,32 +118,31 @@
                         <div class="card-body p-3">
 
                             <div class="row">
-                                @for ($i = 0; $i < 8; $i++)
-
-
+                                {{-- @for ($i = 0; $i < 8; $i++) --}}
+                                @foreach ($blogs as $blog)
                                     <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
                                         <div class="card card-blog card-plain">
                                             <div class="position-relative">
                                                 <a class="d-block shadow-xl border-radius-xl">
-                                                    <img src="../assets/img/home-decor-1.jpg" alt="img-blur-shadow"
+                                                    <img src="{{ $blog->getImage($blog->content) != "" ?  $blog->getImage($blog->content):"../assets/img/home-decor-1.jpg" }}" alt="img-blur-shadow"
                                                         class="img-fluid shadow border-radius-xl">
                                                 </a>
                                             </div>
                                             <div class="card-body px-1 pb-0">
                                                 <a href="javascript:;">
                                                     <h5>
-                                                        Modern
+                                                        {{ $blog->title }}
                                                     </h5>
                                                 </a>
-                                                <p class="mb-4 text-sm">
-                                                    As Uber works through a huge amount of internal management turmoil.
-                                                </p>
+                                                {!! $blog->getLimitedContent($blog->content) !!}
                                                 <div class="d-flex align-items-center justify-content-between">
-                                                    <button type="button" class="btn btn-outline-primary btn-sm mb-0">View
-                                                        Project</button>
+
+                                                   <a href="{{ route('readblog', [$blog->id, str_replace(" ", '_', $blog->title)]) }}" class="btn btn-outline-primary btn-sm mb-0">
+                                                    View Content
+                                                </a>
                                                         <small>
-                                                            <a href="#" class="bg-primary p-1 rounded">
-                                                            <span class="fa fa-comment"></span> <span class="badge badge-light">4</span>
+                                                            <a href="{{ route('readblog', [$blog->id, str_replace(" ", '_', $blog->title)]) }}" class="bg-primary p-1 rounded">
+                                                            <span class="fa fa-comment"></span> <span class="badge badge-light">{{ $blog->getNumbersOfComment($blog->id) }}</span>
                                                           </a>
                                                         </small>
 
@@ -151,7 +150,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                @endfor
+                                     @endforeach
+                                {{-- @endfor --}}
                             </div>
                         </div>
                     </div>

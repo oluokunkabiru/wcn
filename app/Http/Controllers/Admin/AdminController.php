@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Blog;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -15,7 +16,8 @@ class AdminController extends Controller
     public function index()
     {
         //
-        return view('users.admin.index');
+        $blogs = Blog::with(['user'])->orderBy('id', 'desc')->paginate(8);
+        return view('users.admin.index', compact(['blogs']));
     }
 
     /**

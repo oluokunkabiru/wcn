@@ -14,11 +14,39 @@
             <div class="media-footer">
                 <small><i>{{ $comment->created_at }}</i></small>
                 <br>
-
-                <span class="fa fa-trash text-danger display-6">delete</span>
+                @if (Auth::check() && Auth::user()->id === $comment->user_id)
+                <a href="#confirm" data-toggle="modal" deleteurl="{{ route('comment.destroy', $comment->id) }}">
+                    <span class="fa fa-trash text-danger display-5"></span>
+                </a>
+                @endif
             </div>
           </div>
         </div>
 </div>
 @endforeach
 {{ $comments->links() }}
+<div class="modal" id="confirm">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+            <h4 class="modal-title text-uppercase">are sure you want delete comment</span></h4>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+            <form id="delcategoryform" action="#" method="POST">
+
+                    {{ csrf_field() }}
+                    @method("DELETE")
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+                    <button  type="submit" class="btn btn-danger text-uppercase">delete</button>                </div>
+</form>
+        </div>
+    </div>
+     </div>

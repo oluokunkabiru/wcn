@@ -84,5 +84,6 @@ class BooksController extends Controller
     public function destroy($id)
     {
         //
+        return $id;
     }
 }

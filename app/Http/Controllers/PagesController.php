@@ -45,6 +45,7 @@ class PagesController extends Controller
     {
         $blogs = Blog::with(['user'])->orderBy('id', 'desc')->paginate(8);
         // return $blogs;
+
         return view('pages.blog', compact(['blogs']));
     }
     public function minister()

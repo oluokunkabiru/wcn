@@ -18,6 +18,7 @@ class CommentController extends Controller
     {
         //
         $comments = Comments::with(['user'])->orderBy('id', 'desc')->get();
+        // return $comments;
         return view('pages.comments', compact(['comments']));
     }
 
@@ -69,6 +70,8 @@ class CommentController extends Controller
     public function edit($id)
     {
         //
+                return $id;
+
     }
 
     /**
@@ -91,6 +94,11 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+
+        $comment = Comments::where('id', $id)->first();
+        // return $comment;
+        $comment->forceDelete();
+          return redirect()->back()->with('success', "Comment deleted successfully");
     }
 }
