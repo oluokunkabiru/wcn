@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\Comments;
 use App\Models\Event;
+use App\Models\File;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -57,7 +58,8 @@ class PagesController extends Controller
     }
     public function gallery()
     {
-        return view('pages.gallery');
+        $medias = File::OrderBy('id', 'desc')->paginate(20);
+        return view('pages.gallery', compact(['medias']));
         // strlen(trim());
 
     }

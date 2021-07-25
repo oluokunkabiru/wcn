@@ -53,17 +53,25 @@
     <div class="container">
 
         <div class="row">
-            @for ($i = 0; $i < 10; $i++)
+            {{-- @for ($i = 0; $i < 10; $i++) --}}
+            @foreach ($medias as $media)
+
+
             <div class="col-md-3">
-                <div class="elem" vboy="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?dpr=1&auto=format&fit=crop&w=2000&q=80&cs=tinysrgb"
+                <div class="elem" vboy="{{ $media->getMedia('gallery')->first()->getUrl() }}"
                     title="image 1" data-lcl-txt="villageboy " data-lcl-author="jhkjk"
-                    data-lcl-thumb="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?dpr=1&auto=format&fit=crop&w=150&q=80&cs=tinysrgb">
-                    <span style="background-image: url(https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?dpr=1&auto=format&fit=crop&w=400&q=80&cs=tinysrgb);"></span>
+                    data-lcl-thumb="{{ $media->getMedia('gallery')->first()->getUrl() }}">
+                    <span
+                        style="background-image: url({{ $media->getMedia('gallery')->first()->getUrl() }});"></span>
 
                 </div>
 
             </div>
-            @endfor
+            @endforeach
+            {{-- @endfor --}}
+            </div>
+            <div class="card-footer">
+                {{ $medias->links() }}
             </div>
         </div>
     </div>

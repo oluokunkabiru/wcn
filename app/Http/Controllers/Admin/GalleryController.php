@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\GalleryRequest;
+use App\Models\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GalleryController extends Controller
 {
@@ -15,7 +18,7 @@ class GalleryController extends Controller
     public function index()
     {
         //
-        $medias = [];
+        $medias = File::OrderBy('id', 'desc')->paginate(20);
         return view('users.admin.gallery.index', compact(['medias']));
     }
 
@@ -35,9 +38,15 @@ class GalleryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GalleryRequest $request)
     {
         //
+        $gallery = new File();
+        $gallery->addMediaFromRequest('file')->toMediaCollection("gallery");
+        $gallery->user_id = Auth::user()->id;
+        $gallery->media_id = 1;
+        $gallery->save();
+        return "Gallery added successfully";
     }
 
     /**
