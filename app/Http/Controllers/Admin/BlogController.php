@@ -58,21 +58,23 @@ class BlogController extends Controller
 
            $data = $img->getAttribute('src');
 
-           list($type, $data) = explode(';', $data);
+           if (strpos($data, 'data') !== false){
+            list($type, $data) = explode(';', $data);
 
-           list($type, $data) = explode(',', $data);
+                list($type, $data) = explode(',', $data);
+                 $data = base64_decode($data);
 
-           $data = base64_decode($data);
+               $image_name= "/uploads/blogs/" .str_replace(" ", '_', $title)."_".  time()."_".$k.'.png';
 
-           $image_name= "/uploads/blogs/" .str_replace(" ", '_', $title)."_".  time()."_".$k.'.png';
+               $path = public_path() . $image_name;
 
-           $path = public_path() . $image_name;
+               file_put_contents($path, $data);
 
-           file_put_contents($path, $data);
+               $img->removeAttribute('src');
 
-           $img->removeAttribute('src');
+               $img->setAttribute('src', $image_name);
 
-           $img->setAttribute('src', $image_name);
+                }
 
         }
 
@@ -144,7 +146,7 @@ class BlogController extends Controller
 
            $data = $img->getAttribute('src');
        if (strpos($data, 'data') !== false){
-list($type, $data) = explode(';', $data);
+        list($type, $data) = explode(';', $data);
 
             list($type, $data) = explode(',', $data);
              $data = base64_decode($data);
@@ -158,13 +160,9 @@ list($type, $data) = explode(';', $data);
            $img->removeAttribute('src');
 
            $img->setAttribute('src', $image_name);
-        //    list($type, $data) = array_pad(explode(';', $data),2,null);
-        //    list(, $data) = array_pad(explode(',', $data),2,null);
-            // $data = base64_decode($data);
-            }
-            // else{
 
-            // }
+            }
+
 
 
 

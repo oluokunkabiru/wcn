@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\Comments;
+use App\Models\Event;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -25,7 +26,9 @@ class PagesController extends Controller
 
     public function event()
     {
-        return view('pages.event');
+        $events = Event::orderBy('id', 'desc')->paginate(8);
+
+        return view('pages.event',compact(['events']));
     }
 
     public function contact()
@@ -64,6 +67,15 @@ class PagesController extends Controller
         $comments = Comments::with(['user'])->orderBy('id', 'desc')->where(['blog_id'=>$id])->paginate(2);
 
         return view('pages.view-blog', compact(['blog', 'comments']));
+
+    }
+
+    public function viewEvent($id, $title){
+        $event = Event::with(['user'])->where('id', $id)->first();
+        // return $blog;
+        // $comments = Comments::with(['user'])->orderBy('id', 'desc')->where(['blog_id'=>$id])->paginate(2);
+
+        return view('pages.view-event', compact(['event']));
 
     }
 

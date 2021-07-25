@@ -54,30 +54,38 @@
     <div class="container">
 
         <div class="row">
-            @for ($i = 0; $i < 10; $i++)
+            @foreach ($events as $event)
             <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
-                <div class="card card-blog card-plain">
-                    <div class="position-relative">
-                        <a class="d-block shadow-xl border-radius-xl">
-                            <img src="../assets/img/home-decor-1.jpg" alt="img-blur-shadow"
-                                class="img-fluid shadow border-radius-xl">
-                        </a>
-                    </div>
-                    <div class="card-body px-1 pb-0">
-                        <a href="javascript:;">
-                            <h5>
-                                Modern
-                            </h5>
-                            <small>Date: 29/01/2019</small>
-                        </a>
-                        <p class="mb-4 text-sm">
-                            As Uber works through a huge amount of internal management turmoil.
-                        </p>
-                       
-                    </div>
-                </div>
+                                <div class="card card-blog card-plain">
+                                    <div class="position-relative">
+                                        <a class="d-block shadow-xl border-radius-xl">
+                                            <img src="{{ $event->getImage($event->content) != "" ?  $event->getImage($event->content):"../assets/img/home-decor-1.jpg" }}" alt="{{ $event->title }}"
+                                                class="img-fluid shadow border-radius-xl">
+                                        </a>
+                                    </div>
+                                    <div class="card-body px-1 pb-0">
+                                        <a href="javascript:;">
+                                            <h5>
+                                                {{ $event->title }}
+                                                </h5>
+                                            <small>Date: {{ $event->date }}</small>
+                                        </a>
+                                        {!! $event->getLimitedContent($event->content) !!}
+
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <a href="{{ route('readEvent', [$event->id, str_replace(" ", '_', $event->title)]) }}" class="btn btn-outline-primary btn-sm mb-0">
+                                                View event
+                                            </a>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+            @endforeach
+
+
             </div>
-            @endfor
+            <div class="text-right my-2">
+                {{ $events->links() }}
             </div>
         </div>
     </div>
