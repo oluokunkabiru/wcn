@@ -1,6 +1,6 @@
 
 @extends('layouts.app')
-@section('title', 'Gallery')
+@section('title', 'Nuggets')
 @section('style')
     <style>
 
@@ -62,37 +62,29 @@
 
         <div class="row">
 
-            @for ($i = 0; $i < 10; $i++)
+@foreach ($nuggets as $nugget)
 
-            <div class="col-md-6 card">
+            <div class="col-md-6 card" id="nugget{{ $nugget->id }}">
                 <div class="row card-body m-1 bg-black ">
                     <div class="col-md-4 ">
-                    <img src="{{ asset('assets/images/welcome-note.jpg') }}" class="card-img" alt="Image">
+                    <img src="{{ $nugget->user->getMedia('avatar')->first()->getUrl() }}" class="card-img" alt="{{ ucwords($nugget->user->name) }}">
                     </div>
                     <div class="col-md-8">
                         <div class="text-white">
                           <i class="fa fa-quote-left" style="font-size:48px;color:white" ></i>
-                          <p>The best gift to the world is the gift
-                            of salvation. The best gift to the
-                            church is the gift of the word.
-                            We have been sent with a
-                            message. The devil can’t shut us
-                            up, nothing can stop us, we have
-                            a message that must be heard,
-                            and that message is the word of
-                            peace and hope, of rest and of
-                            the finished work.
-                          </p>
+                          {!! $nugget->getLimitedContent($nugget->qoute) !!}
+
                           <p>
-                            <i>Apostle Dr. Faith Oniya</i>
+                            <i>{{ ucwords($nugget->user->name) }}</i>
                           </p>
                         </div>
                     </div>
                   </div>
             </div>
-            @endfor
+            @endforeach
 
     </div>
+    {{ $nuggets->links() }}
     </section>
 @endsection
 @section('script')

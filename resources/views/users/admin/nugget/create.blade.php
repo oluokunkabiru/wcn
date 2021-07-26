@@ -9,12 +9,18 @@
 
           </div>
           <div class="card-body">
-              <form action="" method="post">
+              <form action="{{ route('nugget.store') }}" method="post" enctype="multipart/form-data">
+                @csrf
                 <div class="form-group">
                     <label for="comment">Nugget Qoute</label>
-                    <textarea class="form-control blogarea" rows="3" name="content"></textarea>
-                    <span class="text-danger">
-                        </span>
+                    <textarea class="form-control blogarea {{ $errors->has('content') ? ' is-invalid' : '' }}" rows="3" name="content">
+                    {{ old('content')  }}
+                </textarea>
+                    @if ($errors->has('content'))
+                    <span class="invalid-feedback" role="alert">
+                         <strong>{{ $errors->first('content') }}</strong>
+                    </span>
+                    @endif
                     </div>
                     <button type="submit" class="btn btn-primary text-uppercase">Add nugget</button>
               </form>
@@ -35,7 +41,7 @@
         ['color', ['color']],
         ['para', ['ol', 'ul', 'paragraph']],
         ['table', ['table']],
-        ['insert', ['link']],
+        ['insert', ['link', 'picture']],
         ['view', ['fullscreen', 'help', 'undo', 'redo']],
       ]
 

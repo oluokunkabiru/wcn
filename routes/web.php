@@ -29,6 +29,7 @@ Route::get('/ministers', 'PagesController@minister')->name('minister');
 Route::get('/blogs', 'PagesController@blogs')->name('ourblogs');
 Route::get('blog/{id}/read/{title}', 'PagesController@viewBlog')->name('readblog');
 Route::get('event/{id}/full-details/{title}', 'PagesController@viewEvent')->name('readEvent');
+Route::get('nugget/{id}/quote/{title}', 'PagesController@viewNugget')->name('readNugget');
 // Route::resource('comment', CommentController::class);
 
 

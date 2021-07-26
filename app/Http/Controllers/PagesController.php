@@ -6,6 +6,7 @@ use App\Models\Blog;
 use App\Models\Comments;
 use App\Models\Event;
 use App\Models\File;
+use App\Models\Nugget;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -39,7 +40,8 @@ class PagesController extends Controller
 
     public function nugget()
     {
-        return view('pages.nugget');
+        $nuggets = Nugget::with(['user'])->orderBy('id', 'desc')->paginate(10);
+        return view('pages.nugget', compact(['nuggets']));
     }
     public function books()
     {
@@ -81,6 +83,14 @@ class PagesController extends Controller
 
     }
 
+    public function viewNugget($id, $title){
+        $nugget = Nugget::with(['user'])->where('id', $id)->first();
+        // return $blog;
+        // $comments = Comments::with(['user'])->orderBy('id', 'desc')->where(['blog_id'=>$id])->paginate(2);
+
+        return view('pages.nugget', compact(['nugget']));
+
+    }
     /**
      * Show the form for creating a new resource.
      *
