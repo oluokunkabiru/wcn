@@ -89,6 +89,12 @@
                         <div class="card-header">
                             <h3>File Upload</h3>
                         </div>
+                        @if(session('success'))
+                                <div class="alert alert-success alert-dismissible">
+                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                    <strong>Success! </strong> {{ session('success') }}
+                                </div>
+                            @endif
                         <div class="card-body">
                             <form method="post" enctype="multipart/form-data" class="dropzone dz-clickable"
                                 id="image-upload">
@@ -134,10 +140,9 @@
 
                                             </div>
                                             <div class="text-center">
-                                                <a href="" class="mx-1 text-danger" data-toggle="tooltip"
-                                                    title="Delete image from gallery"><span class="fa fa-trash"></span></a>
-                                                <a href="" class="mx-1 text-primary" data-toggle="tooltip"
-                                                    title="Disable image from gallery"><span class="fa fa-times"></span></a>
+                                                <a href="#deleteimage" delete-url="{{ route('gallery.destroy', $media->id) }}" imgsrc="{{  $media->getMedia('gallery')->first()->getUrl() }}" data-toggle="modal" class="mx-1 text-danger"
+                                                   ><span  title="Delete image from gallery" class="fa fa-trash"></span></a>
+                                                <a href="#disableimage"  disable-url="{{ route('gallery.update', $media->id) }}" imgsrc="{{  $media->getMedia('gallery')->first()->getUrl() }}" data-toggle="modal" class="mx-1 text-primary" ><span title="{{ $media->status == 0 ? "Enable":"Disable" }} image from gallery" class="{{ $media->status== 0 ? "fa fa-check text-success":"fa fa-times text-danger" }}"></span></a>
                                             </div>
                                         </div>
                                     @endforeach
@@ -153,8 +158,59 @@
                         </div>
                     </div>
 
+                    <div class="modal" id="deleteimage">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
 
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title text-uppercase">are sure you want delete below image</h4>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">&times;</button>
+                            </div>
 
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <img src="" id="deleteimgscr" class="card-image img-fluid" alt="">
+                                <form id="deletecategoryform"  action="#" method="POST">
+
+                                        {{ csrf_field() }}
+                                        @method("DELETE")
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                        <button  type="submit" class="btn btn-danger text-uppercase">delete</button>                </div>
+                    </form>
+                            </div>
+                        </div>
+                         </div>
+
+                         <div class="modal" id="disableimage">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title text-uppercase">are sure you want disabled below image</h4>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">&times;</button>
+                                </div>
+
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <img src="" class="card-image img-fluid" id="disableimgscr" alt="">
+                                    <form id="disablecategoryform" action="#" method="POST">
+
+                                            {{ csrf_field() }}
+                                            @method("PATCH")
+                                </div>
+
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                            <button  type="submit" class="btn btn-danger text-uppercase">disable</button>                </div>
+                        </form>
+                                </div>
+                            </div>
+                             </div>
                 </div>
             </div>
     </section>
@@ -212,9 +268,25 @@
 
 
             // toolthip
-            $('[data-toggle="tooltip"]').tooltip();
+            $('[title="tooltip"]').tooltip();
 
+            $('#disableimage').on('show.bs.modal', function(e){
+          var myimgage = $(e.relatedTarget).attr('imgsrc');
+          var url = $(e.relatedTarget).attr('disable-url');
+        // $("#delname").text(mycat);
+        $("#disablecategoryform").attr("action", url);
+        $("#disableimgscr").attr("src", myimgage);
 
+     })
+
+     $('#deleteimage').on('show.bs.modal', function(e){
+          var myimgage = $(e.relatedTarget).attr('imgsrc');
+          var url = $(e.relatedTarget).attr('delete-url');
+        // $("#delname").text(mycat);
+        $("#deletecategoryform").attr("action", url);
+        $("#deleteimgscr").attr("src", myimgage);
+
+     })
         });
 
     </script>

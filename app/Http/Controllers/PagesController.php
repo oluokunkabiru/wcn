@@ -58,7 +58,7 @@ class PagesController extends Controller
     }
     public function gallery()
     {
-        $medias = File::OrderBy('id', 'desc')->paginate(20);
+        $medias = File::OrderBy('id', 'desc')->where('status', 1)->paginate(20);
         return view('pages.gallery', compact(['medias']));
         // strlen(trim());
 

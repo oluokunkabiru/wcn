@@ -45,6 +45,7 @@ class GalleryController extends Controller
         $gallery->addMediaFromRequest('file')->toMediaCollection("gallery");
         $gallery->user_id = Auth::user()->id;
         $gallery->media_id = 1;
+        $gallery->status =1;
         $gallery->save();
         return "Gallery added successfully";
     }
@@ -81,6 +82,20 @@ class GalleryController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $gallery = File::where('id',$id)->first();
+        $message ="";
+        if($gallery->status==1){
+            $gallery->status = 0;
+            $message = "gallery diabled successfully";
+
+        }else{
+            $gallery->status = 1;
+            $message = "gallery enabled successfully";
+
+        }
+        $gallery->update();
+        return redirect()->back()->with('success', $message);
+
     }
 
     /**
@@ -92,5 +107,9 @@ class GalleryController extends Controller
     public function destroy($id)
     {
         //
+        $file = File::where('id', $id)->first();
+        $file->delete($id);
+        $file->clearMediaCollection();
+        return redirect()->back()->with('success', 'File deleted successfully');
     }
 }
