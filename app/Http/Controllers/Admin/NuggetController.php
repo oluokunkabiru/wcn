@@ -84,6 +84,7 @@ class NuggetController extends Controller
         $nugget->user_id = Auth::user()->id;
         $nugget->save();
         return redirect()->route('nugget.index')->with('success', 'New nugget added successfully');
+
     }
 
     /**
@@ -179,6 +180,7 @@ class NuggetController extends Controller
                     unlink(public_path().$image);
                 }
             }
+            
           $event->forceDelete();
           return redirect()->back()->with('success', "Nuggget quote deleted successfully");
 

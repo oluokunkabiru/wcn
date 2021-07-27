@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BookRequest;
+use App\Http\Requests\BookUpdateRequest;
+use App\Models\Book;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BooksController extends Controller
 {
@@ -15,7 +19,8 @@ class BooksController extends Controller
     public function index()
     {
         //
-        return view('users.admin.book.index');
+        $books = Book::with(['user'])->orderBy('id', 'desc')->paginate(8);
+        return view('users.admin.book.index', compact(['books']));
     }
 
     /**
@@ -35,9 +40,53 @@ class BooksController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BookRequest $request)
     {
-        //
+        $title = $request->title;
+        $description = $request->content;
+        libxml_use_internal_errors(true);
+       $dom = new \DomDocument();
+
+       $dom->loadHtml($description, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+
+       $images = $dom->getElementsByTagName('img');
+
+       foreach($images as $k => $img){
+
+
+           $data = $img->getAttribute('src');
+
+           if (strpos($data, 'data') !== false){
+            list($type, $data) = explode(';', $data);
+
+                list($type, $data) = explode(',', $data);
+                 $data = base64_decode($data);
+
+               $image_name= "/uploads/books/" .str_replace(" ", '_', $title)."_".  time()."_".$k.'.png';
+
+               $path = public_path() . $image_name;
+
+               file_put_contents($path, $data);
+
+               $img->removeAttribute('src');
+
+               $img->setAttribute('src', $image_name);
+
+                }
+
+        }
+
+
+       $description = $dom->saveHTML();
+// return $request->all();
+        $book = new Book();
+        $book->description = $description;
+        $book->title = $title;
+        $book->user_id = Auth::user()->id;
+        $book->addMediaFromRequest('image')->toMediaCollection("books");
+        $book->save();
+        return redirect()->route('books.index')->with('success', 'New book added successfully');
+
     }
 
     /**
@@ -60,7 +109,8 @@ class BooksController extends Controller
     public function edit($id)
     {
         //
-        return view('users.admin.book.update');
+        $book = Book::where('id', $id)->first();
+        return view('users.admin.book.update', compact(['book']));
     }
 
     /**
@@ -70,9 +120,59 @@ class BooksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BookUpdateRequest $request, $id)
     {
         //
+        $title = $request->title;
+        $description = $request->content;
+        libxml_use_internal_errors(true);
+       $dom = new \DomDocument();
+
+       $dom->loadHtml($description, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+
+       $images = $dom->getElementsByTagName('img');
+
+       foreach($images as $k => $img){
+
+
+           $data = $img->getAttribute('src');
+
+           if (strpos($data, 'data') !== false){
+            list($type, $data) = explode(';', $data);
+
+                list($type, $data) = explode(',', $data);
+                 $data = base64_decode($data);
+
+               $image_name= "/uploads/books/" .str_replace(" ", '_', $title)."_".  time()."_".$k.'.png';
+
+               $path = public_path() . $image_name;
+
+               file_put_contents($path, $data);
+
+               $img->removeAttribute('src');
+
+               $img->setAttribute('src', $image_name);
+
+                }
+
+        }
+
+
+       $description = $dom->saveHTML();
+// return $request->all();
+        $book = Book::where('id', $id)->first();
+        $book->description = $description;
+        $book->title = $title;
+        $book->user_id = Auth::user()->id;
+        if($request->file("image")){
+            $book->delete($id);
+            $book->clearMediaCollection();
+            $book->addMediaFromRequest('image')->toMediaCollection("books");
+        }
+        // $book->addMediaFromRequest('image')->toMediaCollection("books");
+        $book->save();
+        return redirect()->route('books.index')->with('success', 'New book added successfully');
+
     }
 
     /**
@@ -84,6 +184,18 @@ class BooksController extends Controller
     public function destroy($id)
     {
         //
-        return $id;
+        $book = Book::where('id', $id)->first();
+        $images = $book->getImageAll($book->description);
+            if (count($images) > 0){
+                foreach ($images as $image){
+                    unlink(public_path().$image);
+                }
+            }
+          $book->forceDelete();
+        $book->delete($id);
+        $book->clearMediaCollection();
+        return redirect()->back()->with('success', "Book deleted successfully");
+
+
     }
 }

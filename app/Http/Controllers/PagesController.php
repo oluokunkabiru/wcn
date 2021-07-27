@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Book;
 use App\Models\Comments;
 use App\Models\Event;
 use App\Models\File;
@@ -45,7 +46,9 @@ class PagesController extends Controller
     }
     public function books()
     {
-        return view('pages.books');
+        $books = Book::with(['user'])->orderBy('id', 'desc')->paginate(8);
+
+        return view('pages.books', compact(['books']));
     }
     public function blogs()
     {

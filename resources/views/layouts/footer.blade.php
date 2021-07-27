@@ -14,30 +14,32 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="widget">
+                                    @php
+                                        $latestevents = App\Models\Event::orderBy('id', 'desc')->paginate(8);
+                                        // return $latestevents;
+                                    @endphp
                                     <h3>Latest Events</h3>
                                     <ul >
-                                        <li><a href="#">Lorem ipsum dolor sit amet</a></li>
-                                        <li><a href="#">Consectetur adipisicing elit quis nostrud</a></li>
-                                        <li><a href="#">Eiusmod tempor incididunt ut labore et dolore magna</a></li>
-                                        <li><a href="#">Ut enim ad minim veniam cillum</a></li>
-                                        <li><a href="#">Exercitation ullamco laboris nisi ut aliquip</a></li>
-                                        <li><a href="#">Duis aute irure dolor in reprehenderit in voluptate</a></li>
+                                        @foreach ($latestevents as $latestevent)
+                                        <li><a href="{{ route('readEvent', [$latestevent->id, str_replace(" ", '_', $latestevent->title)]) }}">{{ ucwords($latestevent->title) }}</a></li>
+                                        @endforeach
+
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="widget">
-                                    <h3 class="widget-title">Contact form</h3>
-                                    <form action="#" class="contact-form">
-                                        <div class="row">
-                                            <div class="col-md-6"><input type="text" placeholder="Your name..."></div>
-                                            <div class="col-md-6"><input type="text" placeholder="Email..."></div>
-                                        </div>
+                                    @php
+                                    $latestevents = App\Models\Blog::orderBy('id', 'desc')->paginate(8);
+                                    // return $latestevents;
+                                @endphp
+                                    <h3 class="widget-title">Latest Blogs</h3>
+                                    <ul  class="list-group">
+                                        @foreach ($latestevents as $latestevent)
+                                        <li class="list-group-item list-group-item-info" ><a class="" href="{{ route('readblog', [$latestevent->id, str_replace(" ", '_', $latestevent->title)]) }}" >{{ ucwords($latestevent->title) }}</a></li>
+                                        @endforeach
 
-                                        <textarea name="" placeholder="Your message..."></textarea>
-                                        <div class="text-right"><input type="submit" value="Send message"></div>
-
-                                    </form>
+                                    </ul>
                                 </div>
                             </div>
                         </div> <!-- .row -->

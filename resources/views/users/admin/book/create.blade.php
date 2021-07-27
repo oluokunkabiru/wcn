@@ -9,22 +9,38 @@
 
           </div>
           <div class="card-body">
-              <form action="" method="post">
+              <form action="{{ route('books.store') }}" method="post" enctype="multipart/form-data">
+                @csrf
                 <div class="form-group">
                     <label for="usr">Book title:</label>
-                    <input type="text" class="form-control" id="usr">
+                    <input type="text" value="{{ old('title') }}" class="form-control {{ $errors->has('title') ? ' is-invalid' : '' }}" name="title">
+                    @if ($errors->has('title'))
+                    <span class="invalid-feedback" role="alert">
+                         <strong>{{ $errors->first('title') }}</strong>
+                    </span>
+                    @endif
                 </div>
                 <div class="form-group">
                     <label for="usr">Book picture:</label>
-                    <input type="file" class="form-control" id="usr">
+                    <input type="file" class="form-control{{ $errors->has('image') ? ' is-invalid' : '' }}" name="image">
+                    @if ($errors->has('image'))
+                    <span class="invalid-feedback" role="alert">
+                         <strong>{{ $errors->first('image') }}</strong>
+                    </span>
+                    @endif
                 </div>
                 <div class="form-group">
                     <label for="comment">Book description</label>
-                    <textarea class="form-control blogarea" rows="3" name="content"></textarea>
-                    <span class="text-danger">
-                        </span>
+                    <textarea class="form-control blogarea {{ $errors->has('content') ? ' is-invalid' : '' }}" rows="3" name="content">
+                    {{ old('content') }}
+                    </textarea>
+                    @if ($errors->has('content'))
+                    <span class="invalid-feedback" role="alert">
+                         <strong>{{ $errors->first('content') }}</strong>
+                    </span>
+                    @endif
                     </div>
-                    <button type="submit" class="btn btn-primary text-uppercase">Add blog</button>
+                    <button type="submit" class="btn btn-primary text-uppercase">Add book</button>
               </form>
           </div>
       </div>
