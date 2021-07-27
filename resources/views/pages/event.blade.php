@@ -32,7 +32,7 @@
 
 
                                     </div>
-                                    <div class="card-footer">
+                                    <div class="card-footer float-right">
                                         <div class="d-flex align-items-center justify-content-between">
                                             <a href="{{ route('readEvent', [$event->id, str_replace(" ", '_', $event->title)]) }}" class="btn btn-outline-primary btn-sm mb-0">
                                                 View event

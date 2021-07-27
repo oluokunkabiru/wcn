@@ -11,7 +11,7 @@
 
 
     <section>
-    <div class="container">
+    <div class="container mb-2">
 
         <div class="row">
             @foreach ($blogs as $blog )
@@ -36,7 +36,7 @@
                             {!! $blog->getLimitedContent($blog->content) !!}
 
                     </div>
-                    <div class="card-footer">
+                    <div class="card-footer float-right">
                         <div class="d-flex align-items-center justify-content-between">
                             {{--  <button type="button" class="btn btn-outline-primary btn-sm mb-0">View
                                 Project</button>  --}}

@@ -21,11 +21,11 @@
                     <div class="card card-blog card-plain">
                         <div class="position-relative">
                             <a class="d-block shadow-xl border-radius-xl">
-                                <img src="{{ $event->getImage($event->content) != "" ?  $event->getImage($event->content):"../assets/img/home-decor-1.jpg" }}" alt="{{ $event->title }}"
+                                <img style="height: 150px; width:100%" src="{{ $event->getImage($event->content) != "" ?  $event->getImage($event->content):"../assets/img/home-decor-1.jpg" }}" alt="{{ $event->title }}"
                                     class="img-fluid shadow border-radius-xl">
                             </a>
                         </div>
-                        <div class="card-body px-1 pb-0">
+                        <div class="card-body px-1 pb-0" style="height: 200px; overflow:hidden">
                             <a href="javascript:;">
                                 <h5>
                                     {{ $event->title }}
@@ -34,6 +34,9 @@
                             </a>
                             {!! $event->getLimitedContent($event->content) !!}
 
+
+                        </div>
+                        <div class="card-footer">
                             <div class="d-flex align-items-center justify-content-between">
                                 {{--  <button type="button" class="btn btn-outline-primary btn-sm mb-0">View
                                     Project</button>  --}}

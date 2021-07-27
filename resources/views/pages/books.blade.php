@@ -32,6 +32,13 @@
                         {!! $book->description !!}
 
                     </div>
+                    <div class="card-footer">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <a href="#bookdetails" data-toggle="modal" class="btn btn-outline-primary btn-sm mb-0">
+                                Full details <span class="fa fa-address-book-o"></span>
+                            </a>
+                            </div>
+                    </div>
                 </div>
             </div>
             @endforeach

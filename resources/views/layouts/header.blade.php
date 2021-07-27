@@ -23,12 +23,12 @@
                       <li class="nav-item {{ $pagename=="gallery"?"active":"" }}"><a href="{{ route('gallery') }}" class="nav-link">Gallery</a></li>
                       <li class="nav-item  {{ $pagename=="event"?"active":"" }}"><a href="{{ route('event') }}" class="nav-link">Events</a></li>
                       <li class="nav-item  {{ $pagename=="contact"?"active":"" }}"><a href="{{ route('contact') }}" class="nav-link">Contact</a></li>
-                      <li class="nav-item  {{ $pagename=="nugget"?"active":"" }}"><a href="{{ route('nuggetquote') }}" class="nav-link">Nugget</a></li>
-                      <li class="nav-item  {{ $pagename=="blog"?"active":"" }}"><a href="{{ route('ourblogs') }}" class="nav-link">Blogs</a></li>
+                      <li class="nav-item  {{ $pagename=="nuggets"?"active":"" }}"><a href="{{ route('nuggetquote') }}" class="nav-link">Nugget</a></li>
+                      <li class="nav-item  {{ $pagename=="blogs"?"active":"" }}"><a href="{{ route('ourblogs') }}" class="nav-link">Blogs</a></li>
                       <li class="nav-item  {{ $pagename=="books"?"active":"" }}"><a href="{{ route('ourbooks') }}" class="nav-link">Shop</a></li>
                       <li class="nav-item  {{ $pagename=="ministers"?"active":"" }}"><a href="{{ route('minister') }}" class="nav-link">Ministers</a></li>
   @guest
-                           
+
                         @else
                         @php
                         switch(Auth::user()->role)

@@ -22,18 +22,21 @@
                     <div class="card card-blog card-plain">
                         <div class="position-relative">
                             <a class="d-block shadow-xl border-radius-xl">
-                                <img src="{{ $book->getMedia('books')->first()->getUrl() }}" alt="img-blur-shadow"
+                                <img style="height: 150px; width:100%" src="{{ $book->getMedia('books')->first()->getUrl() }}" alt="img-blur-shadow"
                                     class="img-fluid shadow border-radius-xl">
                             </a>
                         </div>
-                        <div class="card-body px-1 pb-0">
+                        <div class="card-body px-1 pb-0" style="height: 200px; overflow:hidden">
                             <a href="javascript:;">
                                 <h5>
                                    {{ $book->title }}
                                 </h5>
                             </a>
                             {!! $book->description !!}
-                            <div class="d-flex align-items-center justify-content-between">
+
+                        </div>
+                        <div class="card-footer">
+                             <div class="d-flex align-items-center justify-content-between">
                                 {{--  <button type="button" class="btn btn-outline-primary btn-sm mb-0">View
                                     Project</button>  --}}
                                     <a href="{{ route('books.show', 1) }}"  title="Read book description" class="btn btn-success  "><span class="fa fa-eye"></span></a>
