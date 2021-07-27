@@ -8,21 +8,25 @@
                         <div class="card-header pb-0 p-3">
                             <h6 class="mb-0">Platform Settings</h6>
                         </div>
-                        <div class="card-body p-3">
+                        <div class="card-header">
+                            <div id="success_activate"></div>
+                        </div>
+
+                        <div class="card-body p-3" id="refreshme">
                             <h6 class="text-uppercase text-body text-xs font-weight-bolder">Account</h6>
                             <p><small>Notify me when ....</small> </p>
                             <ul class="list-group">
                                 <li class="list-group-item border-0 px-0">
                                     <div class="form-check form-switch ps-0">
-                                        <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault"
-                                            checked>
+                                        <input class="form-check-input ms-auto" status="1" value="blog_notification" type="checkbox" id="flexSwitchCheckDefault"
+                                            >
                                         <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
                                             for="flexSwitchCheckDefault">New blog added</label>
                                     </div>
                                 </li>
                                 <li class="list-group-item border-0 px-0">
                                     <div class="form-check form-switch ps-0">
-                                        <input class="form-check-input ms-auto" type="checkbox"
+                                        <input class="form-check-input ms-auto" status="1" value="comment_notification " type="checkbox"
                                             id="flexSwitchCheckDefault1">
                                         <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
                                             for="flexSwitchCheckDefault1">Someone answers on blog</label>
@@ -30,7 +34,7 @@
                                 </li>
                                 <li class="list-group-item border-0 px-0">
                                     <div class="form-check form-switch ps-0">
-                                        <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault2"
+                                        <input class="form-check-input ms-auto" status="1" value="gallery_notification" type="checkbox" id="flexSwitchCheckDefault2"
                                             checked>
                                         <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
                                             for="flexSwitchCheckDefault2">New photo add to gallery</label>
@@ -38,16 +42,16 @@
                                 </li>
                                 <li class="list-group-item border-0 px-0">
                                     <div class="form-check form-switch ps-0">
-                                        <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault2"
+                                        <input class="form-check-input ms-auto" status="1" value="book_notification" type="checkbox" id="flexSwitchCheckDefault2"
                                             checked>
                                         <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
-                                            for="flexSwitchCheckDefault2">Testimony approved</label>
+                                            for="flexSwitchCheckDefault2">New book</label>
                                     </div>
                                 </li>
 
                                 <li class="list-group-item border-0 px-0">
                                     <div class="form-check form-switch ps-0">
-                                        <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault2"
+                                        <input class="form-check-input ms-auto" status="1" value="event_notification " type="checkbox" id="flexSwitchCheckDefault2"
                                             checked>
                                         <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
                                             for="flexSwitchCheckDefault2">New event</label>
@@ -56,10 +60,18 @@
 
                                 <li class="list-group-item border-0 px-0">
                                     <div class="form-check form-switch ps-0">
-                                        <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault2"
+                                        <input class="form-check-input ms-auto" status="1" value="email_notification " type="checkbox" id="flexSwitchCheckDefault2"
                                             checked>
                                         <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
                                             for="flexSwitchCheckDefault2">Email notification</label>
+                                    </div>
+                                </li>
+                                <li class="list-group-item border-0 px-0">
+                                    <div class="form-check form-switch ps-0">
+                                        <input class="form-check-input ms-auto" status="1" value="nugget_notification " type="checkbox" id="flexSwitchCheckDefault2"
+                                            checked>
+                                        <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
+                                            for="flexSwitchCheckDefault2">Nugget notification</label>
                                     </div>
                                 </li>
                             </ul>
@@ -74,6 +86,7 @@
                                 <div class="col-md-8 d-flex align-items-center">
                                     <h6 class="mb-0">Profile Information</h6>
                                 </div>
+
                                 <div class="col-md-4 text-right">
                                     <a href="javascript:;">
                                         <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip"
@@ -93,7 +106,7 @@
                                 <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong>
                                     &nbsp; {{ Auth::user()->email }}</li>
                                 <li class="list-group-item border-0 ps-0 text-sm"><strong
-                                        class="text-dark">Location:</strong> &nbsp; USA</li>
+                                        class="text-dark">About:</strong> &nbsp; {{ Auth::user()->about }}</li>
                                 <li class="list-group-item border-0 ps-0 pb-0">
                                     <strong class="text-dark text-sm">Social:</strong> &nbsp;
                                     <a class="btn btn-facebook btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
@@ -124,18 +137,21 @@
                                         <div class="card card-blog card-plain">
                                             <div class="position-relative">
                                                 <a class="d-block shadow-xl border-radius-xl">
-                                                    <img src="{{ $blog->getImage($blog->content) != "" ?  $blog->getImage($blog->content):"../assets/img/home-decor-1.jpg" }}" alt="img-blur-shadow"
+                                                    <img style="height: 150px; width:100%" src="{{ $blog->getImage($blog->content) != "" ?  $blog->getImage($blog->content):"../assets/img/home-decor-1.jpg" }}" alt="img-blur-shadow"
                                                         class="img-fluid shadow border-radius-xl">
                                                 </a>
                                             </div>
-                                            <div class="card-body px-1 pb-0">
+                                            <div class="card-body px-1 pb-0" style="height: 200px; overflow:hidden">
                                                 <a href="javascript:;">
                                                     <h5>
                                                         {{ $blog->title }}
                                                     </h5>
                                                 </a>
                                                 {!! $blog->getLimitedContent($blog->content) !!}
-                                                <div class="d-flex align-items-center justify-content-between">
+
+                                            </div>
+                                            <div class="card-footer">
+                                                             <div class="d-flex align-items-center justify-content-between">
 
                                                    <a href="{{ route('readblog', [$blog->id, str_replace(" ", '_', $blog->title)]) }}" class="btn btn-outline-primary btn-sm mb-0">
                                                     View Content
@@ -157,3 +173,34 @@
                     </div>
                 </div>
            @endsection
+@section('script')
+<script>
+    $(document).ready(function(e) {
+        $('.form-check-input').on('change', function(e){
+            var activateme = $(this).val();
+            var status = $(this).attr('status');
+            var message = status == 1 ? "deactivate":"activate";
+            if(confirm("Are you sure you want "+ message+" this notification")){
+        $.ajax({
+            headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+            data: { activate: activateme,status:status },
+            type: "POST",
+            url: "{{ route('activate_notification') }}",
+            success: function(response) {
+                $('#success_activate').html('<div class="alert alert-success alert-dismissible">' +
+                    '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
+                    '<strong>Success! </strong>' + response +
+                    '</div>');
+                $("#refreshme").load(" #refreshme");
+            }
+        })
+
+        }
+        })
+    })
+</script>
+
+@endsection
+

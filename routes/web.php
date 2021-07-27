@@ -38,6 +38,8 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::prefix('comment')->middleware(['auth'])->group(function () {
 Route::resource('comment', CommentController::class);
+Route::post('activate-notification', 'SettingsController@activate')->name('activate_notification');
+
 });
 
 // ============================================================================
@@ -48,7 +50,7 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     // blogs
     Route::resource('blogs', 'Admin\BlogController');
     Route::resource('events', 'Admin\EventController');
-    Route::resource('testimony', 'Admin\Testimony');
+    Route::resource('users', 'Admin\Users');
     Route::resource('gallery', 'Admin\GalleryController');
     Route::resource('nugget', 'Admin\NuggetController');
     Route::resource('books', 'Admin\BooksController');

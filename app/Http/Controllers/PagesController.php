@@ -113,8 +113,10 @@ class PagesController extends Controller
     public function store(Request $request)
     {
         //
+        // return
     }
 
+    
     /**
      * Display the specified resource.
      *

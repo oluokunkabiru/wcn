@@ -89,8 +89,9 @@
               <span class="nav-link-text ms-1">Gallery</span>
             </a>
           </li>
+
           <li class="nav-item">
-            <a class="nav-link  " href="{{ route('testimony.index') }}">
+            <a class="nav-link  " href="{{ route('users.index') }}">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                   <title>office</title>
@@ -106,7 +107,7 @@
                   </g>
                 </svg>
               </div>
-              <span class="nav-link-text ms-1">Testimony</span>
+              <span class="nav-link-text ms-1">Users</span>
             </a>
           </li>
 
@@ -453,10 +454,16 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
+                                    @php
+                                        $totalusers =App\Models\User::get();
+                                        $today = date('Y-m-d');
+                                        $todaytotalusers =App\Models\User::whereDate('created_at', '=',$today)->get();
+
+                                    @endphp
                                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Users</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        53,000
-                                        <span class="text-success text-sm font-weight-bolder">+5</span>
+                                        {{ count($totalusers) }}
+                                        <span class="{{ count($todaytotalusers) > 0 ?"text-success":"text-danger" }} text-sm font-weight-bolder">+{{ count($todaytotalusers) }}</span>
                                     </h5>
                                 </div>
                             </div>
@@ -474,11 +481,17 @@
                     <div class="card-body p-3">
                         <div class="row">
                             <div class="col-8">
+                                @php
+                                        $totalblogs =App\Models\Blog::get();
+                                        $today = date('Y-m-d');
+                                        $todaytotalblogs =App\Models\Blog::whereDate('created_at', '=',$today)->get();
+
+                                    @endphp
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Blog</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        2,300
-                                        <span class="text-success text-sm font-weight-bolder">+3%</span>
+                                        {{ count($totalblogs) }}
+                                        <span class="{{ count($todaytotalblogs) > 0 ?"text-success":"text-danger" }} text-sm font-weight-bolder">+{{ count($todaytotalblogs) }}</span>
                                     </h5>
                                 </div>
                             </div>
@@ -496,11 +509,17 @@
                     <div class="card-body p-3">
                         <div class="row">
                             <div class="col-8">
+                                @php
+                                $totalevents =App\Models\Event::get();
+                                $today = date('Y-m-d');
+                                $todaytotalevents =App\Models\Event::whereDate('created_at', '=',$today)->get();
+
+                            @endphp
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Event</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        3,462
-                                        <span class="text-danger text-sm font-weight-bolder">2%</span>
+                                        {{ count($totalevents) }}
+                                        <span class="{{ count($todaytotalevents) > 0 ?"text-success":"text-danger" }} text-sm font-weight-bolder">+{{ count($todaytotalevents) }}</span>
                                     </h5>
                                 </div>
                             </div>
@@ -518,11 +537,17 @@
                     <div class="card-body p-3">
                         <div class="row">
                             <div class="col-8">
+                                @php
+                                        $totalgallery =App\Models\File::get();
+                                        $today = date('Y-m-d');
+                                        $todaytotalgallery =App\Models\File::whereDate('created_at', '=',$today)->get();
+
+                                    @endphp
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Testimony</p>
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Gallery</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        103,430
-                                        <span class="text-success text-sm font-weight-bolder">+5</span>
+                                        {{ count($totalgallery) }}
+                                        <span class="{{ count($todaytotalgallery) > 0 ? "text-success":"text-danger" }} text-sm font-weight-bolder">+{{ count($todaytotalgallery) }}</span>
                                     </h5>
                                 </div>
                             </div>
