@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Setting;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -81,6 +82,17 @@ class RegisterController extends Controller
         $collection = "avatar";
              $fileName = $data['name'].'.png';
              $user->addMediaFromRequest('avatar')->usingFileName($fileName)->toMediaCollection($collection);
-            return $user;
+            Setting::create([
+                'user_id' => $user->id,
+                'email_notification' =>0,
+                'blog_notification' =>0,
+                'comment_notification' =>0,
+                'nugget_notification' =>0,
+                'gallery_notification' =>0,
+                'event_notification' =>0,
+                'book_notification' =>0,
+
+            ]);
+             return $user;
             }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProfileUpdate;
 use App\Models\Blog;
+use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,7 +22,8 @@ class AdminController extends Controller
     {
         //
         $blogs = Blog::with(['user'])->orderBy('id', 'desc')->paginate(8);
-        return view('users.admin.index', compact(['blogs']));
+        $setting = Setting::where('user_id', Auth::user()->id)->first();
+        return view('users.admin.index', compact(['blogs', 'setting']));
     }
 
     /**

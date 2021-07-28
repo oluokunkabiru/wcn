@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Notification;
-use App\Models\Setting;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\ConfigRequest;
+use App\Models\Configuration;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class SettingsController extends Controller
+class ConfigController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,14 +24,6 @@ class SettingsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function activate(Request $request){
-        $message = $request->status == 0 ? "activate ":"deactivate ";
-        $notification = Setting::where('user_id', Auth::user()->id)->first();
-        $notification->update([
-            $request->activate => $request->status == 1 ? 0:1
-        ]);
-        return "successfully ".$message.ucwords(str_replace("_", " ", $request->activate));
-    }
     public function create()
     {
         //
@@ -68,6 +60,8 @@ class SettingsController extends Controller
     public function edit($id)
     {
         //
+        $config = Configuration::where('id', $id)->first();
+        return view('users.admin.configuration', compact(['config']));
     }
 
     /**
@@ -77,9 +71,29 @@ class SettingsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ConfigRequest $request, $id)
     {
         //
+        // return $request->all();
+        $config = Configuration::where('id', $id)->first();
+        $config->name = $request->name;
+        $config->email = $request->email;
+        $config->phone = $request->phone;
+        $config->facebook = $request->facebook;
+        $config->twitter = $request->twitter;
+        $config->linkedin = $request->linkedin;
+        $config->instagram = $request->instagram;
+        $config->whatsapp = $request->whatsapp;
+        $config->youtube = $request->youtube;
+        $config->address = $request->address;
+        if($request->file('logo')){
+            $config->delete($id);
+            $config->clearMediaCollection();
+            $config->addMediaFromRequest('logo')->toMediaCollection("logo");
+        }
+        $config->save();
+        return redirect()->route('admindashboard')->with('success', 'Site configuration update successfully');
+
     }
 
     /**

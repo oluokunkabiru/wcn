@@ -54,6 +54,7 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::resource('gallery', 'Admin\GalleryController');
     Route::resource('nugget', 'Admin\NuggetController');
     Route::resource('books', 'Admin\BooksController');
+    Route::resource('configurations', 'Admin\ConfigController');
     Route::post("delete-picture-on-blog", 'Admin\BlogController@deleteImageFromBlog')->name('delete-image-from-blog');
     // Route::resource('comment', CommentController::class);
 

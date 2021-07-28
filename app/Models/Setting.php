@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Setting extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'user_id',
+        'email_notification',
+        'blog_notification' ,
+        'comment_notification',
+        'nugget_notification',
+        'gallery_notification',
+        'event_notification',
+        'book_notification',
+    ];
 }
