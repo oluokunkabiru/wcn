@@ -57,6 +57,7 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::resource('configurations', 'Admin\ConfigController');
     Route::post("delete-picture-on-blog", 'Admin\BlogController@deleteImageFromBlog')->name('delete-image-from-blog');
     Route::get('approve-user/{id}/{status}', 'Admin\Users@approved')->name('approve-users');
+    Route::get('make-user-admin/{id}', 'Admin\Users@makeAdmin')->name('make-users-admin');
     // Route::resource('comment', CommentController::class);
 
 

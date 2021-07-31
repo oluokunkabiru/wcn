@@ -70,6 +70,18 @@ class Users extends Controller
         $user->update();
         return redirect()->back()->with('success', ucwords($user->name)." ".$msg);
     }
+    public function makeAdmin($id){
+        $user = User::where('id', $id)->first();
+
+        $status=$user->role=="admin" ? "member" : "admin";
+
+        $user->role = $status;
+        $user->update();
+         $wid =" Admin withdraw from " .ucwords($user->name)." successfully";
+        $mak = ucwords($user->name)." make admin successfully ";
+        $msg = $status=="admin" ?  $mak:$wid;
+        return redirect()->back()->with('success', $msg);
+    }
     /**
      * Update the specified resource in storage.
      *

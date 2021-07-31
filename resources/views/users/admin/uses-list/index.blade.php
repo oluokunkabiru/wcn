@@ -72,9 +72,16 @@
                                 <li class="nav-item">
                                   <a class="nav-link" href="#"><span class="btn btn-sm btn-rounded btn-info text-light">View</span></a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#" username="{{ $user->name }}" url="{{ route('approve-users', [$user->id, $user->status]) }}"><span class="btn btn-sm btn-rounded btn-secondary text-light">Make admin</span></a>
+                                @if ($user->role=="admin")
+                                 <li class="nav-item">
+                                    <a class="nav-link" href="#admin" data-toggle="modal" role="{{ $user->role }}" username="{{ $user->name }}" url="{{ route('make-users-admin', [$user->id]) }}"><span class="btn btn-sm btn-rounded btn-secondary text-light">Withdraw admin</span></a>
                                 </li>
+                                @else
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#admin" data-toggle="modal"  role="{{ $user->role }}" username="{{ $user->name }}" url="{{ route('make-users-admin', [$user->id]) }}"><span class="btn btn-sm btn-rounded btn-secondary text-light">Make admin</span></a>
+                                </li>
+                                @endif
+
                                 @if ($user->status==0)
                                 <li class="nav-item">
                                     <a class="nav-link" status ="{{ $user->status }}"  username="{{ ucwords($user->name) }}" url="{{ route('approve-users', [$user->id, $user->status]) }}" href="#approve" data-toggle="modal"><span class="btn btn-sm btn-rounded btn-success text-light">Approve</span></a>
@@ -124,7 +131,33 @@
 
             <!-- Modal footer -->
             <div class="modal-footer">
-                        <button  type="submit" class="btn btn-danger text-uppercase">delete</button>                </div>
+                        <button  type="submit" class="btn btn-success text-uppercase">update user approval status</button>                </div>
+    </form>
+            </div>
+        </div>
+      </div>
+
+      <div class="modal" id="admin">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title text-uppercase">are  <span id="statusmsg"></span></h4>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form id="adminform" action="#">
+
+                        {{ csrf_field() }}
+                        {{-- @method("PUT") --}}
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                        <button  type="submit" class="btn btn-success text-uppercase">update admin</button>                </div>
     </form>
             </div>
         </div>
@@ -155,6 +188,23 @@ $(document).ready(function(){
           $("#approveform").attr("action", url);
           $("#status").text(status);
           $("#delname").text(name);
+
+     })
+
+
+// approved
+    $('#admin').on('show.bs.modal', function(e){
+          var name = $(e.relatedTarget).attr('username');
+        //   alert(name)
+          var url = $(e.relatedTarget).attr('url');
+          var statis = $(e.relatedTarget).attr('role');
+        //   alert(statis);
+          var status = statis =="member" ? "you want make "+name+" as admin":"you want withdraw admin from " +name;
+            //  alert(status)
+        // $("#delname").text(mycat);
+          $("#adminform").attr("action", url);
+          $("#statusmsg").text(status);
+        //   $("#delna").text(name);
 
      })
 });
