@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class Users extends Controller
@@ -15,7 +16,8 @@ class Users extends Controller
     public function index()
     {
         //
-        return view('users.admin.testimony.index');
+        $users = User::orderby('id', 'desc')->get();
+        return view('users.admin.uses-list.index', compact(['users']));
     }
 
     /**
@@ -60,7 +62,14 @@ class Users extends Controller
     {
         //
     }
-
+    public function approved($id, $statu){
+        $user = User::where('id', $id)->first();
+        $status=$statu==0 ? 1 : 0;
+        $msg = $status==1?"approved successfully":"disabled successfully";
+        $user->status = $status;
+        $user->update();
+        return redirect()->back()->with('success', ucwords($user->name)." ".$msg);
+    }
     /**
      * Update the specified resource in storage.
      *

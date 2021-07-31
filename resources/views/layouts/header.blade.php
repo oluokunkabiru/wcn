@@ -1,14 +1,31 @@
+@php
+        $configuration =App\Models\Configuration::where('id', 1)->first();
+@endphp
 <div class="icon-bar" >
-    <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-    <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-    <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-    <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
-    <a href="#" class="youtube"><i class="fa fa-youtube"></i></a>
+    @if ($configuration->facebook)
+    <a href="{{ $configuration->facebook }}" class="facebook"><i class="fa fa-facebook"></i></a>
+    @endif
+    @if ($configuration->twitter)
+    <a href="{{ $configuration->twitter }}" class="twitter"><i class="fa fa-twitter"></i></a>
+    @endif
+    @if ($configuration->instaram)
+    <a href="{{ $configuration->instaram }}" class="instagram"><i class="fa fa-instagram"></i></a>
+    @endif
+    @if ($configuration->linkedin)
+     <a href="{{ $configuration->linkedin }}" class="linkedin"><i class="fa fa-linkedin"></i></a>
+
+    @endif
+    @if ($configuration->youtube)
+    <a href="{{ $configuration->youtube }}" class="youtube"><i class="fa fa-youtube"></i></a>
+    @endif
+    @if ($configuration->whatsapp)
+    <a href="{{ $configuration->whatsapp }}" class="bg-success"><i class="fa fa-whatsapp"></i></a>
+    @endif
   </div>
 
   <nav class="navbar  site-wrap navbar-expand-md navbar-dark sticky-top" style="z-index:3;   background-color: black;">
           <div class="container-fluid">
-              <a class="navbar-brand mb-0 p-0" style = "color:#dba928;   font-size: 15px;" href="{{ route('index') }}"><img class="mr-3"  src="{{ asset('assets/images/logo.png') }}" alt="church logo">Word Central Network</a>
+              <a class="navbar-brand mb-0 p-0" style = "color:#dba928;   font-size: 15px;" href="{{ route('index') }}"><img class="mr-3"  src="{{$configuration->getMedia('logo')->first()->getUrl() }}" alt="{{$configuration->name}}">{{$configuration->name}}</a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" >
                   <span class="oi oi-menu fa fa-bars"></span>
               </button>
@@ -16,6 +33,7 @@
     $current = URL::current();
     $pagearray = explode("/", $current);
     $pagename = isset($pagearray[3])?$pagearray[3]:"index";
+
 @endphp
               <div class="collapse navbar-collapse" id="collapsibleNavbar">
                   <ul class="navbar-nav ml-auto" style="color: white;">

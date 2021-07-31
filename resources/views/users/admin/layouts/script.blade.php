@@ -27,3 +27,5 @@
  <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
  <script src="{{ asset('assets/js/soft-ui-dashboard.min.js?v=1.0.2') }}"></script>
 <script src="{{ asset('assets/summernote/summernote-bs4.min.js') }}"></script>
+<script src="{{ asset('assets/datatables/datatables.min.js') }}"></script>
+

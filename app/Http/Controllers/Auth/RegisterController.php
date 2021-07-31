@@ -77,6 +77,7 @@ class RegisterController extends Controller
             'born_again_status' => $data['born'],
             'role' => 'member',
             'password' => Hash::make($data['password']),
+            'status' => 0,
         ]);
         // $avatar = new Media();
         $collection = "avatar";

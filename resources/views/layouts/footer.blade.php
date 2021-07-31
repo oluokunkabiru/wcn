@@ -1,14 +1,17 @@
+@php
+    $configuration =App\Models\Configuration::where('id', 1)->first();
+
+@endphp
 <section>
     <div class="container">
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="widget">
                                     <h3 class="widget-title">Our address</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi perspiciatis magnam, ab ipsa laboriosam tempore tenetur, aliquid repellat, ex cum dicta reiciendis accusamus. Omnis repudiandae quasi mollitia, iusto odio dignissimos.</p>
                                     <ul class="address">
-                                        <li><i class="fa fa-map-marker"></i> 329 Church St, Garland, TX 75042</li>
-                                        <li><i class="fa fa-phone"></i> (425) 853 442 552</li>
-                                        <li><i class="fa fa-envelope"></i> info@yourchurch.com</li>
+                                        <li><i class="fa fa-map-marker mx-1"></i> {!! $configuration->address !!}</li>
+                                        <li><i class="fa fa-phone mx-1"></i>{{ $configuration->phone }}</li>
+                                        <li><i class="fa fa-envelope mx-1"></i>{{ $configuration->email }}</li>
                                     </ul>
                                 </div>
                             </div>

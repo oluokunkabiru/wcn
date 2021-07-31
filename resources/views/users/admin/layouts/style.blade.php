@@ -17,4 +17,5 @@
 <link rel="stylesheet" href="{{ asset('assets/css/lc_lightbox.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/minimal.css') }}">
 {{-- <link rel="stylesheet" href="{{ asset('assets/simple-lightbox/simple-lightbox.min.css') }}"> --}}
- {{--  <link rel="stylesheet" href="{{ asset('assets/bootsrap/bootstrap.min.css') }}">  --}}
+ <link rel="stylesheet" href="{{ asset('assets/bootsrap/bootstrap.min.css') }}">
+ <link rel="stylesheet" href="{{ asset('assets/datatables/datatables.min.css') }}">
