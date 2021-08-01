@@ -132,26 +132,17 @@
                 </div>
                 <div class="col-md-4">
                   <div class="box small h-100 backindexe">
+                      @foreach ($blogs as $blog)
                     <div class="d-flex align-items-center mb-2">
-                      <div class="img"><img src="{{ asset('assets/images/gallery-0.jpg') }}" class="img-fluid" alt="Image"></div>
-                      <div class="text ">
-                         <h3 ><a href="#">About the visioneer</a></h3>
-                      </div>
-                    </div>
-                    <hr>
-                    <div class="d-flex align-items-center mb-2">
-                      <div class="img"><img src="{{ asset('assets/images/gallery-8.jpg') }}" class="img-fluid" alt="Image"></div>
-                      <div class="text ">
-                        <h3 ><a href="#">Our Modulus Operandi</a></h3>
-                      </div>
-                    </div>
-                    <hr>
-                    <div class="d-flex align-items-center">
-                      <div class="img"><img src="{{ asset('assets/images/gallery-0.jpg') }}" class="img-fluid" alt="Image"></div>
-                      <div class="text ">
-                          <h3 ><a href="#">Message from the pioneer</a></h3>
-                      </div>
-                    </div>
+                        <div class="img"><img src="{{ $blog->getImage($blog->content) != "" ?  $blog->getImage($blog->content):"../assets/img/home-decor-1.jpg" }}" class="img-fluid" alt="Image"></div>
+                        <div class="text ">
+                            <h3 ><a href="{{ route('readblog', [$blog->id, str_replace(" ", '_', $blog->title)]) }}">{{ $blog->title }}</a></h3>
+                        </div>
+                        </div>
+                        <hr>
+                      @endforeach
+
+
                   </div>
                 </div>
               </div>
@@ -564,33 +555,40 @@
 
         </div>
 
-      <div class="box h-100 site-section" >
+        @forelse ($events as $event)
 
-      <div class="row  align-items-stretch ">
-        <div class="col-lg-4">
-          <div class="img d-flex" style="background-image:url({{ asset('assets/images/Events.jpg') }});"><img src="{{ asset('assets/images/Events.jpg') }}" class="imgs " alt="Image"></div>
+        <div class="box h-100 site-section" >
 
-        </div>
-        <div class="col-lg-8">
-            <div class="row">
-                <div class="col-lg-2"><div  style="display: inline-block; background-color:black;color:#dba928 ; border-radius: 4px 4px 4px 4px;text-align: center ">
-                     <h1 style="display:block; background-color:#dba928;color: black; border-radius: 4px 4px 0 0; padding: 15px;">10</h1>Dec
-                 </div>
-                </div>
-                <div class="col-lg-10"><div><h1>Title appears here</h1>
-                 <i class="fa fa-calendar " style="color:#dba928 ;"> <span  style="color:black ;">8:00 Am — 10:00 Am</span> </i> &nbsp;
-               <i class="fa fa-map-marker"  style="color:#dba928 ;"> <span  style="color:black ;">Word Central Global Network</span> </i> </div>  </div>
+            <div class="row  align-items-stretch ">
+              <div class="col-lg-4">
+                <div class="img d-flex" style="background-image:url({{ $event->getImage($event->content) != "" ?  $event->getImage($event->content):"../assets/img/home-decor-1.jpg" }});"><img src="{{ $event->getImage($event->content) != "" ?  $event->getImage($event->content):"../assets/img/home-decor-1.jpg" }}" class="imgs " alt="Image"></div>
+
+              </div>
+              <div class="col-lg-8">
+                  <div class="row">
+                      <div class="col-lg-2"><div  style="display: inline-block; background-color:black;color:#dba928 ; border-radius: 4px 4px 4px 4px;text-align: center ">
+                           <h1 style="display:block; background-color:#dba928;color: black; border-radius: 4px 4px 0 0; padding: 15px;">{{ date("d", strtotime($event->date)) }}</h1>{{ date("M", strtotime($event->date)) }}
+                       </div>
+                      </div>
+                      <div class="col-lg-10"><div><h1> {{ $event->title }}</h1>
+                       <i class="fa fa-calendar " style="color:#dba928 ;"> <span  style="color:black ;"> {{ $event->date }}</span> </i> &nbsp;
+                     <i class="fa fa-map-marker"  style="color:#dba928 ;"> <span  style="color:black ;">Word Central Global Network</span> </i> </div>  </div>
+                  </div>
+                  <div class="row"  style="max-height:200px; overflow:hidden">
+                      <div class="col-lg-12">
+                          {!! $event->getLimitedContent($event->content) !!}
+                      </div>
+                  </div>
+                  <a href="{{ route('readEvent', [$event->id, str_replace(" ", '_', $event->title)]) }}" class="btn " style="background-color:#dba928 ;">Read More</a>
+
+              </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12"><p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
-                     eaque ipsa quae ab illo inventore veritatis.</p></div>
-            </div>
-            <a href="#" class="btn " style="background-color:#dba928 ;">Read More</a>
 
-        </div>
-      </div>
-     </div>
+           </div>
+      @empty
+      <h1 class="text-danger text-center">No Event at this moment</h1>
+      @endforelse
+
 
     </div>
 
@@ -620,23 +618,17 @@
 
                   <!-- The slideshow for our customers -->
                   <div class="carousel-inner">
-                    <div class="carousel-item active text-center">
-                      <img src="{{ asset('assets/images/welcome-note.jpg') }}" alt="carousel image " class="center-block">
-                      <h3 class="text-align center">CONVENER</h3>
-                    </div>
-                    <div class="carousel-item text-center ">
+
+                    <div class="carousel-item active text-center ">
                       <img src="{{ asset('assets/images/welcome-quote.jpg') }}" alt="carousel image" class="center-block">
                       <h3 class="text-align center">PASTOR</h3>
-
                     </div>
-                    <div class="carousel-item text-center">
-                      <img src="{{ asset('assets/images/pastor-1.jpg') }}" alt="carousel image" class="center-block">
-                      <h3 class="text-align center">PASTOR</h3>
-                    </div>
-                    <div class="carousel-item text-center">
-                      <img src="{{ asset('assets/images/sermon-11.jpg') }}" alt="carousel image" class="center-block">
-                      <h3 class="text-align center">MEMBER</h3>
-                    </div>
+                    @foreach ($members as $member)
+                         <div class="carousel-item text-center">
+                        <img src="{{ $member->getMedia('avatar')->first()->getUrl() }}" alt="carousel image " class="center-block">
+                        <h3 class="text-align center text-uppercase">{{ $member->role=="admin"?"pastor":"member" }}</h3>
+                        </div>
+                      @endforeach
                   </div>
 
                   <!-- Left and right controls -->
@@ -736,35 +728,18 @@
         </div>
 
         <!-- Full-width images with number text -->
-      <div class="mySlides">
-        <div class="numbertext">1 / 6</div>
-          <img src="{{ asset('assets/images/gallery-0.jpg') }}" style="width:100%">
-      </div>
+        @foreach ($gallerys as $gallery)
+            <div class="mySlides">
+                <div class="numbertext">1 / 6</div>
+                <img src="{{ $gallery->getMedia('gallery')->first()->getUrl() }}" style="width:100%">
+            </div>
+        @endforeach
 
-      <div class="mySlides">
-        <div class="numbertext">2 / 6</div>
-          <img src="{{ asset('assets/images/gallery-0.jpg') }}" style="width:100%">
-      </div>
 
-      <div class="mySlides">
-        <div class="numbertext">3 / 6</div>
-          <img src="{{ asset('assets/images/gallery-0.jpg') }}" style="width:100%">
-      </div>
 
-      <div class="mySlides">
-        <div class="numbertext">4 / 6</div>
-          <img src="{{ asset('assets/images/gallery-0.jpg') }}" style="width:100%">
-      </div>
 
-      <div class="mySlides">
-        <div class="numbertext">5 / 6</div>
-          <img src="{{ asset('assets/images/gallery-0.jpg') }}" style="width:100%">
-      </div>
 
-      <div class="mySlides">
-        <div class="numbertext">6 / 6</div>
-          <img src="{{ asset('assets/images/gallery-0.jpg') }}" style="width:100%">
-      </div>
+
 
       <!-- Next and previous buttons -->
       <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -777,24 +752,16 @@
 
       <!-- Thumbnail images -->
       <div class="row">
-        <div class="column">
-          <img class="demo cursor" src="{{ asset('assets/images/gallery-0.jpg') }}" style="width:100%" onclick="currentSlide(1)" alt="">
-        </div>
-        <div class="column">
-          <img class="demo cursor" src="{{ asset('assets/images/gallery-0.jpg') }}" style="width:100%" onclick="currentSlide(2)" alt="">
-        </div>
-        <div class="column">
-          <img class="demo cursor" src="{{ asset('assets/images/gallery-0.jpg') }}" style="width:100%" onclick="currentSlide(3)" alt="">
-        </div>
-        <div class="column">
-          <img class="demo cursor" src="{{ asset('assets/images/gallery-0.jpg') }}" style="width:100%" onclick="currentSlide(4)" alt="">
-        </div>
-        <div class="column">
-          <img class="demo cursor" src="{{ asset('assets/images/gallery-0.jpg') }}" style="width:100%" onclick="currentSlide(5)" alt="">
-        </div>
-        <div class="column">
-          <img class="demo cursor" src="{{ asset('assets/images/gallery-0.jpg') }}" style="width:100%" onclick="currentSlide(6)" alt="">
-        </div>
+          @php
+              $i=0;
+          @endphp
+          @foreach ($gallerys as $gallery)
+            <div class="column">
+             <img class="demo cursor" src="{{ $gallery->getMedia('gallery')->first()->getUrl() }}" style="width:100%" onclick="currentSlide({{ ++$i }})" alt="">
+            </div>
+          @endforeach
+
+
       </div>
 
 

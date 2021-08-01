@@ -8,6 +8,7 @@ use App\Models\Comments;
 use App\Models\Event;
 use App\Models\File;
 use App\Models\Nugget;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -20,7 +21,12 @@ class PagesController extends Controller
     public function index()
     {
         //
-        return view('pages.index');
+        $blogs = Blog::orderBy('id', 'desc')->paginate(4);
+        $events = Event::orderBy('id', 'desc')->paginate(3);
+        $members = User::orderBy('id', 'desc')->paginate(10);
+        $gallerys = File::OrderBy('id', 'desc')->where('status', 1)->paginate(6);
+        // return $events;
+        return view('pages.index',  compact(['events', 'blogs', 'members', 'gallerys']));
     }
 
     public function about(){
@@ -116,7 +122,7 @@ class PagesController extends Controller
         // return
     }
 
-    
+
     /**
      * Display the specified resource.
      *
