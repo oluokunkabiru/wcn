@@ -21,5 +21,6 @@
       @yield('content')
     @include('users.members.layouts.footer')
     @include('users.members.layouts.script')
+    @yield('script')
 </body>
 </html>

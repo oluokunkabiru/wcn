@@ -69,9 +69,9 @@
                         </a>
                         <div id="edit{{ $user->id }}" class="collapse" data-parent="#accordion">
                             <ul class="nav flex-column">
-                                <li class="nav-item">
-                                  <a class="nav-link" href="#"><span class="btn btn-sm btn-rounded btn-info text-light">View</span></a>
-                                </li>
+                                {{-- <li class="nav-item">
+                                  <a class="nav-link" img="{{ $user->getMedia('avatar')->first()->getUrl() }}" href="#view" username="{{ ucwords($user->name) }}" email="{{ $user->email }}" phone="{{ $user->phone }}" data-toggle="modal" role="{{ ucwords($user->role) }}" join="{{ $user->created_at }}"><span class="btn btn-sm btn-rounded btn-info text-light">View</span></a>
+                                </li> --}}
                                 @if ($user->role=="admin")
                                  <li class="nav-item">
                                     <a class="nav-link" href="#admin" data-toggle="modal" role="{{ $user->role }}" username="{{ $user->name }}" url="{{ route('make-users-admin', [$user->id]) }}"><span class="btn btn-sm btn-rounded btn-secondary text-light">Withdraw admin</span></a>
@@ -92,10 +92,8 @@
                                 </li>
                                 @endif
 
-
-
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#"><span class="btn btn-sm btn-rounded btn-danger text-light">Delete</span></a>
+                                    <a class="nav-link" url ="{{ route('users.destroy', $user->id) }}" img="{{ $user->getMedia('avatar')->first()->getUrl() }}" href="#confirm" username="{{ ucwords($user->name) }}" email="{{ $user->email }}" phone="{{ $user->phone }}" data-toggle="modal"><span class="btn btn-sm btn-rounded btn-danger text-light">Delete</span></a>
                                 </li>
                             </ul>
                         </div>
@@ -162,6 +160,136 @@
             </div>
         </div>
       </div>
+
+
+      <div class="modal" id="confirm">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title text-uppercase">are sure you want delete  <span id="delname"></span></h4>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form id="userdelform" action="#" method="POST">
+                    <div class="row">
+                        <div class="col-4">
+                            <img src="" class="card-img" id="userimg" alt="">
+                        </div>
+                        <div class="col-8">
+                            <div class="row">
+                                <div class="col-4">
+                                    <h5 class="text-mute">Name</h5>
+                                </div>
+                                <div class="col-8">
+                                    <h5 class="font-weight-bold" id="username">hjghg ghgfgf gfgf gfhj</h5>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <h5 class="text-mute">Phone</h5>
+                                </div>
+                                <div class="col-8">
+                                    <h5 class="font-weight-bold" id="userphone">hjghg ghgfgf gfgf gfhj</h5>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <h5 class="text-mute">Email</h5>
+                                </div>
+                                <div class="col-8">
+                                    <h5 class="font-weight-bold" id="useremail">hjghg ghgfgf gfgf gfhj</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                        {{ csrf_field() }}
+                        @method("DELETE")
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                        <button  type="submit" class="btn btn-danger text-uppercase">delete</button>                </div>
+    </form>
+            </div>
+        </div>
+         </div>
+
+         <div class="modal" id="view">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title text-uppercase"><span id="dename"></span></h4>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    {{-- <form id="userdelform" action="#" method="POST"> --}}
+                        <div class="row">
+                            <div class="col-4">
+                                <img src="" class="card-img" id="img" alt="">
+                            </div>
+                            <div class="col-8">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <h5 class="text-mute">Name</h5>
+                                    </div>
+                                    <div class="col-8">
+                                        <h5 class="font-weight-bold" id="name"></h5>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <h5 class="text-mute">Phone</h5>
+                                    </div>
+                                    <div class="col-8">
+                                        <h5 class="font-weight-bold" id="phone"></h5>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <h5 class="text-mute">Email</h5>
+                                    </div>
+                                    <div class="col-8">
+                                        <h5 class="font-weight-bold" id="email"></h5>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <h5 class="text-mute">Role</h5>
+                                    </div>
+                                    <div class="col-8">
+                                        <h5 class="font-weight-bold" id="role"></h5>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <h5 class="text-mute">Join on</h5>
+                                    </div>
+                                    <div class="col-8">
+                                        <h5 class="font-weight-bold" id="join"></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                            {{-- <button  type="submit" class="btn btn-danger text-uppercase">delete</button>                </div> --}}
+        {{-- </form> --}}
+                </div>
+            </div>
+             </div>
 </div>
 @endsection
 @section('script')
@@ -205,6 +333,45 @@ $(document).ready(function(){
           $("#adminform").attr("action", url);
           $("#statusmsg").text(status);
         //   $("#delna").text(name);
+
+     })
+
+
+
+
+
+     $('#confirm').on('show.bs.modal', function(e){
+        var name = $(e.relatedTarget).attr('username');
+        var phone = $(e.relatedTarget).attr('phone');
+        var email = $(e.relatedTarget).attr('email');
+        var url = $(e.relatedTarget).attr('url');
+        var img = $(e.relatedTarget).attr('img');
+
+        // $("#delname").text(mycat);
+        $("#userdelform").attr("action", url);
+        $("#userimg").attr("src", img);
+          $("#username").text(name);
+          $("#useremail").text(email);
+          $("#userphone").text(phone);
+
+     })
+
+
+     $('#view').on('show.bs.modal', function(e){
+        var name = $(e.relatedTarget).attr('username');
+        var phone = $(e.relatedTarget).attr('phone');
+        var email = $(e.relatedTarget).attr('email');
+        var img = $(e.relatedTarget).attr('img');
+        var role = $(e.relatedTarget).attr('role');
+        var join = $(e.relatedTarget).attr('join');
+
+        $("#dename").text(name);
+        $("#img").attr("src", img);
+          $("#name").text(name);
+          $("#email").text(email);
+          $("#phone").text(phone);
+          $("#join").text(join);
+          $("#role").text(role);
 
      })
 });

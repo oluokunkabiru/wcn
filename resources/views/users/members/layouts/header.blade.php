@@ -80,7 +80,8 @@ $configuration =App\Models\Configuration::where('id', 1)->first();
           </li>
 
         <li class="nav-item">
-          <a class="nav-link  " href="{{ route('logout') }}">
+          <a class="nav-link  " href="{{ route('logout') }}" onclick="event.preventDefault();
+          document.getElementById('logout-form').submit();">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="20px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>spaceship</title>
@@ -103,6 +104,9 @@ $configuration =App\Models\Configuration::where('id', 1)->first();
         </li>
       </ul>
     </div>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+        @csrf
+    </form>
     <div class="sidenav-footer mx-3 mt-3 pt-3">
       <div class="card card-background shadow-none card-background-mask-secondary" id="sidenavCard">
         <div class="full-background" style="background-image: url('../assets/img/curved-images/white-curved.jpeg')"></div>

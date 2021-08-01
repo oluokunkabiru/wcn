@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Comments;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -103,5 +104,8 @@ class Users extends Controller
     public function destroy($id)
     {
         //
+        $user = User::where('id', $id)->first();
+        
+        return redirect()->back()->with('success', ucwords($user->name)." have temporarilly deleted");
     }
 }

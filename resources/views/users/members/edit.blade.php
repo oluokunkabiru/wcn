@@ -13,7 +13,7 @@
     </div>
 @endif
     <div class="card-body p-3">
-        <form action="{{ route('admin.update', Auth::user()->id) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('members.update', Auth::user()->id) }}" method="post" enctype="multipart/form-data">
             @method('PUT')
             @csrf
         <div class="row">

@@ -1,6 +1,8 @@
  <!--   Core JS Files   -->
- <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
- <script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
+ <script src="{{ asset('assets/bootsrap/jquery.js') }}"></script>
+<script src="{{ asset('assets/bootsrap/popper.js') }}"></script>
+<script src="{{ asset('assets/bootsrap/bootstrap.min.js') }}"></script>
+ <script src="{{ asset('assets/jquery-ui-1.11.4/jquery-ui.min.js') }}"></script>
  <script src="{{ asset('assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
  <script>
    var win = navigator.platform.indexOf('Win') > -1;
