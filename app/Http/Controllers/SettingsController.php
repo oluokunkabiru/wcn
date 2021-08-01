@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Notification;
 use App\Models\Setting;
+use App\Notifications\ActivatorNofification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification as FacadesNotification;
 
 class SettingsController extends Controller
 {
@@ -30,6 +31,9 @@ class SettingsController extends Controller
         $notification->update([
             $request->activate => $request->status == 1 ? 0:1
         ]);
+        $mg = explode("_", $request->activate);
+        $stat = $mg[0];
+        FacadesNotification::send(Auth::user(), new ActivatorNofification($stat,ucwords($stat)." ".$message));
         return "successfully ".$message.ucwords(str_replace("_", " ", $request->activate));
     }
     public function create()

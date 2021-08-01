@@ -32,7 +32,7 @@
 <body>
     <div class="container">
         <h1 style="text-align: center; font-size:20px; color:white; padding:2px">{{ strtoupper($configuration->name) }}</h1>
-        <h3>Dear, {{ ucwords(Auth::user()->name) }}</h3>
+        <h3>Dear, {{ isset(Auth::user()->name)?ucwords(Auth::user()->name):"new member" }}</h3>
         <h5>Please click below button to verify your email</h5>
         <h3 style="color: white">WHY?</h3>
         <h3>Your email is needed to verify incase of notification and password reseting</h3>

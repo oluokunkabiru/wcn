@@ -40,6 +40,7 @@ Auth::routes(['verify' => true]);
 Route::prefix('comment')->middleware(['auth'])->group(function () {
 Route::resource('comment', CommentController::class);
 Route::post('activate-notification', 'SettingsController@activate')->name('activate_notification');
+Route::get('mark-as-read/{id}', 'Admin\Users@readNotification')->name('mark-as-read');
 
 });
 
@@ -66,14 +67,13 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
 //=======================  end admin authentication===========================
 
 
-
+// , 'verified'
 // ============================================================================
 //=======================  member authentication===========================
-Route::prefix('members')->middleware(['auth', 'member', 'verified'])->group(function () {
+Route::prefix('members')->middleware(['auth', 'member'])->group(function () {
     Route::get('/dashboard','Members\MemberController@index')->name('memberdashboard');
     Route::resource('members', 'Members\MemberController');
-    Route::resource('memeberstestimony', 'Members\TestimonyController');
-    // Route::resource('comment', CommentController::class);
+   Route::get('comment-history', 'Members\MemberController@commentHistory')->name('comment-history');
 
 
 });

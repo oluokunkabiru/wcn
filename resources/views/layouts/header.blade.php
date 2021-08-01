@@ -45,7 +45,11 @@
                       <li class="nav-item  {{ $pagename=="blogs"?"active":"" }}"><a href="{{ route('ourblogs') }}" class="nav-link">Blogs</a></li>
                       <li class="nav-item  {{ $pagename=="books"?"active":"" }}"><a href="{{ route('ourbooks') }}" class="nav-link">Shop</a></li>
                       <li class="nav-item  {{ $pagename=="ministers"?"active":"" }}"><a href="{{ route('minister') }}" class="nav-link">Ministers</a></li>
+
   @guest
+  @if (Route::has('login'))
+  <li class="nav-item  {{ $pagename=="login"?"active":"" }}"><a href="{{ route('login') }}" class="nav-link">Login</a></li>
+  @endif
 
                         @else
                         @php
@@ -61,6 +65,7 @@
                              $url = route('index');
                         }
                         @endphp
+
                             <li class="nav-item dropdown {{ $pagename=="dashboard"?"active":"" }}">
 
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{ $url }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -99,11 +104,11 @@
                 <button type="button" class="btn-lg  " style="background-color: #dba928;" >
                 <a class="text-white"  href="{{ route('register') }}">Become a Member</a>
                 </button>
-                @if (Route::has('login'))
+                {{--  @if (Route::has('login'))
                 <button type="button" class="btn-sm  " style="background-color: #dba928;" >
                     <a class="text-white" href="{{ route('login') }}">{{ __('Login') }}</a>
                 </button>
-                @endif
+                @endif  --}}
                 </div>
             @endguest
 

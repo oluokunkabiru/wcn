@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Comments;
 use App\Models\User;
+use App\Notifications\ActivatorNofification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class Users extends Controller
 {
@@ -67,8 +69,13 @@ class Users extends Controller
         $user = User::where('id', $id)->first();
         $status=$statu==0 ? 1 : 0;
         $msg = $status==1?"approved successfully":"disabled successfully";
+        $sta = $status==1?"approved":"disabled";
         $user->status = $status;
+        // return $status;
         $user->update();
+
+        Notification::send($user, new ActivatorNofification("$sta",$msg));
+        // return $user->notifications;
         return redirect()->back()->with('success', ucwords($user->name)." ".$msg);
     }
     public function makeAdmin($id){
@@ -105,7 +112,18 @@ class Users extends Controller
     {
         //
         $user = User::where('id', $id)->first();
-        
+
+
         return redirect()->back()->with('success', ucwords($user->name)." have temporarilly deleted");
+    }
+
+    public function readNotification($id){
+        // return $id;
+        $userUnreadNotification= auth()->user()->unreadNotifications;
+        if($userUnreadNotification) {
+            $userUnreadNotification->markAsRead();
+            return back();
+        }
+
     }
 }

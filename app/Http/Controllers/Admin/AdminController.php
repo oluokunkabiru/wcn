@@ -23,6 +23,7 @@ class AdminController extends Controller
         //
         $blogs = Blog::with(['user'])->orderBy('id', 'desc')->paginate(8);
         $setting = Setting::where('user_id', Auth::user()->id)->first();
+        // return Auth::user()->unreadNotifications;
         return view('users.admin.index', compact(['blogs', 'setting']));
     }
 

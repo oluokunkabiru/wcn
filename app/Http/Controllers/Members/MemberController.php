@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Members;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProfileUpdate;
 use App\Models\Blog;
+use App\Models\Comments;
 use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -23,10 +24,14 @@ class MemberController extends Controller
         //
         $blogs = Blog::with(['user'])->orderBy('id', 'desc')->paginate(8);
         $setting = Setting::where('user_id', Auth::user()->id)->first();
-
+        // return Auth::user()->notifications;
         return view('users.members.index', compact(['blogs', 'setting']));
     }
 
+    public function commentHistory(){
+        $comments = Comments::with(['user'])->orderBy('id', 'desc')->where(['user_id'=>Auth::user()->id])->paginate(2);
+        return view('users.members.comment-history.index', compact(['comments']));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -114,5 +119,6 @@ class MemberController extends Controller
     public function destroy($id)
     {
         //
+        
     }
 }
