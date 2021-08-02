@@ -19,8 +19,9 @@ class TestimonyController extends Controller
     public function index()
     {
         //
-        $pendingtestimonys = Testimony::orderBy('id', 'desc')->paginate(12);
-        return view('users.members.testimony.index', compact(['pendingtestimonys']));
+        $approvedtestimonys = Testimony::orderBy('id', 'desc')->where('status', 1)->paginate(12);
+        $pendingtestimonys = Testimony::orderBy('id', 'desc')->where(['user_id'=> Auth::user()->id,'status'=>0])->paginate(12);
+        return view('users.members.testimony.index', compact(['pendingtestimonys','approvedtestimonys']));
     }
 
     /**
@@ -173,6 +174,11 @@ class TestimonyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function allTestimony(){
+        $pendingtestimonys = Testimony::orderBy('id', 'desc')->where('status', 0)->paginate(12);
+        $approvedtestimonys = Testimony::orderBy('id', 'desc')->where('status', 1)->paginate(12);
+        return view('users.admin.uses-list.update', compact(['pendingtestimonys','approvedtestimonys' ]));
+    }
     public function destroy($id)
     {
         //
@@ -189,4 +195,20 @@ class TestimonyController extends Controller
           return redirect()->back()->with('success', "Testimony deleted successfully");
 
     }
+    public function approveTestimony($id, $statu){
+        $testimony = Testimony::with('user')->where('id', $id)->first();
+        $msg = $statu==0 ? "Testimony approved successfully":"Testimony disabled successfully";
+        $status = $statu==0?1:0;
+        $testimony->status = $status;
+        $testimony->update();
+        Notification::send($testimony->user, new ActivatorNofification("Testimony","Testimony approved"));
+        Notification::send(Auth::user(), new ActivatorNofification("Testimony","You approved testimony"));
+        return redirect()->back()->with('success', $msg);
+
+
 }
+}
+
+
+
+

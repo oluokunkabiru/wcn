@@ -55,38 +55,33 @@
         <div class="card-body p-3">
 
             <div class="row">
-                @for ($i = 0; $i < 8; $i++)
+                @forelse ($approvedtestimonys as $unapprove)
 
+                <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
+                    <div class="card card-blog card-plain">
 
-                    <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
-                        <div class="card card-blog card-plain">
-                            <div class="position-relative">
-                                <a class="d-block shadow-xl border-radius-xl">
-                                    <img src="../assets/img/home-decor-1.jpg" alt="img-blur-shadow"
-                                        class="img-fluid shadow border-radius-xl">
-                                </a>
-                            </div>
-                            <div class="card-body px-1 pb-0">
-                                <a href="javascript:;">
+                        <div class="card-body px-1 pb-0" style="height: 200px; overflow:hidden">
+                            <a href="javascript:;">
+                                <small>{{ $unapprove->created_at }}</small>
+                            </a>
+                           {!! $unapprove->testimony !!}
 
-                                    <small>Date: 29/01/2019</small>
-                                </a>
-                                <p class="mb-4 text-sm">
-                                    As Uber works through a huge amount of internal management turmoil.
-                                </p>
-                                <div class="d-flex align-items-center justify-content-between">
-                                    {{--  <button type="button" class="btn btn-outline-primary btn-sm mb-0">View
-                                        Project</button>  --}}
-                                        <small>
-                                        <a href="{{ route('events.show', 1) }}" data-toggle="tooltip" title="Read testimony" class="btn btn-success  "><span class="fa fa-eye"></span></a>
-                                        <a href="{{ route('events.edit', 1) }}" data-toggle="tooltip" title="Edit testimony!" class="btn btn-primary  "><span class="fa fa-edit"></span></a>
-                                        <a href="#confirm" class="btn btn-danger" delete="" data-toggle="tooltip" title="Delete testimony"><span class="fa fa-trash"></span></a>
-                                    </small>
-                                </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="d-flex align-items-center justify-content-between">
+                                {{--  <button type="button" class="btn btn-outline-primary btn-sm mb-0">View
+                                    Project</button>  --}}
+                                    {{-- <a href="{{ route('readNugget', [$nugget->id, str_replace(" ", "_", ucwords($nugget->user->name))]) }}"  title="Read full nugget" class="btn btn-success  "><span class="fa fa-eye"></span></a> --}}
+                                    <a href="#view" data-toggle="modal" testi ="{!! $unapprove->testimony !!}"  title="Read full nugget" class="btn btn-success  "><span class="fa fa-eye"></span></a>
+                                    <a href="{{ route('testimony.edit', $unapprove->id) }}" title="Edit nugget" class="btn btn-primary  "><span class="fa fa-edit"></span></a>
+                                    <a href="#confirm" data-toggle="modal" testi ="{!! $unapprove->testimony !!}" delete-url={{ route('testimony.destroy', $unapprove->id) }} class="btn btn-danger"  title="Delete nugget"><span class="fa fa-trash"></span></a>
                             </div>
                         </div>
                     </div>
-                @endfor
+                </div>
+@empty
+<h2 class="text-center text-danger">You have not post testimony</h2>
+@endforelse
             </div>
 
         </div>

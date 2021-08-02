@@ -657,59 +657,59 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-lg-4 mb-4 mb-lg-0">
+              @forelse ($testimonys as $testimony)
+              <div class="col-lg-4 mb-4 mb-lg-0">
               <div class="testimonial-2">
-                <h3 class="h5">God is Good</h3>
-                <blockquote class="mb-4">
-                  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos eligendi numquam eaque minus neque quam quibusdam quae aut pariatur a nihil, tenetur, fuga voluptas error voluptatum iure veniam. Sed, maiores.</p>
+                {{-- <h3 class="h5">God is Good</h3> --}}
+                <blockquote class="mb-4"  style="max-height:200px; overflow:hidden">
+                    {!! $testimony->testimony !!}
                 </blockquote>
                 <div class="d-flex v-card align-items-center">
-                  <img src="{{ asset('assets/images/person_1.jpg') }}" alt="Image" class="img-fluid mr-3">
+                  <img src="{{ $testimony->user->getMedia('avatar')->first()->getUrl() }}" alt="Image" class="img-fluid mr-3">
                   <div class="author-name">
-                    <span class="d-block">Micheal adegboye</span>
+                    <span class="d-block">{{ ucwords($testimony->user->name) }}</span>
                   </div>
+                  <a href="#fulltestimony" data-toggle="modal" testimony="{!! $testimony->testimony !!}" username="{{ ucwords($testimony->user->name) }}" img="{{ $testimony->user->getMedia('avatar')->first()->getUrl() }}" class="btn btn-warning btn-block">Read full</a>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 mb-4 mb-lg-0">
-              <div class="testimonial-2">
-                <h3 class="h5">His name is Yahweh</h3>
-                <blockquote class="mb-4">
-                  <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, deserunt eveniet veniam. Ipsam, nam, voluptatum"</p>
-                </blockquote>
-                <div class="d-flex v-card align-items-center">
-                  <img src="{{ asset('assets/images/person_2.jpg') }}" alt="Image" class="img-fluid mr-3">
-                  <div class="author-name">
-                    <span class="d-block">racheal aworanti</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 mb-4 mb-lg-0">
-              <div class="testimonial-2">
-                <h3 class="h5">Easy to Understand!</h3>
-                <div>
-                  <span class="icon-star text-warning"></span>
-                  <span class="icon-star text-warning"></span>
-                  <span class="icon-star text-warning"></span>
-                  <span class="icon-star text-warning"></span>
-                  <span class="icon-star-o text-warning"></span>
-                </div>
-                <blockquote class="mb-4">
-                  <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, deserunt eveniet veniam. Ipsam, nam, voluptatum"</p>
-                </blockquote>
-                <div class="d-flex v-card align-items-center">
-                  <img src="{{ asset('assets/images/person_3.jpg') }}" alt="Image" class="img-fluid mr-3">
-                  <div class="author-name">
-                    <span class="d-block">Katie Rose</span>
-                    <span >Customer</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+
+              @empty
+                    <h3 class="text-danger font-weight-bold text-center">No recent testimony</h3>
+              @endforelse
+
+
           </div>
         </div>
       </div>
+      <div class="modal" id="fulltestimony">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title text-uppercase">View testimony </h4>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="row">
+                    {{-- <div class="col-4"> --}}
+                        <img src="" class="card-img" id="userimg" alt="">
+                        {{-- <div class="card"> --}}
+                            <h5 class="text-center my-1" id="username"></h5>
+                        {{-- </div> --}}
+                    {{-- </div> --}}
+                    <div class="container">
+                        <span id="full"></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+         </div>
+</div>
     </section>
 
 
@@ -767,6 +767,20 @@
 
       </div>
     </section>
+
+@endsection
+@section('script')
+<script>
+     $('#fulltestimony').on('show.bs.modal', function(e){
+        var name = $(e.relatedTarget).attr('username');
+        var img = $(e.relatedTarget).attr('img');
+        var testimony = $(e.relatedTarget).attr('testimony');
+        $("#full").html(testimony);
+        $("#username").text(name);
+          $("#userimg").attr("src", img);
+
+     })
+</script>
 
 @endsection
 

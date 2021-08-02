@@ -8,6 +8,7 @@ use App\Models\Comments;
 use App\Models\Event;
 use App\Models\File;
 use App\Models\Nugget;
+use App\Models\Testimony;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -25,8 +26,9 @@ class PagesController extends Controller
         $events = Event::orderBy('id', 'desc')->paginate(3);
         $members = User::orderBy('id', 'desc')->paginate(10);
         $gallerys = File::OrderBy('id', 'desc')->where('status', 1)->paginate(6);
+        $testimonys = Testimony::with('user')->orderBy('id', 'desc')->where('status', 1)->paginate(12);
         // return $events;
-        return view('pages.index',  compact(['events', 'blogs', 'members', 'gallerys']));
+        return view('pages.index',  compact(['events', 'blogs', 'members', 'gallerys', 'testimonys']));
     }
 
     public function about(){

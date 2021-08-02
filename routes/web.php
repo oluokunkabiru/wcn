@@ -41,6 +41,7 @@ Route::prefix('comment')->middleware(['auth'])->group(function () {
 Route::resource('comment', CommentController::class);
 Route::post('activate-notification', 'SettingsController@activate')->name('activate_notification');
 Route::get('mark-as-read/{id}', 'Admin\Users@readNotification')->name('mark-as-read');
+Route::resource('testimony', 'TestimonyController');
 
 });
 
@@ -60,8 +61,8 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::post("delete-picture-on-blog", 'Admin\BlogController@deleteImageFromBlog')->name('delete-image-from-blog');
     Route::get('approve-user/{id}/{status}', 'Admin\Users@approved')->name('approve-users');
     Route::get('make-user-admin/{id}', 'Admin\Users@makeAdmin')->name('make-users-admin');
-    // Route::resource('comment', CommentController::class);
-
+    Route::get('/user/testimony', 'TestimonyController@allTestimony')->name('userstestimony');
+    Route::get("testimony-approve/{id}/{sta}", 'TestimonyController@approveTestimony')->name('testimony-approve');
 
 });
 //=======================  end admin authentication===========================
@@ -73,7 +74,6 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
 Route::prefix('members')->middleware(['auth', 'member'])->group(function () {
     Route::get('/dashboard','Members\MemberController@index')->name('memberdashboard');
     Route::resource('members', 'Members\MemberController');
-   Route::resource('testimony', 'TestimonyController');
 
 
 });
