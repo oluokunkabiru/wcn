@@ -680,6 +680,7 @@
 
 
           </div>
+          {{ $testimonys->links() }}
         </div>
       </div>
       <div class="modal" id="fulltestimony">

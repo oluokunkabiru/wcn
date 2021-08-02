@@ -306,8 +306,8 @@
                                                     <i class="fa fa-clock me-1"></i>
                                                     {{ Auth::user()->timeago($notification->created_at) }}
                                                 </p>
-                                                <small>
-                                                    <a href="{{ route('mark-as-read', $notification->id) }}" class="text-link">Mark as read</a>
+                                                <small class="float-right">
+                                                    <a href="{{ route('mark-as-read', $notification->id) }}" class="text-link float-right">Mark as read</a>
                                                 </small>
 
                                             </div>

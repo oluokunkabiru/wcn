@@ -119,7 +119,8 @@ class Users extends Controller
 
     public function readNotification($id){
         // return $id;
-        $userUnreadNotification= auth()->user()->unreadNotifications;
+        $userUnreadNotification= auth()->user()->notifications->find($id);
+        // return $userUnreadNotification;
         if($userUnreadNotification) {
             $userUnreadNotification->markAsRead();
             return back();
