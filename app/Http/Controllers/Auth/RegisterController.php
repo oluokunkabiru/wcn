@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Notifications\ActivatorNofification;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Validator;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
@@ -94,6 +96,11 @@ class RegisterController extends Controller
                 'book_notification' =>0,
 
             ]);
+
+            $admins = User::where('role', 'admin')->get();
+            foreach($admins as $admin){
+                Notification::send($admin, new ActivatorNofification("User","New member registered"));
+           }
              return $user;
             }
 }

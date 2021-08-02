@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CommentRequest;
 use App\Models\Comments;
+use App\Notifications\ActivatorNofification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 
 class CommentController extends Controller
 {
@@ -47,6 +49,8 @@ class CommentController extends Controller
         $comment->user_id = Auth::user()->id;
         $comment->status = 0;
         $comment->save();
+        Notification::send(Auth::user(), new ActivatorNofification("comment","You added new comment"));
+
         return redirect()->back()->with('success', 'New comment added successfully');
     }
 
@@ -99,6 +103,8 @@ class CommentController extends Controller
         $comment = Comments::where('id', $id)->first();
         // return $comment;
         $comment->forceDelete();
+        Notification::send(Auth::user(), new ActivatorNofification("comment","You delete you comment"));
+
           return redirect()->back()->with('success', "Comment deleted successfully");
     }
 }

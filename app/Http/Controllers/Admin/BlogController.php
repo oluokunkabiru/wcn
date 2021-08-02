@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BlogRequest;
 use App\Models\Blog;
+use App\Models\Setting;
 use App\Models\User;
+use App\Notifications\ActivatorNofification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 
 class BlogController extends Controller
 {
@@ -86,6 +89,10 @@ class BlogController extends Controller
        $blog->content = $description;
        $blog->user_id = Auth::user()->id;
        $blog->save();
+       $settings = Setting::with('user')->where('blog_notification', 1)->get();
+       foreach($settings as $setting){
+            Notification::send($setting->user, new ActivatorNofification("Blog","New blog added"));
+       }
        return redirect()->route('blogs.index')->with('success', 'New blog added successfully');
 
     }

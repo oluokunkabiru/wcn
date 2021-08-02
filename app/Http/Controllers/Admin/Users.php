@@ -88,6 +88,9 @@ class Users extends Controller
          $wid =" Admin withdraw from " .ucwords($user->name)." successfully";
         $mak = ucwords($user->name)." make admin successfully ";
         $msg = $status=="admin" ?  $mak:$wid;
+
+            Notification::send($user, new ActivatorNofification($status,$msg));
+
         return redirect()->back()->with('success', $msg);
     }
     /**

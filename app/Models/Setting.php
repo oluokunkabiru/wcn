@@ -18,4 +18,9 @@ class Setting extends Model
         'event_notification',
         'book_notification',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }

@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EventRequest;
 use App\Models\Event;
+use App\Models\Setting;
+use App\Notifications\ActivatorNofification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 
 class EventController extends Controller
 {
@@ -86,6 +89,10 @@ class EventController extends Controller
        $event->date = $request->date;
        $event->user_id = Auth::user()->id;
        $event->save();
+       $settings = Setting::with('user')->where('event_notification', 1)->get();
+       foreach($settings as $setting){
+            Notification::send($setting->user, new ActivatorNofification("Event","New event added"));
+       }
        return redirect()->route('events.index')->with('success', 'New event added successfully');
 
 

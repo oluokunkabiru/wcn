@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\GalleryRequest;
 use App\Models\File;
+use App\Models\Setting;
+use App\Notifications\ActivatorNofification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 
 class GalleryController extends Controller
 {
@@ -47,6 +50,10 @@ class GalleryController extends Controller
         $gallery->media_id = 1;
         $gallery->status =1;
         $gallery->save();
+        $settings = Setting::with('user')->where('gallery_notification', 1)->get();
+       foreach($settings as $setting){
+            Notification::send($setting->user, new ActivatorNofification("Gallery","New photo added to gallery"));
+       }
         return "Gallery added successfully";
     }
 

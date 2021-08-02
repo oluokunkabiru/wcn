@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\NuggetRequest;
 use App\Models\Nugget;
+use App\Models\Setting;
+use App\Notifications\ActivatorNofification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Validator;
 
 class NuggetController extends Controller
@@ -83,6 +86,10 @@ class NuggetController extends Controller
         $nugget->qoute = $description;
         $nugget->user_id = Auth::user()->id;
         $nugget->save();
+        $settings = Setting::with('user')->where('nugget_notification', 1)->get();
+       foreach($settings as $setting){
+            Notification::send($setting->user, new ActivatorNofification("Nugget","New nugget added"));
+       }
         return redirect()->route('nugget.index')->with('success', 'New nugget added successfully');
 
     }
@@ -180,7 +187,7 @@ class NuggetController extends Controller
                     unlink(public_path().$image);
                 }
             }
-            
+
           $event->forceDelete();
           return redirect()->back()->with('success', "Nuggget quote deleted successfully");
 

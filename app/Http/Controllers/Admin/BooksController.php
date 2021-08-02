@@ -6,8 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\BookRequest;
 use App\Http\Requests\BookUpdateRequest;
 use App\Models\Book;
+use App\Models\Setting;
+use App\Notifications\ActivatorNofification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 
 class BooksController extends Controller
 {
@@ -85,6 +88,10 @@ class BooksController extends Controller
         $book->user_id = Auth::user()->id;
         $book->addMediaFromRequest('image')->toMediaCollection("books");
         $book->save();
+        $settings = Setting::with('user')->where('book_notification', 1)->get();
+       foreach($settings as $setting){
+            Notification::send($setting->user, new ActivatorNofification("Book","New book added to shop"));
+       }
         return redirect()->route('books.index')->with('success', 'New book added successfully');
 
     }
