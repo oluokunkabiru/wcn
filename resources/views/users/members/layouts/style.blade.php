@@ -9,3 +9,4 @@
  <link href="{{ asset('assets/css/nucleo-svg.css') }}" rel="stylesheet" />
  <!-- CSS Files -->
  <link id="pagestyle" href="{{ asset('assets/css/soft-ui-dashboard.css?v=1.0.2') }}" rel="stylesheet" />
+ <link rel="stylesheet" href="{{ asset('assets/summernote/summernote-bs4.css') }}">

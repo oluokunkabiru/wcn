@@ -73,7 +73,7 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
 Route::prefix('members')->middleware(['auth', 'member'])->group(function () {
     Route::get('/dashboard','Members\MemberController@index')->name('memberdashboard');
     Route::resource('members', 'Members\MemberController');
-   Route::get('comment-history', 'Members\MemberController@commentHistory')->name('comment-history');
+   Route::resource('testimony', 'TestimonyController');
 
 
 });
