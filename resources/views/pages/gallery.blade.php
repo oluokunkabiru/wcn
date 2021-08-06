@@ -58,11 +58,11 @@
 
 
             <div class="col-md-3">
-                <div class="elem" vboy="{{ $media->getMedia('gallery')->first()->getUrl() }}"
+                <div class="elem" vboy="{{ $media->getMedia('gallery')->first()->getFullUrl() }}"
                     title="image 1" data-lcl-txt="villageboy " data-lcl-author="jhkjk"
-                    data-lcl-thumb="{{ $media->getMedia('gallery')->first()->getUrl() }}">
+                    data-lcl-thumb="{{ $media->getMedia('gallery')->first()->getFullUrl() }}">
                     <span
-                        style="background-image: url({{ $media->getMedia('gallery')->first()->getUrl() }});"></span>
+                        style="background-image: url({{ $media->getMedia('gallery')->first()->getFullUrl() }});"></span>
 
                 </div>
 

@@ -18,7 +18,7 @@
                 <div class="card card-blog card-plain">
                     <div class="position-relative">
                         <a class="d-block shadow-xl border-radius-xl">
-                            <img style="height: 150px; width:100%" src="{{ $book->getMedia('books')->first()->getUrl() }}" alt="img-blur-shadow"
+                            <img style="height: 150px; width:100%" src="{{ $book->getMedia('books')->first()->getFullUrl() }}" alt="img-blur-shadow"
                                 class="img-fluid shadow border-radius-xl">
                         </a>
                     </div>

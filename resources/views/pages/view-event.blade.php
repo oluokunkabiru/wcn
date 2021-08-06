@@ -61,7 +61,7 @@
                         <h2 class="card-title h5 text-uppercase font-weight-bold">{{ $event->title }}</h2>
                         <h5>By</h5>
                         <div class="d-flex v-card align-items-center px-3 text-center">
-                            <img src="{{ $event->user->getMedia('avatar')->first()->getUrl()}}" alt="{{ ucwords($event->user->name) }}" class="img-fluid mr-3">
+                            <img src="{{ $event->user->getMedia('avatar')->first()->getFullUrl()}}" alt="{{ ucwords($event->user->name) }}" class="img-fluid mr-3">
                             <div class="author-name">
                               <span class="d-block">{{ ucwords($event->user->name) }}</span>
                             </div>

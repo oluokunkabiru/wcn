@@ -44,7 +44,7 @@
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>
-                            <img src="{{ $user->getMedia('avatar')->first()->getUrl('avatar') }}" class="avatar avatar-sm me-3">
+                            <img src="{{ $user->getMedia('avatar')->first()->getFullUrl('avatar') }}" class="avatar avatar-sm me-3">
                           </div>
                           <div class="d-flex flex-column justify-content-center">
                             <h6 class="mb-0 text-sm">{{ ucwords($user->name) }}</h6>
@@ -70,7 +70,7 @@
                         <div id="edit{{ $user->id }}" class="collapse" data-parent="#accordion">
                             <ul class="nav flex-column">
                                 {{-- <li class="nav-item">
-                                  <a class="nav-link" img="{{ $user->getMedia('avatar')->first()->getUrl() }}" href="#view" username="{{ ucwords($user->name) }}" email="{{ $user->email }}" phone="{{ $user->phone }}" data-toggle="modal" role="{{ ucwords($user->role) }}" join="{{ $user->created_at }}"><span class="btn btn-sm btn-rounded btn-info text-light">View</span></a>
+                                  <a class="nav-link" img="{{ $user->getMedia('avatar')->first()->getFullUrl() }}" href="#view" username="{{ ucwords($user->name) }}" email="{{ $user->email }}" phone="{{ $user->phone }}" data-toggle="modal" role="{{ ucwords($user->role) }}" join="{{ $user->created_at }}"><span class="btn btn-sm btn-rounded btn-info text-light">View</span></a>
                                 </li> --}}
                                 @if ($user->role=="admin")
                                  <li class="nav-item">
@@ -93,7 +93,7 @@
                                 @endif
 
                                 <li class="nav-item">
-                                    <a class="nav-link" url ="{{ route('users.destroy', $user->id) }}" img="{{ $user->getMedia('avatar')->first()->getUrl() }}" href="#confirm" username="{{ ucwords($user->name) }}" email="{{ $user->email }}" phone="{{ $user->phone }}" data-toggle="modal"><span class="btn btn-sm btn-rounded btn-danger text-light">Delete</span></a>
+                                    <a class="nav-link" url ="{{ route('users.destroy', $user->id) }}" img="{{ $user->getMedia('avatar')->first()->getFullUrl() }}" href="#confirm" username="{{ ucwords($user->name) }}" email="{{ $user->email }}" phone="{{ $user->phone }}" data-toggle="modal"><span class="btn btn-sm btn-rounded btn-danger text-light">Delete</span></a>
                                 </li>
                             </ul>
                         </div>

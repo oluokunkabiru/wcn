@@ -5,7 +5,7 @@
         @endphp
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute right-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="{{ route('index') }}">
-        <img src="{{ $configuration->getMedia('logo')->first()->getUrl() }}" class="navbar-brand-img h-100" alt="...">
+        <img src="{{ $configuration->getMedia('logo')->first()->getFullUrl() }}" class="navbar-brand-img h-100" alt="...">
         <span class="ms-1 font-weight-bold text-uppercase">{{ $configuration->name }}</span>
       </a>
     </div>
@@ -350,7 +350,7 @@
             <div class="row gx-4">
                 <div class="col-auto">
                     <div class="avatar avatar-xl position-relative">
-                        <img src="{{ Auth::user()->getMedia('avatar')->first()->getUrl() }}" alt="..."
+                        <img src="{{ Auth::user()->getMedia('avatar')->first()->getFullUrl() }}" alt="..."
                             class="w-100 border-radius-lg shadow-sm">
                         <a href="javascript:;"
                             class="btn btn-sm btn-icon-only bg-gradient-light position-absolute bottom-0 end-0 mb-n2 me-n2">

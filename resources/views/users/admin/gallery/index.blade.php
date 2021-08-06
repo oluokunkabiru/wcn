@@ -132,17 +132,17 @@
 
 
                                         <div class="col-md-3">
-                                            <div class="elem" vboy="{{ $media->getMedia('gallery')->first()->getUrl() }}"
+                                            <div class="elem" vboy="{{ $media->getMedia('gallery')->first()->getFullUrl() }}"
                                                 title="image 1" data-lcl-txt="villageboy " data-lcl-author="jhkjk"
-                                                data-lcl-thumb="{{ $media->getMedia('gallery')->first()->getUrl() }}">
+                                                data-lcl-thumb="{{ $media->getMedia('gallery')->first()->getFullUrl() }}">
                                                 <span
-                                                    style="background-image: url({{ $media->getMedia('gallery')->first()->getUrl() }});"></span>
+                                                    style="background-image: url({{ $media->getMedia('gallery')->first()->getFullUrl() }});"></span>
 
                                             </div>
                                             <div class="text-center">
-                                                <a href="#deleteimage" delete-url="{{ route('gallery.destroy', $media->id) }}" imgsrc="{{  $media->getMedia('gallery')->first()->getUrl() }}" data-toggle="modal" class="mx-1 text-danger"
+                                                <a href="#deleteimage" delete-url="{{ route('gallery.destroy', $media->id) }}" imgsrc="{{  $media->getMedia('gallery')->first()->getFullUrl() }}" data-toggle="modal" class="mx-1 text-danger"
                                                    ><span  title="Delete image from gallery" class="fa fa-trash"></span></a>
-                                                <a href="#disableimage"  disable-url="{{ route('gallery.update', $media->id) }}" imgsrc="{{  $media->getMedia('gallery')->first()->getUrl() }}" data-toggle="modal" class="mx-1 text-primary" ><span title="{{ $media->status == 0 ? "Enable":"Disable" }} image from gallery" class="{{ $media->status== 0 ? "fa fa-check text-success":"fa fa-times text-danger" }}"></span></a>
+                                                <a href="#disableimage"  disable-url="{{ route('gallery.update', $media->id) }}" imgsrc="{{  $media->getMedia('gallery')->first()->getFullUrl() }}" data-toggle="modal" class="mx-1 text-primary" ><span title="{{ $media->status == 0 ? "Enable":"Disable" }} image from gallery" class="{{ $media->status== 0 ? "fa fa-check text-success":"fa fa-times text-danger" }}"></span></a>
                                             </div>
                                         </div>
                                     @endforeach

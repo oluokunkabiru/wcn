@@ -625,7 +625,7 @@
                     </div>
                     @foreach ($members as $member)
                          <div class="carousel-item text-center">
-                        <img src="{{ $member->getMedia('avatar')->first()->getUrl() }}" alt="carousel image " class="center-block">
+                        <img src="{{ $member->getMedia('avatar')->first()->getFullUrl() }}" alt="carousel image " class="center-block">
                         <h3 class="text-align center text-uppercase">{{ $member->role=="admin"?"pastor":"member" }}</h3>
                         </div>
                       @endforeach
@@ -665,11 +665,11 @@
                     {!! $testimony->testimony !!}
                 </blockquote>
                 <div class="d-flex v-card align-items-center">
-                  <img src="{{ $testimony->user->getMedia('avatar')->first()->getUrl() }}" alt="Image" class="img-fluid mr-3">
+                  <img src="{{ $testimony->user->getMedia('avatar')->first()->getFullUrl() }}" alt="Image" class="img-fluid mr-3">
                   <div class="author-name">
                     <span class="d-block">{{ ucwords($testimony->user->name) }}</span>
                   </div>
-                  <a href="#fulltestimony" data-toggle="modal" testimony="{!! $testimony->testimony !!}" username="{{ ucwords($testimony->user->name) }}" img="{{ $testimony->user->getMedia('avatar')->first()->getUrl() }}" class="btn btn-warning btn-block">Read full</a>
+                  <a href="#fulltestimony" data-toggle="modal" testimony="{!! $testimony->testimony !!}" username="{{ ucwords($testimony->user->name) }}" img="{{ $testimony->user->getMedia('avatar')->first()->getFullUrl() }}" class="btn btn-warning btn-block">Read full</a>
                 </div>
               </div>
             </div>
@@ -732,7 +732,7 @@
         @foreach ($gallerys as $gallery)
             <div class="mySlides">
                 <div class="numbertext">1 / 6</div>
-                <img src="{{ $gallery->getMedia('gallery')->first()->getUrl() }}" style="width:100%">
+                <img src="{{ $gallery->getMedia('gallery')->first()->getFullUrl() }}" style="width:100%">
             </div>
         @endforeach
 
@@ -758,7 +758,7 @@
           @endphp
           @foreach ($gallerys as $gallery)
             <div class="column">
-             <img class="demo cursor" src="{{ $gallery->getMedia('gallery')->first()->getUrl() }}" style="width:100%" onclick="currentSlide({{ ++$i }})" alt="">
+             <img class="demo cursor" src="{{ $gallery->getMedia('gallery')->first()->getFullUrl() }}" style="width:100%" onclick="currentSlide({{ ++$i }})" alt="">
             </div>
           @endforeach
 
