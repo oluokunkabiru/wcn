@@ -51,8 +51,11 @@ class GalleryController extends Controller
         $gallery->status =1;
         $gallery->save();
         $settings = Setting::with('user')->where('gallery_notification', 1)->get();
+        $avatar = Auth::user()->getMedia('avatar')->first()->getFullUrl('avatar');
+        $url = $gallery->getMedia('gallery')->first()->getFullUrl(); "";//route('readblog', [$blog->id, str_replace(" ", '_', $blog->title)]);
+
        foreach($settings as $setting){
-            Notification::send($setting->user, new ActivatorNofification("Gallery","New photo added to gallery"));
+            Notification::send($setting->user, new ActivatorNofification($avatar, "Gallery","New photo added to gallery", $url));
        }
         return "Gallery added successfully";
     }

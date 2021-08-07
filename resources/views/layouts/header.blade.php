@@ -25,7 +25,7 @@
 
   <nav class="navbar  site-wrap navbar-expand-md navbar-dark sticky-top" style="z-index:3;   background-color: black;">
           <div class="container-fluid">
-              <a class="navbar-brand mb-0 p-0" style = "color:#dba928;   font-size: 15px;" href="{{ route('index') }}"><img class="mr-3"  src="{{$configuration->getMedia('logo')->first()->getUrl() }}" alt="{{$configuration->name}}">{{$configuration->name}}</a>
+              <a class="navbar-brand mb-0 p-0" style = "color:#dba928;   font-size: 15px;" href="{{ route('index') }}"><img class="mr-3"  src="{{$configuration->getMedia('logo')->first()->getFullUrl() }}" alt="{{$configuration->name}}">{{$configuration->name}}</a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" >
                   <span class="oi oi-menu fa fa-bars"></span>
               </button>
@@ -70,7 +70,7 @@
 
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{ $url }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{--  {{ Auth::user()->name }}  --}}
-                                    <img src="{{ Auth::user()->getMedia('avatar')->first()->getUrl('avatar') }}" class="rounded-circle" alt="{{ ucwords(Auth::user()->name) }}">
+                                    <img src="{{ Auth::user()->getMedia('avatar')->first()->getFullUrl('avatar') }}" class="rounded-circle" alt="{{ ucwords(Auth::user()->name) }}">
                                 </a>
                                 <div class="dropdown-menu bg-dark">
                                     <a class="dropdown-item nav-item " href="{{ $url }}">Dashboard</a>

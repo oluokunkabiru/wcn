@@ -16,7 +16,17 @@
                 <strong>Success! </strong> {{ session('success') }}
             </div>
             @endif
+            @if ($errors->any())
 
+            <div class="alert alert-danger alert-dismissible fade show">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong style="font-size:20px;">Oops!
+                    {{ 'Kindly rectify below errors' }}</strong><br />
+                @foreach ($errors->all() as $error)
+                    {{ $error }} <br />
+                @endforeach
+            </div>
+        @endif
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
                 <div id="accordion">
@@ -93,7 +103,7 @@
                                 @endif
 
                                 <li class="nav-item">
-                                    <a class="nav-link" url ="{{ route('users.destroy', $user->id) }}" img="{{ $user->getMedia('avatar')->first()->getFullUrl() }}" href="#confirm" username="{{ ucwords($user->name) }}" email="{{ $user->email }}" phone="{{ $user->phone }}" data-toggle="modal"><span class="btn btn-sm btn-rounded btn-danger text-light">Delete</span></a>
+                                    <a class="nav-link" url ="{{ route('private-message.show', $user->id) }}" img="{{ $user->getMedia('avatar')->first()->getFullUrl() }}" href="#message" username="{{ ucwords($user->name) }}" userid="{{ $user->id   }}" data-toggle="modal"><span class="btn btn-sm btn-rounded btn-danger text-light">Private message</span></a>
                                 </li>
                             </ul>
                         </div>
@@ -162,58 +172,39 @@
       </div>
 
 
-      <div class="modal" id="confirm">
+      <div class="modal" id="message">
         <div class="modal-dialog">
             <div class="modal-content">
 
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title text-uppercase">are sure you want delete  <span id="delname"></span></h4>
+                <h4 class="modal-title text-uppercase">Quick Private message for  <span id="chatname"></span></h4>
+                <div class="text-center">
+                    <img src="" id="userimg" class="rounded-circle" style="width: 100px" alt="">
+                </div>
             <button type="button" class="btn btn-danger" data-dismiss="modal">&times;</button>
             </div>
 
             <!-- Modal body -->
             <div class="modal-body">
-                <form id="userdelform" action="#" method="POST">
-                    <div class="row">
-                        <div class="col-4">
-                            <img src="" class="card-img" id="userimg" alt="">
-                        </div>
-                        <div class="col-8">
-                            <div class="row">
-                                <div class="col-4">
-                                    <h5 class="text-mute">Name</h5>
-                                </div>
-                                <div class="col-8">
-                                    <h5 class="font-weight-bold" id="username">hjghg ghgfgf gfgf gfhj</h5>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-4">
-                                    <h5 class="text-mute">Phone</h5>
-                                </div>
-                                <div class="col-8">
-                                    <h5 class="font-weight-bold" id="userphone">hjghg ghgfgf gfgf gfhj</h5>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-4">
-                                    <h5 class="text-mute">Email</h5>
-                                </div>
-                                <div class="col-8">
-                                    <h5 class="font-weight-bold" id="useremail">hjghg ghgfgf gfgf gfhj</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                <form action="{{ route('private-message.store') }}" enctype="multipart/form-data" method="POST">
                         {{ csrf_field() }}
-                        @method("DELETE")
+                        <div class="form-group">
+                            <label for="content">Message body</label>
+                            <textarea class="form-control blogarea {{ $errors->has('message') ? ' is-invalid' : '' }}" rows="3" name="message"></textarea>
+                            @if ($errors->has('message'))
+                            <span class="invalid-feedback" role="alert">
+                                 <strong>{{ $errors->first('message') }}</strong>
+                            </span>
+                            @endif
+                            </div>
+                            <input type="hidden" value="" name="userid" id="userchatid">
             </div>
 
             <!-- Modal footer -->
             <div class="modal-footer">
-                        <button  type="submit" class="btn btn-danger text-uppercase">delete</button>                </div>
+                <a href="" class="btn btn-success float-left" id="fmessage">View our full conversation</a>
+                        <button  type="submit" class="btn btn-danger text-uppercase">Send message</button>                </div>
     </form>
             </div>
         </div>
@@ -340,23 +331,34 @@ $(document).ready(function(){
 
 
 
-     $('#confirm').on('show.bs.modal', function(e){
+     $('#message').on('show.bs.modal', function(e){
         var name = $(e.relatedTarget).attr('username');
-        var phone = $(e.relatedTarget).attr('phone');
-        var email = $(e.relatedTarget).attr('email');
+        var userid = $(e.relatedTarget).attr('userid');
         var url = $(e.relatedTarget).attr('url');
         var img = $(e.relatedTarget).attr('img');
 
         // $("#delname").text(mycat);
-        $("#userdelform").attr("action", url);
+        $("#userchatid").attr("value", userid);
+        $("#fmessage").attr("href", url);
         $("#userimg").attr("src", img);
-          $("#username").text(name);
-          $("#useremail").text(email);
-          $("#userphone").text(phone);
+          $("#chatname").text(name);
+
 
      })
 
+     $('.blogarea').summernote({
+      height: 100,
+      toolbar: [
+        ['style', ['style']],
+        ['font', ['bold', 'italic', 'underline', 'clear', 'superscript', 'subscript']],
+        ['color', ['color']],
+        ['para', ['ol', 'ul', 'paragraph']],
+        ['table', ['table']],
+        ['insert', ['link', 'picture']],
+        ['view', ['fullscreen', 'help', 'undo', 'redo']],
+      ]
 
+    })
      $('#view').on('show.bs.modal', function(e){
         var name = $(e.relatedTarget).attr('username');
         var phone = $(e.relatedTarget).attr('phone');

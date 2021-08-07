@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use tidy;
 
 class ActivatorNofification extends Notification
 {
@@ -16,11 +17,13 @@ class ActivatorNofification extends Notification
      *
      * @return void
      */
-    public function __construct($user, $status)
+    public function __construct($avatar,$user, $status, $url)
     {
         //
         $this->user = $user;
         $this->status = $status;
+        $this->avatar = $avatar;
+        $this->url = $url;
     }
 
     /**
@@ -58,8 +61,10 @@ class ActivatorNofification extends Notification
     {
         return [
             //
+            'avatar' => $this->avatar,
             'name' => $this->user,
-            'status' => $this->status
+            'status' => $this->status,
+            'url' => $this->url
         ];
     }
 }

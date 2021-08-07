@@ -89,9 +89,11 @@ class EventController extends Controller
        $event->date = $request->date;
        $event->user_id = Auth::user()->id;
        $event->save();
+       $avatar = Auth::user()->getMedia('avatar')->first()->getFullUrl('avatar');
+      $url =route('readEvent', [$event->id, str_replace(" ", '_', $event->title)]);
        $settings = Setting::with('user')->where('event_notification', 1)->get();
        foreach($settings as $setting){
-            Notification::send($setting->user, new ActivatorNofification("Event","New event added"));
+            Notification::send($setting->user, new ActivatorNofification($avatar, "Event","New event added", $url));
        }
        return redirect()->route('events.index')->with('success', 'New event added successfully');
 

@@ -87,8 +87,10 @@ class NuggetController extends Controller
         $nugget->user_id = Auth::user()->id;
         $nugget->save();
         $settings = Setting::with('user')->where('nugget_notification', 1)->get();
+        $avatar = Auth::user()->getMedia('avatar')->first()->getFullUrl('avatar');
+        $url =
        foreach($settings as $setting){
-            Notification::send($setting->user, new ActivatorNofification("Nugget","New nugget added"));
+            Notification::send($setting->user, new ActivatorNofification($avatar, "Nugget","New nugget added", $url));
        }
         return redirect()->route('nugget.index')->with('success', 'New nugget added successfully');
 

@@ -88,9 +88,12 @@ class BooksController extends Controller
         $book->user_id = Auth::user()->id;
         $book->addMediaFromRequest('image')->toMediaCollection("books");
         $book->save();
+        $avatar = Auth::user()->getMedia('avatar')->first()->getFullUrl('avatar');
+      $url = "";//route('readblog', [$blog->id, str_replace(" ", '_', $blog->title)]);
+
         $settings = Setting::with('user')->where('book_notification', 1)->get();
        foreach($settings as $setting){
-            Notification::send($setting->user, new ActivatorNofification("Book","New book added to shop"));
+            Notification::send($setting->user, new ActivatorNofification($avatar,"Book","New book added to shop", ""));
        }
         return redirect()->route('books.index')->with('success', 'New book added successfully');
 

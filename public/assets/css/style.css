@@ -8406,7 +8406,7 @@ h1, h2, h3, h4, h5,
       .icon-bar a {
         display: block;
         text-align: center;
-        padding: 16px;
+        padding: 15px;
         transition: all 0.3s ease;
         color: white;
         font-size: 20px;
@@ -8414,6 +8414,16 @@ h1, h2, h3, h4, h5,
 
       .icon-bar a:hover {
           background-color: #000;
+      }
+      @media (max-width:768px) {
+        .icon-bar a {
+            display: block;
+            text-align: center;
+            padding: 10px;
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 15px;
+          }
       }
 
       .facebook {

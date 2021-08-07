@@ -33,7 +33,10 @@ class SettingsController extends Controller
         ]);
         $mg = explode("_", $request->activate);
         $stat = $mg[0];
-        FacadesNotification::send(Auth::user(), new ActivatorNofification($stat,ucwords($stat)." ".$message));
+        $avatar = Auth::user()->getMedia('avatar')->first()->getFullUrl('avatar');
+        $url = "";//route('readblog', [$blog->id, str_replace(" ", '_', $blog->title)]);
+
+        FacadesNotification::send(Auth::user(), new ActivatorNofification($avatar,$stat,ucwords($stat)." ".$message, $url));
         return "successfully ".$message.ucwords(str_replace("_", " ", $request->activate));
     }
     public function create()

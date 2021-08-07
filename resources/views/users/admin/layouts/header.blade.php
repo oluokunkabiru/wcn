@@ -295,9 +295,9 @@
                                 <li class="mb-2 ">
                                     <a class="dropdown-item border-radius-md" href="javascript:;">
                                         <div class="d-flex py-1">
-                                            {{-- <div class="my-auto">
-                                                <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3">
-                                            </div> --}}
+                                            <div class="my-auto">
+                                                <img src="{{ $notification->data['avatar'] }}" class="avatar avatar-sm me-3">
+                                            </div>
                                             <div class="d-flex flex-column justify-content-center">
                                                 <h6 class="text-sm font-weight-normal mb-1">
                                                     <span class="font-weight-bold">{{ $notification->data['name'] }}</span> {{ $notification->data['status'] }}
@@ -307,7 +307,10 @@
                                                     {{ Auth::user()->timeago($notification->created_at) }}
                                                 </p>
                                                 <small class="float-right">
-                                                    <a href="{{ route('mark-as-read', $notification->id) }}" class="text-link float-right">Mark as read</a>
+                                                    {{--  <small>  --}}
+                                                        <a href="{{ $notification->data['url']  }}" class="text-link">Read content</a>
+                                                           <a href="{{ route('mark-as-read', $notification->id) }}" class="text-link float-right">Mark as read</a>
+                                                    {{--  </small>  --}}
                                                 </small>
 
                                             </div>

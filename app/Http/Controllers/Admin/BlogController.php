@@ -83,15 +83,17 @@ class BlogController extends Controller
 
 
        $description = $dom->saveHTML();
-
        $blog = new Blog();
        $blog->title = $title;
        $blog->content = $description;
        $blog->user_id = Auth::user()->id;
+      $avatar = Auth::user()->getMedia('avatar')->first()->getFullUrl('avatar');
+      $url = route('readblog', [$blog->id, str_replace(" ", '_', $blog->title)]);
+
        $blog->save();
        $settings = Setting::with('user')->where('blog_notification', 1)->get();
        foreach($settings as $setting){
-            Notification::send($setting->user, new ActivatorNofification("Blog","New blog added"));
+            Notification::send($setting->user, new ActivatorNofification($avatar ,"Blog","New blog added", $url));
        }
        return redirect()->route('blogs.index')->with('success', 'New blog added successfully');
 
