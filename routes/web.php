@@ -41,6 +41,7 @@ Route::prefix('comment')->middleware(['auth'])->group(function () {
 Route::resource('comment', CommentController::class);
 Route::post('activate-notification', 'SettingsController@activate')->name('activate_notification');
 Route::get('mark-as-read/{id}', 'Admin\Users@readNotification')->name('mark-as-read');
+Route::get('mark-all-as-read', 'Admin\Users@readAllNotification')->name('mark-all-as-read');
 Route::resource('testimony', 'TestimonyController');
 });
 

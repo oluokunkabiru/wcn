@@ -104,7 +104,7 @@ $user = User::where('id', $userid)->first();
        $message->user_id =$userid;
        $message->save();
        $avatar = Auth::user()->getMedia('avatar')->first()->getFullUrl('avatar');
-        $url = "";//route('readblog', [$blog->id, str_replace(" ", '_', $blog->title)]);
+        $url = route('mychat', [Auth::user()->id, str_replace(" ", '_', $user->name)]) ;"";//route('readblog', [$blog->id, str_replace(" ", '_', $blog->title)]);
             Notification::send($user, new ActivatorNofification($avatar,"message","You have new message", $url));
        return redirect()->route('mychat', [$user->id, str_replace(" ", '_', $user->name)])->with('success', 'Message sent successfully');
 

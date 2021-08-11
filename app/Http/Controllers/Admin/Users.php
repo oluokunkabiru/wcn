@@ -130,4 +130,13 @@ class Users extends Controller
         }
 
     }
+    public function readAllNotification(){
+        $notification = auth()->user()->unreadNotifications;
+        // return $notification;
+        if($notification) {
+            $notification->markAsRead();
+        }
+        return redirect()->back();
+
+    }
 }

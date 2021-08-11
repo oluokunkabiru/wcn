@@ -25,7 +25,7 @@ class PrivateMessageRequest extends FormRequest
     {
         return [
             //
-            'message' => 'required|string|min:20'
+            'message' => 'required|string|min:5'
         ];
     }
 }

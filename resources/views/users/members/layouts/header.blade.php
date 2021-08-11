@@ -191,6 +191,25 @@ $configuration =App\Models\Configuration::where('id', 1)->first();
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end px-2 py-3 ms-n4"
                     aria-labelledby="dropdownMenuButton">
+                     @if (count(Auth::user()->unreadNotifications))
+                        <li class="mb-2">
+                            <a class="" href="{{ route('mark-all-as-read') }}">
+                                <div class="d-flex py-1">
+                                    {{--  <div class="my-auto">
+                                        <img src="../assets/img/small-logos/logo-spotify.svg"
+                                            class="avatar avatar-sm bg-gradient-dark me-3">
+                                    </div>  --}}
+
+                                    <div class="d-flex flex-column justify-content-center">
+                                        <h6 class="text-sm font-weight-normal mb-1">
+                                            <span class="font-weight-bold">Mark all as read </span></h6>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                             @endif
+
+
                     @forelse (Auth::user()->unreadNotifications as $notification)
                         <li class="mb-2 ">
                             <a class="dropdown-item border-radius-md" href="javascript:;">
