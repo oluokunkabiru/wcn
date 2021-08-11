@@ -47,7 +47,7 @@ Route::resource('testimony', 'TestimonyController');
 
 // ============================================================================
 //======================= Messages ===========================
-Route::prefix('messages')->middleware(['auth'])->group(function () {
+Route::prefix('messages')->middleware(['auth', 'verified'])->group(function () {
     Route::resource('chat', 'Admin\PrivateMessageMemeber');
     Route::get('chat/{id}/conversation/{nam}' , 'Admin\PrivateMessageMemeber@privateMessages')->name('mychat');
 
@@ -56,7 +56,7 @@ Route::prefix('messages')->middleware(['auth'])->group(function () {
 
 // ============================================================================
 //=======================  admin authentication===========================
-Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
+Route::prefix('admin')->middleware(['auth', 'admin', 'verified'])->group(function () {
     Route::get('/dashboard' ,'Admin\AdminController@index')->name('admindashboard');
     Route::resource('admin', 'Admin\AdminController');
     // blogs
@@ -80,7 +80,7 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
 // , 'verified'
 // ============================================================================
 //=======================  member authentication===========================
-Route::prefix('members')->middleware(['auth', 'member'])->group(function () {
+Route::prefix('members')->middleware(['auth', 'member', 'verified'])->group(function () {
     Route::get('/dashboard','Members\MemberController@index')->name('memberdashboard');
     Route::resource('members', 'Members\MemberController');
 

@@ -7,6 +7,7 @@ use App\Models\Comments;
 use App\Models\User;
 use App\Notifications\ActivatorNofification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
 
 class Users extends Controller
@@ -68,13 +69,13 @@ class Users extends Controller
     public function approved($id, $statu){
         $user = User::where('id', $id)->first();
         $status=$statu==0 ? 1 : 0;
-        $msg = $status==1?"approved successfully":"disabled successfully";
-        $sta = $status==1?"approved":"disabled";
+        $msg = $status==1?"Account approved successfully":"Acount disabled successfully";
+        $sta = $status==1?"Approved":"Disabled";
         $user->status = $status;
         // return $status;
         $user->update();
 
-        Notification::send($user, new ActivatorNofification("$sta",$msg));
+        Notification::send($user, new ActivatorNofification(Auth::user()->getMedia('avatar')->first()->getFullUrl('avatar'),$sta,$msg,""));
         // return $user->notifications;
         return redirect()->back()->with('success', ucwords($user->name)." ".$msg);
     }
@@ -89,7 +90,8 @@ class Users extends Controller
         $mak = ucwords($user->name)." make admin successfully ";
         $msg = $status=="admin" ?  $mak:$wid;
 
-            Notification::send($user, new ActivatorNofification($status,$msg));
+
+            Notification::send($user, new ActivatorNofification(Auth::user()->getMedia('avatar')->first()->getFullUrl('avatar'),$status,$msg, ""));
 
         return redirect()->back()->with('success', $msg);
     }

@@ -99,7 +99,7 @@ class RegisterController extends Controller
 
             $admins = User::where('role', 'admin')->get();
             foreach($admins as $admin){
-                Notification::send($admin, new ActivatorNofification("User","New member registered"));
+                Notification::send($admin, new ActivatorNofification($user->getMedia('avatar')->first()->getFullUrl('avatar'), "User","New member registered", ""));
            }
              return $user;
             }
