@@ -20,9 +20,15 @@ class PrivateMessageMemeber extends Controller
      */
     public function index()
     {
-        //
+        // return view('users.admin.messages.index');
     }
+public function privateMessages($id, $name){
+    // return $id;
+    $messages = privateMessages::where(['sender'=> Auth::user()->id, 'user_id'=>$id])->paginate(20);
+    // return $messages;
+    return view('users.admin.messages.index', compact(['messages']));
 
+}
     /**
      * Show the form for creating a new resource.
      *
@@ -79,14 +85,14 @@ class PrivateMessageMemeber extends Controller
        $description = $dom->saveHTML();
 $user = User::where('id', $userid)->first();
        $message = new Privatemessages();
-       $message->recipient = $userid;
+       $message->sender =Auth::user()->id;
        $message->message = $description;
-       $message->user_id = Auth::user()->id;
+       $message->user_id =$userid;
        $message->save();
        $avatar = Auth::user()->getMedia('avatar')->first()->getFullUrl('avatar');
         $url = "";//route('readblog', [$blog->id, str_replace(" ", '_', $blog->title)]);
             Notification::send($user, new ActivatorNofification($avatar,"message","You have new message", $url));
-       return redirect()->back()->with('success', 'Message sent successfully');
+       return redirect()->route('mychat', [$user->id, str_replace(" ", '_', $user->name)])->with('success', 'Message sent successfully');
 
 
     }

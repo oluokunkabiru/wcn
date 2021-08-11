@@ -103,7 +103,7 @@
                                 @endif
 
                                 <li class="nav-item">
-                                    <a class="nav-link" url ="{{ route('private-message.show', $user->id) }}" img="{{ $user->getMedia('avatar')->first()->getFullUrl() }}" href="#message" username="{{ ucwords($user->name) }}" userid="{{ $user->id   }}" data-toggle="modal"><span class="btn btn-sm btn-rounded btn-danger text-light">Private message</span></a>
+                                    <a class="nav-link" url ="{{ route('mychat', [$user->id, str_replace(" ", '_', $user->name)]) }}" img="{{ $user->getMedia('avatar')->first()->getFullUrl() }}" href="#message" username="{{ ucwords($user->name) }}" userid="{{ $user->id   }}" data-toggle="modal"><span class="btn btn-sm btn-rounded btn-danger text-light">Private message</span></a>
                                 </li>
                             </ul>
                         </div>
@@ -187,7 +187,7 @@
 
             <!-- Modal body -->
             <div class="modal-body">
-                <form action="{{ route('private-message.store') }}" enctype="multipart/form-data" method="POST">
+                <form action="{{ route('chat.store') }}" enctype="multipart/form-data" method="POST">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label for="content">Message body</label>

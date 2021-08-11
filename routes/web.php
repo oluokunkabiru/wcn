@@ -30,7 +30,6 @@ Route::get('/blogs', 'PagesController@blogs')->name('ourblogs');
 Route::get('blog/{id}/read/{title}', 'PagesController@viewBlog')->name('readblog');
 Route::get('event/{id}/full-details/{title}', 'PagesController@viewEvent')->name('readEvent');
 Route::get('nugget/{id}/quote/{title}', 'PagesController@viewNugget')->name('readNugget');
-Route::resource('private-message', 'Admin\PrivateMessageMemeber');
 // Route::resource('comment', CommentController::class);
 
 
@@ -43,8 +42,16 @@ Route::resource('comment', CommentController::class);
 Route::post('activate-notification', 'SettingsController@activate')->name('activate_notification');
 Route::get('mark-as-read/{id}', 'Admin\Users@readNotification')->name('mark-as-read');
 Route::resource('testimony', 'TestimonyController');
+});
+
+// ============================================================================
+//======================= Messages ===========================
+Route::prefix('messages')->middleware(['auth'])->group(function () {
+    Route::resource('chat', 'Admin\PrivateMessageMemeber');
+    Route::get('chat/{id}/conversation/{nam}' , 'Admin\PrivateMessageMemeber@privateMessages')->name('mychat');
 
 });
+
 
 // ============================================================================
 //=======================  admin authentication===========================
