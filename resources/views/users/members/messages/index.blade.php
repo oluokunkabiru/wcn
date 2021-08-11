@@ -46,6 +46,9 @@
                                 <div class="d-flex align-items-start flex-column justify-content-center">
                                   <h6 class="mb-0 text-sm">{{ ucwords($recipient->name) }}</h6>
                                   {!! $message->message !!}
+                                  <small>
+                                    <p>{{ $recipient->timeago($message->created_at) }}</p>
+                                </small>
                                 </div>
                               </li>
                             @endif
