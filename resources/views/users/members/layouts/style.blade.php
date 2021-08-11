@@ -11,3 +11,4 @@
  <link rel="stylesheet" href="{{ asset('assets/bootsrap/bootstrap.min.css') }}">
  <link id="pagestyle" href="{{ asset('assets/css/soft-ui-dashboard.css?v=1.0.2') }}" rel="stylesheet" />
  <link rel="stylesheet" href="{{ asset('assets/summernote/summernote-bs4.css') }}">
+ <link rel="stylesheet" href="{{ asset('assets/datatables/datatables.min.css') }}">

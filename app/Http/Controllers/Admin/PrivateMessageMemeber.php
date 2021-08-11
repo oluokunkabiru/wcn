@@ -21,12 +21,26 @@ class PrivateMessageMemeber extends Controller
     public function index()
     {
         // return view('users.admin.messages.index');
+        $users = User::where('role', 'admin')->get();
+        return view('users.members.messages.show-chat', compact(['users']));
     }
 public function privateMessages($id, $name){
     // return $id;
-    $messages = privateMessages::where(['sender'=> Auth::user()->id, 'user_id'=>$id])->paginate(20);
+    $messages = privateMessages::with(['user'])->where(function ($query) use($id){
+        // return $query;
+        $query->where('sender', Auth::user()->id)->where('user_id', $id);
+    })->orWhere(function ($query) use($id){
+        $query->where('sender', $id)->where('user_id', Auth::user()->id);
+    })->paginate(20);
+
+    //where(['sender'=> Auth::user()->id, 'user_id'=>$id])->paginate(20);
     // return $messages;
-    return view('users.admin.messages.index', compact(['messages']));
+    $recipient=User::where('id', $id)->first();
+    if(Auth::user()->role=="admin"){
+        return view('users.admin.messages.index', compact(['messages', 'recipient']));
+    }
+    return view('users.members.messages.index', compact(['messages', 'recipient']));
+
 
 }
     /**
