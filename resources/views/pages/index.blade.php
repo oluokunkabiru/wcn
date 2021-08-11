@@ -63,7 +63,7 @@
 
   .quotes{
     color:black;
-    text-align:right;
+    /* text-align:right; */
     line-height: 1.8;
   }
 
