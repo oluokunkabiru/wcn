@@ -66,6 +66,8 @@ class Users extends Controller
     {
         //
     }
+
+    
     public function approved($id, $statu){
         $user = User::where('id', $id)->first();
         $status=$statu==0 ? 1 : 0;
