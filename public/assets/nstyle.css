@@ -13,10 +13,24 @@ body {margin:0;height:2000px;}
 .icon-bar a {
   display: block;
   text-align: center;
-  padding: 20px;
+  padding: 15px;
   transition: all 0.3s ease;
   color: white;
-  font-size: 25px;
+  font-size: 20px;
+}
+
+@media screen and (max-width: 768px)
+{
+    .icon-bar a {
+        display: block;
+        text-align: center;
+        padding: 8px;
+        transition: all 0.3s ease;
+        color: white;
+        font-size: 12px;
+      }
+
+
 }
 
 .icon-bar a:hover {
@@ -166,7 +180,7 @@ nav div img{
 
 .carousel {
   margin-top: -40px;
-  
+
 }
 
 .testimonials .carousel-indicators {
@@ -198,5 +212,5 @@ nav div img{
 }
 
 
-  
+
 
