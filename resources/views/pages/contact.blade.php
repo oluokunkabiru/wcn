@@ -12,7 +12,9 @@
 
     <section>
     <div class="container">
-
+        @php
+        $configuration =App\Models\Configuration::where('id', 1)->first();
+        @endphp
         <div class="row">
             <div class="col-md-5">
                 <div class="card">
@@ -27,7 +29,7 @@
 										<span class="fa fa-map-marker"></span>
 									</div>
 									<div class="text">
-										<p><span>Address:</span>WCN After fatigue guest house, off Offa Ajase-ipo road, Ijagbo, Kwara State.</p>
+										<p><span>Address:</span>{!! $configuration->address !!}</p>
 									</div>
 								</div>
 							</div>
@@ -37,7 +39,7 @@
 										<span class="fa fa-phone"></span>
 									</div>
 									<div class="text">
-										<p><span>Phone:</span> <a href="tel://1234567920">+2348068779877</a></p>
+										<p><span>Phone:</span> <a href="tel://{{ $configuration->phone }}">{{ $configuration->phone }}</a></p>
 									</div>
 								</div>
 							</div>
@@ -47,7 +49,7 @@
 										<span class="fa fa-envelope"></span>
 									</div>
 									<div class="text">
-										<p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+										<p><span>Email:</span> <a href="mailto:{{ $configuration->email }}">{{ $configuration->email }}</a></p>
 									</div>
 								</div>
 							</div>
@@ -57,7 +59,7 @@
 										<span class="fa fa-globe"></span>
 									</div>
 									<div class="text">
-										<p><span>Website</span> <a href="#">livingwordea.org</a></p>
+										<p><span>Website</span> <a href="#">{{ request()->getHttpHost() }}</a></p>
 									</div>
 								</div>
 							</div>

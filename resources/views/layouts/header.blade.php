@@ -3,23 +3,23 @@
 @endphp
 <div class="icon-bar" >
     @if ($configuration->facebook)
-    <a href="{{ $configuration->facebook }}" class="facebook"><i class="fa fa-facebook"></i></a>
+    <a href="{{ URL::to($configuration->facebook) }}" class="facebook"><i class="fa fa-facebook"></i></a>
     @endif
     @if ($configuration->twitter)
-    <a href="{{ $configuration->twitter }}" class="twitter"><i class="fa fa-twitter"></i></a>
+    <a href="{{ URL::to($configuration->twitter) }}" class="twitter"><i class="fa fa-twitter"></i></a>
     @endif
     @if ($configuration->instaram)
-    <a href="{{ $configuration->instaram }}" class="instagram"><i class="fa fa-instagram"></i></a>
+    <a href="{{ URL::to($configuration->instaram) }}" class="instagram"><i class="fa fa-instagram"></i></a>
     @endif
     @if ($configuration->linkedin)
-     <a href="{{ $configuration->linkedin }}" class="linkedin"><i class="fa fa-linkedin"></i></a>
+     <a href="{{ URL::to($configuration->linkedin) }}" class="linkedin"><i class="fa fa-linkedin"></i></a>
 
     @endif
     @if ($configuration->youtube)
-    <a href="{{ $configuration->youtube }}" class="youtube"><i class="fa fa-youtube"></i></a>
+    <a href="{{ URL::to($configuration->youtube) }}" class="youtube"><i class="fa fa-youtube"></i></a>
     @endif
     @if ($configuration->whatsapp)
-    <a href="{{ $configuration->whatsapp }}" class="bg-success"><i class="fa fa-whatsapp"></i></a>
+    <a href="{{ URL::to($configuration->whatsapp) }}" class="bg-success"><i class="fa fa-whatsapp"></i></a>
     @endif
   </div>
 

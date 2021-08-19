@@ -24,7 +24,7 @@ class PagesController extends Controller
         //
         $blogs = Blog::orderBy('id', 'desc')->paginate(4);
         $events = Event::orderBy('id', 'desc')->paginate(3);
-        $members = User::orderBy('id', 'desc')->paginate(10);
+        $members = User::inRandomOrder()->get();
         $gallerys = File::OrderBy('id', 'desc')->where('status', 1)->paginate(6);
         $testimonys = Testimony::with('user')->orderBy('id', 'desc')->where('status', 1)->paginate(12);
         // return $events;

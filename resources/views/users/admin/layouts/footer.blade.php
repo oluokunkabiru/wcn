@@ -9,9 +9,11 @@ $configuration =App\Models\Configuration::where('id', 1)->first();
             <div class="col-lg-6 mb-lg-0 mb-4">
                 <div class="copyright text-center text-sm text-muted text-lg-left">
                     &COPY;
-                    {{ date('Y') }}
-                    made <i class="fa fa-heart"></i> by
-                    <a href="https://koadit.com" class="font-weight-bold" target="_blank">KOADIT</a>
+                    <span>{{ date('Y') }}</span> . All Rights Reserved {{ ucwords($configuration->name) }}| Design by
+                    <a href="https://koadit.com" class="font-weight-bold" target="_blank">Dev Ifeoluowa</a>
+
+                    {{--  made <i class="fa fa-heart"></i> by
+                    <a href="https://koadit.com" class="font-weight-bold" target="_blank">KOADIT</a>  --}}
                     {{--  {{ $configuration->name }}  --}}
                 </div>
             </div>

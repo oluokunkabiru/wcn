@@ -620,15 +620,35 @@
                   <div class="carousel-inner">
 
                     <div class="carousel-item active text-center ">
-                      <img src="{{ asset('assets/images/welcome-quote.jpg') }}" alt="carousel image" class="center-block">
-                      <h3 class="text-align center">PASTOR</h3>
-                    </div>
-                    @foreach ($members as $member)
-                         <div class="carousel-item text-center">
-                        <img src="{{ $member->getMedia('avatar')->first()->getFullUrl() }}" alt="carousel image " class="center-block">
-                        <h3 class="text-align center text-uppercase">{{ $member->role=="admin"?"pastor":"member" }}</h3>
+                        <div class="card-columns">
+                        @for ($i = 0; $i < 3; $i++)
+
+
+                        <div class="card">
+                            <img src="{{ $members[$i]->getMedia('avatar')->first()->getFullUrl() }}" alt="carousel image " class="center-block">
+                             <h3 class="text-align  text-dark font-weight-bold center text-uppercase">{{ $members[$i]->role=="admin"?"pastor":"member" }}</h3>
+
                         </div>
-                      @endforeach
+
+                         @endfor
+                         </div>
+                    </div>
+
+                    @for ($member=3; $member < count($members); $member+=3)
+                         <div class="carousel-item text-center">
+                             <div class="card-columns">
+                                 @for ($i = 0; $i < 3; $i++)
+                                <div class="card">
+                                    <img src="{{ $members[$member+$i]->getMedia('avatar')->first()->getFullUrl() }}" alt="carousel image " class="center-block">
+                                     <h3 class="text-align  text-dark font-weight-bold center text-uppercase">{{ $members[$member+$i]->role=="admin"?"pastor":"member" }}</h3>
+
+                                </div>
+                                 @endfor
+
+
+                             </div>
+                        </div>
+                      @endfor
                   </div>
 
                   <!-- Left and right controls -->
@@ -684,7 +704,7 @@
         </div>
       </div>
       <div class="modal" id="fulltestimony">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
 
             <!-- Modal Header -->
@@ -694,7 +714,7 @@
             </div>
 
             <!-- Modal body -->
-            <div class="modal-body">
+            <div class="modal-body ">
                 <div class="row">
                     {{-- <div class="col-4"> --}}
                         <img src="" class="card-img" id="userimg" alt="">

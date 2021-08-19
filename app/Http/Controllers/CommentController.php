@@ -49,7 +49,10 @@ class CommentController extends Controller
         $comment->user_id = Auth::user()->id;
         $comment->status = 0;
         $comment->save();
-        Notification::send(Auth::user(), new ActivatorNofification("comment","You added new comment"));
+        $avatar = Auth::user()->getMedia('avatar')->first()->getFullUrl('avatar');
+        $url = route('readblog', [$comment->blog_id, str_replace(" ", '_', $comment->blog_id)]);
+
+        Notification::send(Auth::user(), new ActivatorNofification($avatar,"comment","You added new comment", $url));
 
         return redirect()->back()->with('success', 'New comment added successfully');
     }
@@ -103,7 +106,10 @@ class CommentController extends Controller
         $comment = Comments::where('id', $id)->first();
         // return $comment;
         $comment->forceDelete();
-        Notification::send(Auth::user(), new ActivatorNofification("comment","You delete you comment"));
+        $avatar = Auth::user()->getMedia('avatar')->first()->getFullUrl('avatar');
+        $url = route('readblog', [$comment->blog_id, str_replace(" ", '_', $comment->blog_id)]);
+
+        Notification::send(Auth::user(), new ActivatorNofification($avatar,"comment","You delete your comment", $url));
 
           return redirect()->back()->with('success', "Comment deleted successfully");
     }
