@@ -48,46 +48,13 @@ class EventController extends Controller
         //
         $title = $request->title;
         $description = $request->content;
-
-       $dom = new \DomDocument();
-
-       $dom->loadHtml($description, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-
-       $images = $dom->getElementsByTagName('img');
-
-       foreach($images as $k => $img){
-
-
-           $data = $img->getAttribute('src');
-
-           if (strpos($data, 'data') !== false){
-            list($type, $data) = explode(';', $data);
-
-                list($type, $data) = explode(',', $data);
-                 $data = base64_decode($data);
-
-               $image_name= "/uploads/events/" .str_replace(" ", '_', $title)."_".  time()."_".$k.'.png';
-
-               $path = public_path() . $image_name;
-
-               file_put_contents($path, $data);
-
-               $img->removeAttribute('src');
-
-               $img->setAttribute('src', $image_name);
-
-                }
-
-        }
-
-
-       $description = $dom->saveHTML();
-
        $event = new Event();
        $event->title = $title;
        $event->content = $description;
        $event->date = $request->date;
        $event->user_id = Auth::user()->id;
+       $event->addMediaFromRequest('image')->usingFileName(str_replace(" ", "_", $title))->toMediaCollection("events");
+
        $event->save();
        $avatar = Auth::user()->getMedia('avatar')->first()->getFullUrl('avatar');
       $url =route('readEvent', [$event->id, str_replace(" ", '_', $event->title)]);
@@ -136,48 +103,18 @@ class EventController extends Controller
         //
         $title = $request->title;
         $description = $request->content;
-        libxml_use_internal_errors(true);
-
-       $dom = new \DomDocument();
-
-       $dom->loadHtml($description, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-
-       $images = $dom->getElementsByTagName('img');
-
-       foreach($images as $k => $img){
-
-
-           $data = $img->getAttribute('src');
-
-           if (strpos($data, 'data') !== false){
-            list($type, $data) = explode(';', $data);
-
-                list($type, $data) = explode(',', $data);
-                 $data = base64_decode($data);
-
-               $image_name= "/uploads/events/" .str_replace(" ", '_', $title)."_".  time()."_".$k.'.png';
-
-               $path = public_path() . $image_name;
-
-               file_put_contents($path, $data);
-
-               $img->removeAttribute('src');
-
-               $img->setAttribute('src', $image_name);
-
-                }
-
-        }
-
-
-       $description = $dom->saveHTML();
 
        $event = Event::where('id', $id)->first();
        $event->title = $title;
        $event->content = $description;
        $event->date = $request->date;
        $event->user_id = Auth::user()->id;
-       $event->update();
+       if($request->file("image")){
+        $event->delete($id);
+        $event->clearMediaCollection();
+        $event->addMediaFromRequest('image')->toMediaCollection("events");
+    }
+       $event->save();
        return redirect()->route('events.index')->with('success', 'Event '.$event->title.' updated successfully');
 
 
@@ -193,12 +130,9 @@ class EventController extends Controller
     {
         //
         $event = Event::where('id', $id)->first();
-        $images = $event->getImageAll($event->content);
-            if (count($images) > 0){
-                foreach ($images as $image){
-                    unlink(public_path().$image);
-                }
-            }
+
+            $event->delete($id);
+            $event->clearMediaCollection();
           $event->forceDelete();
           return redirect()->back()->with('success', "Event ".$event->title. "deleted successfully");
 

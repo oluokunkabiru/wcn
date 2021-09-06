@@ -17,13 +17,11 @@
 
         <div class="row">
 @foreach ($nuggets as $nugget)
-
-
                 <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
                     <div class="card card-blog card-plain">
                         <div class="position-relative">
                             <a class="d-block shadow-xl border-radius-xl">
-                                <img style="height: 150px; width:100%" src="{{ $nugget->getImage($nugget->qoute) != "" ?  $nugget->getImage($nugget->qoute):"../assets/img/home-decor-1.jpg" }}" alt="{{ $nugget->title }}"
+                                <img style="height: 150px; width:100%" src="{{ $nugget->getMedia('nuggets')->first()->getFullUrl() != "" ?   $nugget->getMedia('nuggets')->first()->getFullUrl():"../assets/img/home-decor-1.jpg" }}" alt="{{ $nugget->title }}"
                                     class="img-fluid shadow border-radius-xl">
                             </a>
                         </div>

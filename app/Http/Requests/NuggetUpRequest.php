@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class EventRequest extends FormRequest
+class NuggetUpRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,19 +25,16 @@ class EventRequest extends FormRequest
     {
         return [
             //
-            'title' => 'required|string',
-            'content' => 'required|string',
-            'date' => 'required|date',
-            'image' => 'required|image|mimes:png,jpg'
+            'content' => 'required|string|min:30',
+            'image' => 'sometimes|nullable|image|mimes:png,jpg'
         ];
     }
+
     public function messages()
     {
         return [
-            'title.required' => "Please provide event title",
-            'content.required' => 'Please provide event content',
-            'date.required' => 'Please provide event date',
-            'image.required' => 'Please provide event event image caption'
+            'content.required' => 'Please filled the nugget',
+            'content.min' => 'Nugget must content atlease 5 words'
         ];
     }
 }

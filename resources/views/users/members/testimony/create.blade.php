@@ -41,7 +41,7 @@
         ['color', ['color']],
         ['para', ['ol', 'ul', 'paragraph']],
         ['table', ['table']],
-        ['insert', ['link', 'picture']],
+        ['insert', ['link']],
         ['view', ['fullscreen', 'help', 'undo', 'redo']],
       ]
 

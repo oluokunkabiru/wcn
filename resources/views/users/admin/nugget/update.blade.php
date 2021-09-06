@@ -12,6 +12,15 @@
               <form action="{{ route('nugget.update', $nugget->id) }}" enctype="multipart/form-data" method="post">
               @csrf
               @method('PATCH')
+              <div class="form-group">
+                <label for="usr">Nugget image:</label>
+                <input type="file" accept="image/*" class="form-control {{ $errors->has('image') ? ' is-invalid' : '' }}" name="image">
+                @if ($errors->has('image'))
+                <span class="invalid-feedback" role="alert">
+                     <strong>{{ $errors->first('image') }}</strong>
+                </span>
+                @endif
+            </div>
                 <div class="form-group">
                     <label for="comment">Nugget Qoute</label>
                     <textarea class="form-control blogarea {{ $errors->has('content') ? ' is-invalid' : '' }}" rows="3" name="content">

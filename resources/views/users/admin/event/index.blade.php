@@ -21,7 +21,7 @@
                     <div class="card card-blog card-plain">
                         <div class="position-relative">
                             <a class="d-block shadow-xl border-radius-xl">
-                                <img style="height: 150px; width:100%" src="{{ $event->getImage($event->content) != "" ?  $event->getImage($event->content):"../assets/img/home-decor-1.jpg" }}" alt="{{ $event->title }}"
+                                <img style="height: 150px; width:100%" src="{{ $event->getMedia('events')->first()->getFullUrl() != "" ?   $event->getMedia('events')->first()->getFullUrl():"../assets/img/home-decor-1.jpg" }}" alt="{{ $event->title }}"
                                     class="img-fluid shadow border-radius-xl">
                             </a>
                         </div>

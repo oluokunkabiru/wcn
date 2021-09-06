@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class EventRequest extends FormRequest
+class EventUpRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,7 +28,7 @@ class EventRequest extends FormRequest
             'title' => 'required|string',
             'content' => 'required|string',
             'date' => 'required|date',
-            'image' => 'required|image|mimes:png,jpg'
+            'image' => 'sometimes|nullable|image|mimes:png,jpg'
         ];
     }
     public function messages()
@@ -37,7 +37,6 @@ class EventRequest extends FormRequest
             'title.required' => "Please provide event title",
             'content.required' => 'Please provide event content',
             'date.required' => 'Please provide event date',
-            'image.required' => 'Please provide event event image caption'
         ];
     }
 }

@@ -45,46 +45,15 @@ class TestimonyController extends Controller
     {
         //
         $description = $request->content;
-        libxml_use_internal_errors(true);
-       $dom = new \DomDocument();
-
-       $dom->loadHtml($description, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-
-       $images = $dom->getElementsByTagName('img');
-
-       foreach($images as $k => $img){
-
-
-           $data = $img->getAttribute('src');
-
-           if (strpos($data, 'data') !== false){
-            list($type, $data) = explode(';', $data);
-
-                list($type, $data) = explode(',', $data);
-                 $data = base64_decode($data);
-
-               $image_name= "/uploads/testimony/" .str_replace(" ", '_', Auth::user()->name)."_".  time()."_".$k.'.png';
-
-               $path = public_path() . $image_name;
-
-               file_put_contents($path, $data);
-
-               $img->removeAttribute('src');
-
-               $img->setAttribute('src', $image_name);
-
-                }
-
-        }
-
-
-       $description = $dom->saveHTML();
        $testimony =  new Testimony();
        $testimony->testimony = $description;
        $testimony->user_id = Auth::user()->id;
        $testimony->status = 0;
        $testimony->save();
-       Notification::send(Auth::user(), new ActivatorNofification("Testimony","New testimony added"));
+       $avatar = Auth::user()->getMedia('avatar')->first()->getFullUrl('avatar');
+       $url = "";//route('readblog', [$blog->id, str_replace(" ", '_', $blog->title)]);
+
+       Notification::send(Auth::user(), new ActivatorNofification($avatar, "Testimony","New testimony added", ""));
        return redirect()->route('testimony.index')->with('success', 'new testimony added successfully');
 // return $request->all();
 
@@ -125,45 +94,14 @@ class TestimonyController extends Controller
     public function update(TestimonyRequest $request, $id)
     {
         //
-        $description = $request->content;
-        libxml_use_internal_errors(true);
-       $dom = new \DomDocument();
-
-       $dom->loadHtml($description, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-
-       $images = $dom->getElementsByTagName('img');
-
-       foreach($images as $k => $img){
-
-
-           $data = $img->getAttribute('src');
-
-           if (strpos($data, 'data') !== false){
-            list($type, $data) = explode(';', $data);
-
-                list($type, $data) = explode(',', $data);
-                 $data = base64_decode($data);
-
-               $image_name= "/uploads/testimony/" .str_replace(" ", '_', Auth::user()->name)."_".  time()."_".$k.'.png';
-
-               $path = public_path() . $image_name;
-
-               file_put_contents($path, $data);
-
-               $img->removeAttribute('src');
-
-               $img->setAttribute('src', $image_name);
-
-                }
-
-        }
-
-
-       $description = $dom->saveHTML();
+       $description = $request->content;
        $testimony =  Testimony::where('id', $id)->first();
        $testimony->testimony = $description;
        $testimony->update();
-       Notification::send(Auth::user(), new ActivatorNofification("Testimony","Testimony updated"));
+       $avatar = Auth::user()->getMedia('avatar')->first()->getFullUrl('avatar');
+       $url = "";//route('readblog', [$blog->id, str_replace(" ", '_', $blog->title)]);
+
+       Notification::send(Auth::user(), new ActivatorNofification($avatar, "Testimony","Testimony updated", ""));
        return redirect()->route('testimony.index')->with('success', 'Testimony updated successfully');
 
     }
@@ -201,8 +139,10 @@ class TestimonyController extends Controller
         $status = $statu==0?1:0;
         $testimony->status = $status;
         $testimony->update();
-        Notification::send($testimony->user, new ActivatorNofification("Testimony","Testimony approved"));
-        Notification::send(Auth::user(), new ActivatorNofification("Testimony","You approved testimony"));
+        $avatar = Auth::user()->getMedia('avatar')->first()->getFullUrl('avatar');
+        $avatar2 = $testimony->user->getMedia('avatar')->first()->getFullUrl('avatar');
+        Notification::send($testimony->user, new ActivatorNofification($avatar, "Testimony","Testimony approved", ""));
+        Notification::send(Auth::user(), new ActivatorNofification($avatar2, "Testimony","You approved testimony", ""));
         return redirect()->back()->with('success', $msg);
 
 

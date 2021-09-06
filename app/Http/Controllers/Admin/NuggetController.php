@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\NuggetRequest;
+use App\Http\Requests\NuggetUpRequest;
+use App\Http\Requests\NuggeUpRequest;
 use App\Models\Nugget;
 use App\Models\Setting;
 use App\Notifications\ActivatorNofification;
@@ -47,48 +49,14 @@ class NuggetController extends Controller
     public function store(NuggetRequest $request)
     {
         $description = $request->content;
-        libxml_use_internal_errors(true);
-       $dom = new \DomDocument();
-
-       $dom->loadHtml($description, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-
-       $images = $dom->getElementsByTagName('img');
-
-       foreach($images as $k => $img){
-
-
-           $data = $img->getAttribute('src');
-
-           if (strpos($data, 'data') !== false){
-            list($type, $data) = explode(';', $data);
-
-                list($type, $data) = explode(',', $data);
-                 $data = base64_decode($data);
-
-               $image_name= "/uploads/nuggets/" .str_replace(" ", '_', Auth::user()->name)."_".  time()."_".$k.'.png';
-
-               $path = public_path() . $image_name;
-
-               file_put_contents($path, $data);
-
-               $img->removeAttribute('src');
-
-               $img->setAttribute('src', $image_name);
-
-                }
-
-        }
-
-
-       $description = $dom->saveHTML();
-
         $nugget = new Nugget();
         $nugget->qoute = $description;
         $nugget->user_id = Auth::user()->id;
+        $nugget->addMediaFromRequest('image')->toMediaCollection("nuggets");
         $nugget->save();
         $settings = Setting::with('user')->where('nugget_notification', 1)->get();
         $avatar = Auth::user()->getMedia('avatar')->first()->getFullUrl('avatar');
-        $url =
+        $url ="";
        foreach($settings as $setting){
             Notification::send($setting->user, new ActivatorNofification($avatar, "Nugget","New nugget added", $url));
        }
@@ -128,47 +96,18 @@ class NuggetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(NuggetUpRequest $request, $id)
     {
         //
         $description = $request->content;
-        libxml_use_internal_errors(true);
-       $dom = new \DomDocument();
-
-       $dom->loadHtml($description, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-
-       $images = $dom->getElementsByTagName('img');
-
-       foreach($images as $k => $img){
-
-
-           $data = $img->getAttribute('src');
-
-           if (strpos($data, 'data') !== false){
-            list($type, $data) = explode(';', $data);
-
-                list($type, $data) = explode(',', $data);
-                 $data = base64_decode($data);
-
-               $image_name= "/uploads/nuggets/" .str_replace(" ", '_', Auth::user()->name)."_".  time()."_".$k.'.png';
-
-               $path = public_path() . $image_name;
-
-               file_put_contents($path, $data);
-
-               $img->removeAttribute('src');
-
-               $img->setAttribute('src', $image_name);
-
-                }
-
-        }
-
-
-       $description = $dom->saveHTML();
        $nugget = Nugget::where('id', $id)->first();
        $nugget->qoute = $description;
-       $nugget->update();
+       if($request->file("image")){
+        $nugget->delete($id);
+        $nugget->clearMediaCollection();
+        $nugget->addMediaFromRequest('image')->toMediaCollection("nuggets");
+    }
+       $nugget->save();
        return redirect()->route('nugget.index')->with('success', 'Nugget updated successfully');
 
     }

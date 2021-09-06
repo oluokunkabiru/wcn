@@ -26,6 +26,7 @@ class NuggetRequest extends FormRequest
         return [
             //
             'content' => 'required|string|min:30',
+            'image' => 'required|image|mimes:png,jpg'
         ];
     }
 

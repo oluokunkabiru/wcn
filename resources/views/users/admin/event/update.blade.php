@@ -29,6 +29,15 @@
                     </span>
                     @endif
                 </div>
+                <div class="form-group">
+                    <label for="usr">Event image:</label>
+                    <input type="file" accept="image/*" class="form-control {{ $errors->has('image') ? ' is-invalid' : '' }}" name="image">
+                    @if ($errors->has('image'))
+                    <span class="invalid-feedback" role="alert">
+                         <strong>{{ $errors->first('image') }}</strong>
+                    </span>
+                    @endif
+                </div>
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="content">Event Description</label>
@@ -60,7 +69,7 @@
         ['color', ['color']],
         ['para', ['ol', 'ul', 'paragraph']],
         ['table', ['table']],
-        ['insert', ['link', 'picture']],
+        ['insert', ['link']],
         ['view', ['fullscreen', 'help', 'undo', 'redo']],
       ],
       callbacks: {

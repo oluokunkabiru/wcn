@@ -33,9 +33,9 @@
                                 {{--  <button type="button" class="btn btn-outline-primary btn-sm mb-0">View
                                     Project</button>  --}}
                                     {{-- <a href="{{ route('readNugget', [$nugget->id, str_replace(" ", "_", ucwords($nugget->user->name))]) }}"  title="Read full nugget" class="btn btn-success  "><span class="fa fa-eye"></span></a> --}}
-                                    <a href="#view" data-toggle="modal" testi ="{!! $unapprove->testimony !!}"  title="Read full nugget" class="btn btn-success  "><span class="fa fa-eye"></span></a>
-                                    <a href="{{ route('testimony.edit', $unapprove->id) }}" title="Edit nugget" class="btn btn-primary  "><span class="fa fa-edit"></span></a>
-                                    <a href="#confirm" data-toggle="modal" testi ="{!! $unapprove->testimony !!}" delete-url={{ route('testimony.destroy', $unapprove->id) }} class="btn btn-danger"  title="Delete nugget"><span class="fa fa-trash"></span></a>
+                                    <a href="#view" data-toggle="modal" testi ="{!! $unapprove->testimony !!}"  title="Read full testimony" class="btn btn-success  "><span class="fa fa-eye"></span></a>
+                                    <a href="{{ route('testimony.edit', $unapprove->id) }}" title="Edit testimony" class="btn btn-primary  "><span class="fa fa-edit"></span></a>
+                                    <a href="#confirm" data-toggle="modal" testi ="{!! $unapprove->testimony !!}" delete-url={{ route('testimony.destroy', $unapprove->id) }} class="btn btn-danger"  title="Delete testimony"><span class="fa fa-trash"></span></a>
                             </div>
                         </div>
                     </div>

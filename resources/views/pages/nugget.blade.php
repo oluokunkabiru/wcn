@@ -67,6 +67,7 @@
             <div class="col-md-6 card" id="nugget{{ $nugget->id }}">
                 <div class="row card-body m-1 bg-black ">
                     <div class="col-md-4 ">
+                        {{-- $nugget->getMedia('nuggets')->first()->getFullUrl() != "" ?   $nugget->getMedia('nuggets')->first()->getFullUrl() --}}
                     <img src="{{ $nugget->user->getMedia('avatar')->first()->getFullUrl() }}" class="card-img" alt="{{ ucwords($nugget->user->name) }}">
                     </div>
                     <div class="col-md-8">

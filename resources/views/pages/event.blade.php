@@ -155,7 +155,7 @@
 
       <div class="row  align-items-stretch ">
         <div class="col-lg-4">
-          <div class="img d-flex" style="background-image:url({{ $event->getImage($event->content) != "" ?  $event->getImage($event->content):"../assets/img/home-decor-1.jpg" }});"><img src="{{ $event->getImage($event->content) != "" ?  $event->getImage($event->content):"../assets/img/home-decor-1.jpg" }}" class="imgs " alt="Image"></div>
+          <div class="img d-flex" style="background-image:url({{ $event->getMedia('events')->first()->getFullUrl() != "" ?   $event->getMedia('events')->first()->getFullUrl():"../assets/img/home-decor-1.jpg" }});"><img src="{{ $event->getMedia('events')->first()->getFullUrl() != "" ?   $event->getMedia('events')->first()->getFullUrl():"../assets/img/home-decor-1.jpg" }}" class="imgs " alt="Image"></div>
 
         </div>
         <div class="col-lg-8">
