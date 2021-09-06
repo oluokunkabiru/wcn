@@ -147,6 +147,58 @@
                @endif
             </div>
            </div>
+           <div class="col-md-6">
+            <div class="form-group">
+                <label for="usr">Address:</label>
+                <textarea name="address" id="address" class="form-control {{ $errors->has('address') ? ' is-invalid' : '' }}" cols="20" rows="10">
+                    {{ $config->address, old('address') }}
+                </textarea>
+                @if ($errors->has('address'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('address') }}</strong>
+               </span>
+               @endif
+            </div>
+           </div>
+           <div class="col-md-6">
+            <div class="form-group">
+                <label for="usr">Address:</label>
+                <textarea name="address" id="address" class="form-control {{ $errors->has('address') ? ' is-invalid' : '' }}" cols="20" rows="10">
+                    {{ $config->address, old('address') }}
+                </textarea>
+                @if ($errors->has('address'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('address') }}</strong>
+               </span>
+               @endif
+            </div>
+           </div>
+           <div class="col-md-6">
+            <div class="form-group">
+                <label for="usr">Address:</label>
+                <textarea name="address" id="address" class="form-control {{ $errors->has('address') ? ' is-invalid' : '' }}" cols="20" rows="10">
+                    {{ $config->address, old('address') }}
+                </textarea>
+                @if ($errors->has('address'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('address') }}</strong>
+               </span>
+               @endif
+            </div>
+           </div>
+           <div class="col-md-6">
+            <div class="form-group">
+                <label for="usr">Address:</label>
+                <textarea name="address" id="address" class="form-control {{ $errors->has('address') ? ' is-invalid' : '' }}" cols="20" rows="10">
+                    {{ $config->address, old('address') }}
+                </textarea>
+                @if ($errors->has('address'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('address') }}</strong>
+               </span>
+               @endif
+            </div>
+           </div>
        </div>
        <button class="btn btn-primary float-right mr-4">Update configuration</button>
     </form>

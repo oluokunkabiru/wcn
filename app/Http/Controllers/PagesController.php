@@ -22,9 +22,9 @@ class PagesController extends Controller
     public function index()
     {
         //
-        $blogs = Blog::orderBy('id', 'desc')->paginate(4);
+        $blogs = Blog::orderBy('id', 'desc')->paginate(3);
         $events = Event::orderBy('id', 'desc')->paginate(3);
-        $members = User::inRandomOrder()->get();
+        $members = User::inRandomOrder()->paginate(12);
         $gallerys = File::OrderBy('id', 'desc')->where('status', 1)->paginate(6);
         $testimonys = Testimony::with('user')->orderBy('id', 'desc')->where('status', 1)->paginate(12);
         // return $events;

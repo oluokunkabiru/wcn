@@ -110,16 +110,18 @@
                       <div class="col-md-8">
                           <div class="text-white">
                             <h3 class="text-white"><i class="fa fa-quote-left" style="font-size:48px;color:white" ></i></h3>
-                            <p>The best gift to the world is the gift
-                              of salvation. The best gift to the
-                              church is the gift of the word.
-                              We have been sent with a
-                              message. The devil can’t shut us
-                              up, nothing can stop us, we have
-                              a message that must be heard,
-                              and that message is the word of
-                              peace and hope, of rest and of
-                              the finished work.
+                            <p>
+                                If the youths have to
+                                become a better version of
+                                themselves or better still a
+                                splitting imaging of Jesus,
+                                for in his light can they truly
+                                discover themselves, we must
+                                begin to rid ourselves of the
+                                pessimistic phenomenon.
+
+
+
                             </p>
                             <p>
                               <i>Apostle Dr. Faith Oniya</i>
@@ -522,14 +524,19 @@
           <div class="backindexe font-weight-bold pb-4 ">
           <h5 class="quotess">
           <i class="fa fa-quote-right " style="font-size:40px;color:black; margin-left:250px" ></i><br>
-                If the youths have to <br>
-                become a better version of <br>
-                themselves or better still a <br>
-                splitting imaging of Jesus, <br>
-                for in his light can they truly <br>
-                discover themselves, we must <br>
-                begin to rid ourselves of the <br>
-                pessimistic phenomenon.<br>
+    <pre>
+        The best gift to the world is the gift
+        of salvation. The best gift to the
+            church is the gift of the word.
+        We have been sent with a
+        message. The devil can’t shut us
+        up, nothing can stop us, we have
+        a message that must be heard,
+        and that message is the word of
+        peace and hope, of rest and of
+        the finished work.
+    </pre>
+
                <i> - Apst. Dr.Faith Oniya</i>
             </h5>
 
@@ -596,8 +603,7 @@
 
     </section>
 
-    <section class="testimonials" id="testimonial" style="  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(images/wallpaper-1.jpg);
-    ">
+    {{-- <section class="testimonials" id="testimonial" style="  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(images/wallpaper-1.jpg);">
       <div class="container">
         <div class="row">
           <div class="col-sm-12 text-center">
@@ -664,7 +670,53 @@
         </div>
       </div>
 
-    </section>
+    </section> --}}
+    <section class="ftco-section ftco-no-pb ftco-no-pt">
+		<div class="container-fluid px-md-0">
+            <div class="row">
+                <div class="offset-lg-2"></div>
+
+                <div class="col-lg-8">
+                          <h4 class=" hede wow  fadeOutRightBig" data-wow-duration='2s' data-wow-delay='0.5s' >
+                          <i class="fa fa-users" style="font-size:40px;color:#dba928" ></i>
+                          Our awesome member</h4>
+                </div>
+                <div class="offset-lg-2"></div>
+
+            </div>
+
+
+			<div class="row no-gutters">
+                @php
+                    $index =0;
+                @endphp
+
+            @forelse ($members as $member)
+            @if ($index%7)
+            <div class="col-md-3">
+                <a href="{{ $member->getMedia('avatar')->first()->getFullUrl() }}" class="image-popup img gallery ftco-animat" style="background-image: url({{ $member->getMedia('avatar')->first()->getFullUrl() }});">
+                    <span class="overlay"></span>
+                </a>
+            </div>
+            @else
+            <div class="col-md-6">
+                <a href="{{ $member->getMedia('avatar')->first()->getFullUrl() }}" class="image-popup img gallery ftco-animat" style="background-image: url({{ $member->getMedia('avatar')->first()->getFullUrl() }});">
+                    <span class="overlay"></span>
+                </a>
+            </div>
+            @endif
+                @php
+                    $index++;
+                @endphp
+            @empty
+                    <h2 class="text-center font-weight-bold text-danger">No members available for now</h2>
+            @endforelse
+
+
+			</div>
+		</div>
+	</section>
+
 
     <section>
       <div class="site-section bg-light">
