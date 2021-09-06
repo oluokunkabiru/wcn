@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BlogRequest;
+use App\Http\Requests\BlogUpdateRequest;
 use App\Models\Blog;
 use App\Models\Setting;
 use App\Models\User;
@@ -49,48 +50,16 @@ class BlogController extends Controller
         //
         $title = $request->title;
         $description = $request->content;
-
-       $dom = new \DomDocument();
-
-       $dom->loadHtml($description, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-
-       $images = $dom->getElementsByTagName('img');
-
-       foreach($images as $k => $img){
-
-
-           $data = $img->getAttribute('src');
-
-           if (strpos($data, 'data') !== false){
-            list($type, $data) = explode(';', $data);
-
-                list($type, $data) = explode(',', $data);
-                 $data = base64_decode($data);
-
-               $image_name= "/uploads/blogs/" .str_replace(" ", '_', $title)."_".  time()."_".$k.'.png';
-
-               $path = public_path() . $image_name;
-
-               file_put_contents($path, $data);
-
-               $img->removeAttribute('src');
-
-               $img->setAttribute('src', $image_name);
-
-                }
-
-        }
-
-
-       $description = $dom->saveHTML();
        $blog = new Blog();
        $blog->title = $title;
        $blog->content = $description;
        $blog->user_id = Auth::user()->id;
-      $avatar = Auth::user()->getMedia('avatar')->first()->getFullUrl('avatar');
-      $url = route('readblog', [$blog->id, str_replace(" ", '_', $blog->title)]);
+       $blog->addMediaFromRequest('image')->usingFileName(str_replace(" ", "_", $title))->toMediaCollection("blogs");
 
        $blog->save();
+        $avatar = Auth::user()->getMedia('avatar')->first()->getFullUrl('avatar');
+      $url = route('readblog', [$blog->id, str_replace(" ", '_', $blog->title)]);
+
        $settings = Setting::with('user')->where('blog_notification', 1)->get();
        foreach($settings as $setting){
             Notification::send($setting->user, new ActivatorNofification($avatar ,"Blog","New blog added", $url));
@@ -138,53 +107,22 @@ class BlogController extends Controller
         unlink(public_path()."/".$image);
         return "success";
     }
-    public function update(BlogRequest $request, $id)
+    public function update(BlogUpdateRequest $request, $id)
     {
         //
         $title = $request->title;
         $description = $request->content;
-        libxml_use_internal_errors(true);
-       $dom = new \DomDocument();
-
-       $dom->loadHtml($description, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-
-       $images = $dom->getElementsByTagName('img');
-
-       foreach($images as $k => $img){
-
-
-           $data = $img->getAttribute('src');
-       if (strpos($data, 'data') !== false){
-        list($type, $data) = explode(';', $data);
-
-            list($type, $data) = explode(',', $data);
-             $data = base64_decode($data);
-
-           $image_name= "/uploads/blogs/" .str_replace(" ", '_', $title)."_".  time()."_".$k.'.png';
-
-           $path = public_path() . $image_name;
-
-           file_put_contents($path, $data);
-
-           $img->removeAttribute('src');
-
-           $img->setAttribute('src', $image_name);
-
-            }
-
-
-
-
-        }
-
-
-       $description = $dom->saveHTML();
 
        $blog = Blog::where('id', $id)->first();
        $blog->title = $title;
        $blog->content = $description;
        $blog->user_id = Auth::user()->id;
-       $blog->update();
+       if($request->file("image")){
+        $blog->delete($id);
+        $blog->clearMediaCollection();
+        $blog->addMediaFromRequest('image')->toMediaCollection("blogs");
+    }
+       $blog->save();
        return redirect()->route('blogs.index')->with('success', 'blog '.ucwords($blog->title).' updated successfully');
 
     }
@@ -199,12 +137,14 @@ class BlogController extends Controller
     {
         //
         $blog = Blog::where('id', $id)->first();
-        $images = $blog->getImageAll($blog->content);
-            if (count($images) > 0){
-                foreach ($images as $image){
-                    unlink(public_path().$image);
-                }
-            }
+        // $images = $blog->getImageAll($blog->content);
+        //     if (count($images) > 0){
+        //         foreach ($images as $image){
+        //             unlink(public_path().$image);
+        //         }
+        //     }
+        $blog->delete($id);
+        $blog->clearMediaCollection();
           $blog->forceDelete();
           return redirect()->back()->with('success', "Blog ".$blog->title. "deleted successfully");
     }

@@ -135,41 +135,6 @@ class BooksController extends Controller
         //
         $title = $request->title;
         $description = $request->content;
-        libxml_use_internal_errors(true);
-       $dom = new \DomDocument();
-
-       $dom->loadHtml($description, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-
-       $images = $dom->getElementsByTagName('img');
-
-       foreach($images as $k => $img){
-
-
-           $data = $img->getAttribute('src');
-
-           if (strpos($data, 'data') !== false){
-            list($type, $data) = explode(';', $data);
-
-                list($type, $data) = explode(',', $data);
-                 $data = base64_decode($data);
-
-               $image_name= "/uploads/books/" .str_replace(" ", '_', $title)."_".  time()."_".$k.'.png';
-
-               $path = public_path() . $image_name;
-
-               file_put_contents($path, $data);
-
-               $img->removeAttribute('src');
-
-               $img->setAttribute('src', $image_name);
-
-                }
-
-        }
-
-
-       $description = $dom->saveHTML();
-// return $request->all();
         $book = Book::where('id', $id)->first();
         $book->description = $description;
         $book->title = $title;
@@ -195,13 +160,13 @@ class BooksController extends Controller
     {
         //
         $book = Book::where('id', $id)->first();
-        $images = $book->getImageAll($book->description);
-            if (count($images) > 0){
-                foreach ($images as $image){
-                    unlink(public_path().$image);
-                }
-            }
-          $book->forceDelete();
+        // $images = $book->getImageAll($book->description);
+        //     if (count($images) > 0){
+        //         foreach ($images as $image){
+        //             unlink(public_path().$image);
+        //         }
+        //     }
+        //   $book->forceDelete();
         $book->delete($id);
         $book->clearMediaCollection();
         return redirect()->back()->with('success', "Book deleted successfully");

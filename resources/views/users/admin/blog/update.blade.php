@@ -19,6 +19,16 @@
                   </span>
                   @endif
               </div>
+              <div class="form-group">
+                <label for="usr">Blog image:</label>
+                <input type="file" accept="image/*" class="form-control {{ $errors->has('image') ? ' is-invalid' : '' }}" name="image">
+                @if ($errors->has('image'))
+                <span class="invalid-feedback" role="alert">
+                     <strong>{{ $errors->first('image') }}</strong>
+                </span>
+                @endif
+            </div>
+            
               {{ csrf_field() }}
               @method("PATCH")
               <div class="form-group">

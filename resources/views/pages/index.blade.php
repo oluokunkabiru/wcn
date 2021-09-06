@@ -136,7 +136,7 @@
                   <div class="box small h-100 backindexe">
                       @foreach ($blogs as $blog)
                     <div class="d-flex align-items-center mb-2">
-                        <div class="img"><img src="{{ $blog->getImage($blog->content) != "" ?  $blog->getImage($blog->content):"../assets/img/home-decor-1.jpg" }}" class="img-fluid" alt="Image"></div>
+                        <div class="img"><img src="{{ $blog->getMedia('blogs')->first()->getFullUrl() != "" ?   $blog->getMedia('blogs')->first()->getFullUrl():"../assets/img/home-decor-1.jpg" }}" class="img-fluid" alt="Image"></div>
                         <div class="text ">
                             <h3 ><a href="{{ route('readblog', [$blog->id, str_replace(" ", '_', $blog->title)]) }}">{{ $blog->title }}</a></h3>
                         </div>

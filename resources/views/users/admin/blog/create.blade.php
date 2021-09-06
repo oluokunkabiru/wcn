@@ -12,17 +12,28 @@
               <form action="{{ route('blogs.store') }}" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="usr">Blog title:</label>
-                    <input type="text" class="form-control {{ $errors->has('title') ? ' is-invalid' : '' }}" name="title">
+                    <input type="text" value="{{ old('title') }}" class="form-control {{ $errors->has('title') ? ' is-invalid' : '' }}" name="title">
                     @if ($errors->has('title'))
                     <span class="invalid-feedback" role="alert">
                          <strong>{{ $errors->first('title') }}</strong>
                     </span>
                     @endif
                 </div>
+                <div class="form-group">
+                    <label for="usr">Blog image:</label>
+                    <input type="file" accept="image/*" class="form-control {{ $errors->has('image') ? ' is-invalid' : '' }}" name="image">
+                    @if ($errors->has('image'))
+                    <span class="invalid-feedback" role="alert">
+                         <strong>{{ $errors->first('image') }}</strong>
+                    </span>
+                    @endif
+                </div>
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="content">Blog content</label>
-                    <textarea class="form-control blogarea {{ $errors->has('content') ? ' is-invalid' : '' }}" rows="3" name="content"></textarea>
+                    <textarea class="form-control blogarea {{ $errors->has('content') ? ' is-invalid' : '' }}" rows="3" name="content">
+                    {{ old('content') }}
+                    </textarea>
                     @if ($errors->has('content'))
                     <span class="invalid-feedback" role="alert">
                          <strong>{{ $errors->first('content') }}</strong>
@@ -48,7 +59,7 @@
         ['color', ['color']],
         ['para', ['ol', 'ul', 'paragraph']],
         ['table', ['table']],
-        ['insert', ['link', 'picture']],
+        ['insert', ['link']],
         ['view', ['fullscreen', 'help', 'undo', 'redo']],
       ]
 

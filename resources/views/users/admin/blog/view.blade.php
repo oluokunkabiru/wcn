@@ -25,7 +25,7 @@
                     <div class="card card-blog card-plain">
                         <div class="position-relative">
                             <a class="d-block shadow-xl border-radius-xl">
-                                <img src="{{ $blog->getImage($blog->content) != "" ?  $blog->getImage($blog->content):"../assets/img/home-decor-1.jpg" }}" alt="{{ $blog->title }}"
+                                <img src="{{ $blog->getMedia('blogs')->first()->getFullUrl() != "" ?   $blog->getMedia('blogs')->first()->getFullUrl():"../assets/img/home-decor-1.jpg" }}" alt="{{ $blog->title }}"
                                     class="img-fluid shadow border-radius-xl">
                             </a>
                         </div>
