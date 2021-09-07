@@ -149,56 +149,125 @@
            </div>
            <div class="col-md-6">
             <div class="form-group">
-                <label for="usr">Address:</label>
-                <textarea name="address" id="address" class="form-control {{ $errors->has('address') ? ' is-invalid' : '' }}" cols="20" rows="10">
-                    {{ $config->address, old('address') }}
+                <label for="usr">Youth Quote:</label>
+                <textarea name="youth" id="youth" class="form-control {{ $errors->has('youth') ? ' is-invalid' : '' }}" cols="20" rows="10">
+                    {{ $config->youth_qoute, old('youth') }}
                 </textarea>
-                @if ($errors->has('address'))
+                @if ($errors->has('youth'))
                 <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('address') }}</strong>
+                    <strong>{{ $errors->first('youth') }}</strong>
                </span>
                @endif
             </div>
            </div>
            <div class="col-md-6">
             <div class="form-group">
-                <label for="usr">Address:</label>
-                <textarea name="address" id="address" class="form-control {{ $errors->has('address') ? ' is-invalid' : '' }}" cols="20" rows="10">
-                    {{ $config->address, old('address') }}
+                <label for="usr">Youth Quote 2:</label>
+                <textarea name="youth1" id="youth1" class="form-control {{ $errors->has('youth1') ? ' is-invalid' : '' }}" cols="20" rows="10">
+                    {{ $config->youth_qoute1, old('youth1') }}
                 </textarea>
-                @if ($errors->has('address'))
+                @if ($errors->has('youth1'))
                 <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('address') }}</strong>
+                    <strong>{{ $errors->first('youth1') }}</strong>
                </span>
                @endif
             </div>
            </div>
            <div class="col-md-6">
             <div class="form-group">
-                <label for="usr">Address:</label>
-                <textarea name="address" id="address" class="form-control {{ $errors->has('address') ? ' is-invalid' : '' }}" cols="20" rows="10">
-                    {{ $config->address, old('address') }}
+                <label for="usr">About us:</label>
+                <textarea name="about" id="about" class="form-control {{ $errors->has('about') ? ' is-invalid' : '' }}" cols="20" rows="10">
+                    {{ $config->about_us, old('about') }}
                 </textarea>
-                @if ($errors->has('address'))
+                @if ($errors->has('about'))
                 <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('address') }}</strong>
+                    <strong>{{ $errors->first('about') }}</strong>
                </span>
                @endif
             </div>
            </div>
            <div class="col-md-6">
             <div class="form-group">
-                <label for="usr">Address:</label>
-                <textarea name="address" id="address" class="form-control {{ $errors->has('address') ? ' is-invalid' : '' }}" cols="20" rows="10">
-                    {{ $config->address, old('address') }}
+                <label for="usr">Conception:</label>
+                <textarea name="conception" id="conception" class="form-control {{ $errors->has('conception') ? ' is-invalid' : '' }}" cols="20" rows="10">
+                    {{ $config->conception, old('conception') }}
                 </textarea>
-                @if ($errors->has('address'))
+                @if ($errors->has('conception'))
                 <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('address') }}</strong>
+                    <strong>{{ $errors->first('conception') }}</strong>
                </span>
                @endif
             </div>
            </div>
+           <div class="col-md-6">
+            <div class="form-group">
+                <label for="usr">Vision:</label>
+                <textarea name="vision" id="vision" class="form-control {{ $errors->has('vision') ? ' is-invalid' : '' }}" cols="20" rows="10">
+                    {{ $config->vision, old('vision') }}
+                </textarea>
+                @if ($errors->has('vision'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('vision') }}</strong>
+               </span>
+               @endif
+            </div>
+           </div>
+
+           <div class="col-md-6">
+            <div class="form-group">
+                <label for="usr">Mission:</label>
+                <textarea name="mission" id="mission" class="form-control {{ $errors->has('mission') ? ' is-invalid' : '' }}" cols="20" rows="10">
+                    {{ $config->mission, old('mission') }}
+                </textarea>
+                @if ($errors->has('mission'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('mission') }}</strong>
+               </span>
+               @endif
+            </div>
+           </div>
+
+           <div class="col-md-6">
+            <div class="form-group">
+                <label for="usr">Core Value:</label>
+                <textarea name="core" id="core" class="form-control {{ $errors->has('core') ? ' is-invalid' : '' }}" cols="20" rows="10">
+                    {{ $config->core_value, old('core') }}
+                </textarea>
+                @if ($errors->has('core'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('core') }}</strong>
+               </span>
+               @endif
+            </div>
+           </div>
+
+           <div class="col-md-6">
+            <div class="form-group">
+                <label for="usr">Pioneer Message :</label>
+                <textarea name="pioneer" id="pioneer" class="form-control {{ $errors->has('pioneer') ? ' is-invalid' : '' }}" cols="20" rows="10">
+                    {{ $config->pioneer_message, old('pioneer') }}
+                </textarea>
+                @if ($errors->has('pioneer'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('pioneer') }}</strong>
+               </span>
+               @endif
+            </div>
+           </div>
+           <div class="col-md-6">
+            <div class="form-group">
+                <label for="usr">Pioneer Message 2:</label>
+                <textarea name="pioneer1" id="pioneer1" class="form-control {{ $errors->has('pioneer1') ? ' is-invalid' : '' }}" cols="20" rows="10">
+                    {{ $config->pioneer_message1, old('pioneer1') }}
+                </textarea>
+                @if ($errors->has('pioneer1'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('pioneer1') }}</strong>
+               </span>
+               @endif
+            </div>
+           </div>
+
        </div>
        <button class="btn btn-primary float-right mr-4">Update configuration</button>
     </form>
@@ -211,14 +280,14 @@
 <script>
     $(function () {
     //Initialize Select2 Elements
-    $('#address').summernote({
+    $('#address, #pioneer, #youth,  #youth1, #conception, #about, #core, #vision, #mission, #pioneer1').summernote({
       height: 100,
       toolbar: [
         ['style', ['style']],
         ['font', ['bold', 'italic', 'underline', 'clear', 'superscript', 'subscript']],
         ['color', ['color']],
         ['insert', ['link']],
-        ['view', ['fullscreen', 'help', 'undo', 'redo']],
+        ['view', ['fullscreen','codeview', 'help', 'undo', 'redo']],
       ]
 
     })

@@ -36,6 +36,15 @@ class ConfigRequest extends FormRequest
             'instagram' => 'nullable|sometimes|string',
             'address' => 'nullable|sometimes|string',
             'youtube' => 'nullable|sometimes|string',
+            'pioneer' => 'required|min:10|string',
+            'youth' => 'required|string|min:10',
+            'youth1' => 'required|string|min:10',
+            'conception' => 'required|string|min:10',
+            'about' => 'required|string|min:10',
+            'core' => 'required|string|min:10',
+            'pioneer1' => 'required|string|min:10',
+            'vision' => 'required|string|min:10',
+            'mission' => 'required|string|min:10'
         ];
     }
 }

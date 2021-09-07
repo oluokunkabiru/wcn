@@ -94,7 +94,10 @@
 @endsection
 @section('content')
 <section>
+    @php
+    $configuration =App\Models\Configuration::with('user')->where('id', 1)->first();
 
+@endphp
           <div class="wow  fadeOutLeftBig" data-wow-duration='2s' data-wow-delay='0.5s'>
           <div class="site-section bg-white pb-0 ">
             <div class="container-fluid">
@@ -110,21 +113,9 @@
                       <div class="col-md-8">
                           <div class="text-white">
                             <h3 class="text-white"><i class="fa fa-quote-left" style="font-size:48px;color:white" ></i></h3>
+                           {!!  $configuration->youth_qoute !!}
                             <p>
-                                If the youths have to
-                                become a better version of
-                                themselves or better still a
-                                splitting imaging of Jesus,
-                                for in his light can they truly
-                                discover themselves, we must
-                                begin to rid ourselves of the
-                                pessimistic phenomenon.
-
-
-
-                            </p>
-                            <p>
-                              <i>Apostle Dr. Faith Oniya</i>
+                              <i>{{ ucwords($configuration->user->name)  }}</i>
                             </p>
                           </div>
                       </div>
@@ -176,15 +167,8 @@
           <div class="backindexe font-weight-bold pb-4 ">
           <h5 class="quotes">
           <i class="fa fa-quote-left " style="font-size:40px;color:black; margin-right:250px" ></i><br>
-                We strongly believe no one <br>
-                values what is gotten cheaply <br>
-                and nothing becomes valuable <br>
-                not having gone through pain <br>
-                and hardship. Even a mad man <br>
-                wouldn’t throw stones at a tree <br>
-                without fruits. Discomfort is a <br>
-                pre-requisite for value. <br>
-               <i> - Apst. Dr.Faith Oniya</i>
+               {!! $configuration->youth_qoute1 !!}
+                <i>{{ ucwords($configuration->user->name)  }}</i>
             </h5>
 
           </div>
@@ -192,15 +176,7 @@
         <div class="col-lg-6 ">
           <div class="quotes pt-4">
             <h6 class=" quotes " style="  text-align:left;">
-              Word Central Global Network (WCN) is a vibrant youth
-              ministry dedicated <br> to liberating youths from the shackles
-              of perversion, transforming <br> them to be lights in a perverse
-              and crooked world, and releasing <br> them as guided missiles
-              to impact their world in the  market place;<br> campuses,
-              fellowships, Churches, families, etc.
-              Word Central Global<br> Network, as the name implies, firmly
-              believes in the efficacy of the Word<br> of God to transform
-              lives and we have seen this happen over the years. <br>
+{!! $configuration->about_us !!}
             </h6>
 
               <h4  style="color:#dba928; text-align:left;" >Conception </h4>
@@ -325,14 +301,7 @@
                   <div><i class="fa fa-eye values" style="font-size:50px"></i></div>
                   <div class="text values">
                     <h4 style="color:#dba928">The Vision</h4>
-                    <p> To raise a crop of youths who would catch the fire of
-                      the Holy Ghost, come alive, be revived themselves,
-                      and then, begin to cause an unstoppable revival in our
-                      days towards seeing the continuity of the faith handed
-                      us by the fathers and an increase of the same through
-                      dedicated and calculated youth meetings, mentorship
-                      initiatives and discipleship programs.
-                    </p>
+                   {!! $configuration->vision !!}
                   </div>
                 </div>
               </div>
@@ -341,14 +310,8 @@
                   <div ><span class="fa fa-bullseye values" style="font-size:50px"></span></div>
                   <div class="text values ">
                     <h4 style="color:#dba928">The Mission</h4>
-                    <p> We help youths see the value heaven places on their soul,
-                      engage them in active service in God’s Kingdom, subject
-                      them to an environment of leadership and commission
-                      them to do the same at the appointed time thus producing
-                      men of purpose, focus, discipline, having themselves
-                      been products of the same.
-                    </p>
-                  </div>
+                {!! $configuration->mission !!}
+                </div>
                 </div>
               </div>
               <div class="col-md-5 mt-3 d-flex">
@@ -358,17 +321,7 @@
                   <div class="text values">
                     <h4 style="color:black;">Core Value</h4>
 
-                    We believe all members of Word Central Global Network; <br>
-                    a. Must be born again, <br>
-                    b. Must have a desire to grow spiritually, <br>
-                    c. Must be willing to be trained and well-rounded <br>
-                    d. Must be dedicated and sacrificial (spiritually and
-                    financially), and otherwise <br>
-                    e. Must be ministry-oriented and vision driven <br>
-                    f. Must be acquiescent to leadership and strive to
-                    be one<br>
-                    g. Must be oriented towards consistent service
-                    over the years.
+                  {!! $configuration->core_value !!}
                   </div>
                 </div>
               </div>
@@ -400,18 +353,7 @@
 
             <h6 class=" quotes " style="text-align:justify;">
 
-            <p>
-                       <strong > “WHAT YOU SEE YOU GET”</strong> <br>
-
-                There is a lot of noise about how useless, ungodly and
-                at some point, how lazy the youths are.
-                Each time I hear this, my heart bleeds simply because it
-                is an established fact that we immediately lose or begin
-                to lose our ability to help whatever we have concluded as
-                damaged and/or “useless”.
-                You have to see the good to get the good.
-                What you see you get!
-            </p>
+           {!! $configuration->pioneer_message !!}
 
             </h6>
 
@@ -524,20 +466,9 @@
           <div class="backindexe font-weight-bold pb-4 ">
           <h5 class="quotess">
           <i class="fa fa-quote-right " style="font-size:40px;color:black; margin-left:250px" ></i><br>
-    <pre>
-        The best gift to the world is the gift
-        of salvation. The best gift to the
-            church is the gift of the word.
-        We have been sent with a
-        message. The devil can’t shut us
-        up, nothing can stop us, we have
-        a message that must be heard,
-        and that message is the word of
-        peace and hope, of rest and of
-        the finished work.
-    </pre>
+   {!! $configuration->pioneer_message1 !!}
 
-               <i> - Apst. Dr.Faith Oniya</i>
+               <i> - {{ ucwords($configuration->user->name) }}</i>
             </h5>
 
           </div>

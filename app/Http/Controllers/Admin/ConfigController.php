@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ConfigRequest;
 use App\Models\Configuration;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ConfigController extends Controller
 {
@@ -86,6 +87,18 @@ class ConfigController extends Controller
         $config->whatsapp = $request->whatsapp;
         $config->youtube = $request->youtube;
         $config->address = $request->address;
+        $config->pioneer_message = $request->pioneer;
+        $config->youth_qoute = $request->youth;
+        $config->youth_qoute1 = $request->youth1;
+        $config->conception = $request->conception;
+        $config->about_us = $request->about;
+        $config->core_value = $request->core;
+        $config->vision = $request->vision;
+        $config->mission = $request->mission;
+        $config->pioneer_message1 = $request->pioneer1;
+
+        $config->user_id = Auth::user()->id;
+
         if($request->file('logo')){
             $config->delete($id);
             $config->clearMediaCollection();

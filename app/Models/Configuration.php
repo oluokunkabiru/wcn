@@ -11,4 +11,8 @@ class Configuration extends Model implements HasMedia
 {
     use HasFactory;
     use InteractsWithMedia;
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }
