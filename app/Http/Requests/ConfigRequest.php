@@ -44,7 +44,11 @@ class ConfigRequest extends FormRequest
             'core' => 'required|string|min:10',
             'pioneer1' => 'required|string|min:10',
             'vision' => 'required|string|min:10',
-            'mission' => 'required|string|min:10'
+            'mission' => 'required|string|min:10',
+            'quoteby' => 'required|string|min:3',
+            'qouteimage' => 'required|file|image|mimes:png,jpg',
+            'quoteby1' => 'required|string|min:3',
+            'pioneerfrom' => 'required|string|min:3',
         ];
     }
 }

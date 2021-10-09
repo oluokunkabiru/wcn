@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ConfigRequest;
 use App\Models\Comments;
 use App\Models\User;
 use App\Notifications\ActivatorNofification;
@@ -67,7 +68,7 @@ class Users extends Controller
         //
     }
 
-    
+
     public function approved($id, $statu){
         $user = User::where('id', $id)->first();
         $status=$statu==0 ? 1 : 0;
@@ -104,7 +105,7 @@ class Users extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ConfigRequest $request, $id)
     {
         //
     }

@@ -108,14 +108,14 @@
                     <div class="d-flex align-items-center">
                     <div class="row">
                       <div class="col-md-4 ">
-                          <div class="img d-flex" style="background-image:url({{ asset('assets/images/welcome-note.jpg') }});"><img src="{{ asset('assets/images/welcome-note.jpg') }}" class="imgs " alt="Image"></div>
+                          <div class="img d-flex" style="background-image:url({{ $configuration->getMedia('youth quote by')->first()->getFullUrl() }});"><img src="{{ asset('assets/images/welcome-note.jpg') }}" class="imgs " alt="Image"></div>
                       </div>
                       <div class="col-md-8">
                           <div class="text-white">
                             <h3 class="text-white"><i class="fa fa-quote-left" style="font-size:48px;color:white" ></i></h3>
                            {!!  $configuration->youth_qoute !!}
                             <p>
-                              <i>{{ ucwords($configuration->user->name)  }}</i>
+                              <i>{{ ucwords($configuration->youth_qoute_by)  }}</i>
                             </p>
                           </div>
                       </div>
@@ -168,7 +168,7 @@
           <h5 class="quotes">
           <i class="fa fa-quote-left " style="font-size:40px;color:black; margin-right:250px" ></i><br>
                {!! $configuration->youth_qoute1 !!}
-                <i>{{ ucwords($configuration->user->name)  }}</i>
+                <i>{{ ucwords($configuration->youth_qoute1_by)  }}</i>
             </h5>
 
           </div>
@@ -357,107 +357,12 @@
 
             </h6>
 
-              <p class=" quotes " style="  text-align:justify;">
-              If the youths have to become a better version of
-              themselves or better still a splitting image of Jesus for
-              in his light, can they truly discover themselves, we must
-              begin to rid ourselves of the pessimistic phenomenon. If
-              there is no glimmer of hope within
-              us, how can we produce in them
-              hope for their future. We cannot
-              give what we do not have.
-              </p>
 
-              <p class=" quotes " style="  text-align:justify;">
-              I once said at a youth meeting
-              I had about 20 years ago
-              which I tagged “Youth
-              Expression” that
-              “…the strength of an
-              entire length of rope
-              is determined by its
-              weakest link… if we
-              continue to call the
-              <i type="text" class="text text-warning" data-toggle="modal" data-target="#pioneerModal">
-                Continue reading
-                 </i>
-              </p>
           </div>
 
 
             <!-- The Modal -->
-      <div class="modal fade" id="pioneerModal">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
 
-            <!-- Modal Header -->
-            <div class="modal-header">
-              <h4 class="modal-title">Message from the Pioneer</h4>
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-
-            <!-- Modal body -->
-            <div class="modal-body">
-            <strong> “WHAT YOU SEE YOU GET”</strong>
-            <p>
-                There is a lot of noise about how useless, ungodly and
-                at some point, how lazy the youths are.
-                Each time I hear this, my heart bleeds simply because it
-                is an established fact that we immediately lose or begin
-                to lose our ability to help whatever we have concluded as
-                damaged and/or “useless”.
-                You have to see the good to get the good.
-                What you see you get!
-            </p>
-
-            <p class="font-weight-bold quotes " style="  text-align:justify;">
-              If the youths have to become a better version of
-              themselves or better still a splitting image of Jesus for
-              in his light, can they truly discover themselves, we must
-              begin to rid ourselves of the pessimistic phenomenon. If
-              there is no glimmer of hope within
-              us, how can we produce in them
-              hope for their future. We cannot
-              give what we do not have.
-              </p>
-
-              <p class="font-weight-bold quotes " style="  text-align:justify;">
-              I once said at a youth meeting
-              I had about 20 years ago
-              which I tagged “Youth
-              Expression” that
-              “…the strength of an
-              entire length of rope
-              is determined by its
-              weakest link… if we
-              continue to call the youths corrupt and weak, we are indirectly describing
-              our strength, our fate and the product that our best
-              could leave behind. We are exactly what we call them.
-              We cannot be better…”
-              </p>
-
-              <p class="font-weight-bold quotes " style="  text-align:justify;">
-              It is high time we all arise and get busy helping these
-              young folks discover who they have been created to be in
-              Christ rather than get busy complaining about the ills we
-              observe. Afterall we are exactly what we complain about.
-              </p>
-
-
-
-
-
-
-            </div>
-
-            <!-- Modal footer -->
-            <div class="modal-footer">
-              <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-            </div>
-
-          </div>
-        </div>
-      </div>
 
         </div>
 
@@ -468,7 +373,7 @@
           <i class="fa fa-quote-right " style="font-size:40px;color:black; margin-left:250px" ></i><br>
    {!! $configuration->pioneer_message1 !!}
 
-               <i> - {{ ucwords($configuration->user->name) }}</i>
+               <i> - {{ ucwords($configuration->pioneer_message_by) }}</i>
             </h5>
 
           </div>

@@ -159,6 +159,30 @@
                </span>
                @endif
             </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="usr">Quote from:</label>
+                        <input type="text" name="quoteby" value="{{ $config->youth_qoute_by, old('quoteby') }}" class="form-control {{ $errors->has('quoteby') ? ' is-invalid' : '' }}" id="usr">
+                        @if ($errors->has('quoteby'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('quoteby') }}</strong>
+                       </span>
+                       @endif
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="usr">Quote by image:</label>
+                        <input type="file" name="qouteimage" class="form-control {{ $errors->has('qouteimage') ? ' is-invalid' : '' }}" id="usr">
+                        @if ($errors->has('qouteimage'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('qouteimage') }}</strong>
+                       </span>
+                       @endif
+                    </div>
+                </div>
+            </div>
            </div>
            <div class="col-md-6">
             <div class="form-group">
@@ -171,6 +195,19 @@
                     <strong>{{ $errors->first('youth1') }}</strong>
                </span>
                @endif
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="usr">Quote from:</label>
+                        <input type="text" name="quoteby1" value="{{ $config->youth_qoute1_by, old('quoteby1') }}" class="form-control {{ $errors->has('quoteby1') ? ' is-invalid' : '' }}" id="usr">
+                        @if ($errors->has('quoteby1'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('quoteby1') }}</strong>
+                       </span>
+                       @endif
+                    </div>
+                </div>
             </div>
            </div>
            <div class="col-md-6">
@@ -265,6 +302,19 @@
                     <strong>{{ $errors->first('pioneer1') }}</strong>
                </span>
                @endif
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="usr">Pioneer message from:</label>
+                        <input type="text" name="pioneerfrom" value="{{ $config->pioneer_message_by, old('pioneerfrom') }}" class="form-control {{ $errors->has('pioneerfrom') ? ' is-invalid' : '' }}" id="usr">
+                        @if ($errors->has('pioneerfrom'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('pioneerfrom') }}</strong>
+                       </span>
+                       @endif
+                    </div>
+                </div>
             </div>
            </div>
 

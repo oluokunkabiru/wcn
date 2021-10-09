@@ -57,6 +57,7 @@ class BlogController extends Controller
        $blog->addMediaFromRequest('image')->usingFileName(str_replace(" ", "_", $title))->toMediaCollection("blogs");
 
        $blog->save();
+       
         $avatar = Auth::user()->getMedia('avatar')->first()->getFullUrl('avatar');
       $url = route('readblog', [$blog->id, str_replace(" ", '_', $blog->title)]);
 
