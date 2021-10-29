@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>WCN => @yield('title')</title>
+    <title>WCN - @yield('title')</title>
 @include('users.admin.layouts.style')
     <!-- Scripts -->
     {{--  <script src="{{ asset('js/app.js') }}" defer></script>  --}}

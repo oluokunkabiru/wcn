@@ -145,7 +145,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 }elseif (Auth::check() && Auth::user()->role=="student") {
                     $dashboard = route('studentDashboard');
                 } else {
-                    $dashboard = route('welcome');
+                    $dashboard = route('index');
                 }
             @endphp
 
@@ -164,7 +164,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <div class="alert alert-danger text-center">
                     <p class="display-5">Oops! Something is wrong.</p>
                     <h3> Please contact your admin for more information</h3>
-                    <a href="{{ route('welcome') }}" class="text-center my-3 btn btn-success"> Home</a>
+                    <a href="{{ route('index') }}" class="text-center my-3 btn btn-success"> Home</a>
                 </div>
                             </div>
                         </div>

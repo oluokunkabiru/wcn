@@ -46,7 +46,7 @@ class ConfigRequest extends FormRequest
             'vision' => 'required|string|min:10',
             'mission' => 'required|string|min:10',
             'quoteby' => 'required|string|min:3',
-            'qouteimage' => 'required|file|image|mimes:png,jpg',
+            'qouteimage' => 'nullable|sometimes|file|image|mimes:png,jpg',
             'quoteby1' => 'required|string|min:3',
             'pioneerfrom' => 'required|string|min:3',
         ];
