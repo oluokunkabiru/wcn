@@ -19,16 +19,22 @@
 	<link rel="stylesheet" href="{{ asset('assets/cstyle.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/lc_lightbox.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/minimal.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/style.css') }}">
 
 	<link rel="stylesheet" href="{{ asset('assets/summernote/summernote-bs4.css') }}">
+
     <style>
+        /* .active{
+               background-color: #dba928;
+                font-size: 230px;
+            } */
 		#more {display: none;}
 		nav div ul li a {
-			color: white!important;
+			color: black!important;
 			font-size:20px;
 			}
 
-		nav div ul li a:active {
+		nav div ul li a: .active {
 				color: gold !important;
 			}
 			.carousel-inner img {
@@ -45,9 +51,7 @@
     left: 26px;
     font-size: 18px;
 }
-.active{
-    background-color: #dba928;
-}
+
 
 	</style>
 @yield('style')

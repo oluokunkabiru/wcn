@@ -23,9 +23,9 @@
     @endif
   </div>
 
-  <nav class="navbar  site-wrap navbar-expand-md navbar-dark sticky-top" style="z-index:3;   background-color: black;">
+  <nav class="navbar  site-wrap navbar-expand-md navbar-light sticky-top" style="z-index:3;   background-color: #fff;">
           <div class="container-fluid">
-              <a class="navbar-brand mb-0 p-0" style = "color:#dba928;   font-size: 15px;" href="{{ route('index') }}"><img class="mr-3"  src="{{$configuration->getMedia('logo')->first()->getFullUrl() }}" alt="{{$configuration->name}}">{{$configuration->name}}</a>
+              <a class="navbar-brand mb-0 p-0" style = "color:#000;   font-size: 15px;" href="{{ route('index') }}"><img class="mr-3"  src="{{$configuration->getMedia('logo')->first()->getFullUrl() }}" alt="{{$configuration->name}}">{{$configuration->name}}</a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" >
                   <span class="oi oi-menu fa fa-bars"></span>
               </button>
@@ -36,20 +36,53 @@
 
 @endphp
               <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                  <ul class="navbar-nav ml-auto" style="color: white;">
+                  <ul class="navbar-nav ml-auto text-dark" style="color: #000;">
+
                       <li class="nav-item  {{ $pagename=="index"?"active":"" }}"><a href="{{ route('index') }}" class="nav-link">Home</a></li>
-                      <li class="nav-item {{ $pagename=="gallery"?"active":"" }}"><a href="{{ route('gallery') }}" class="nav-link">Gallery</a></li>
-                      <li class="nav-item  {{ $pagename=="event"?"active":"" }}"><a href="{{ route('event') }}" class="nav-link">Events</a></li>
-                      <li class="nav-item  {{ $pagename=="contact"?"active":"" }}"><a href="{{ route('contact') }}" class="nav-link">Contact</a></li>
+                      {{--  <li class="nav-item {{ $pagename=="gallery"?"active":"" }}"><a href="{{ route('gallery') }}" class="nav-link">Gallery</a></li>  --}}
+                      {{--  <li class="nav-item  {{ $pagename=="contact"?"active":"" }}"><a href="{{ route('contact') }}" class="nav-link">Contact</a></li>  --}}
                       <li class="nav-item  {{ $pagename=="nuggets"?"active":"" }}"><a href="{{ route('nuggetquote') }}" class="nav-link">Nugget</a></li>
                       <li class="nav-item  {{ $pagename=="blogs"?"active":"" }}"><a href="{{ route('ourblogs') }}" class="nav-link">Blogs</a></li>
-                      <li class="nav-item  {{ $pagename=="books"?"active":"" }}"><a href="{{ route('ourbooks') }}" class="nav-link">Shop</a></li>
-                      <li class="nav-item  {{ $pagename=="ministers"?"active":"" }}"><a href="{{ route('minister') }}" class="nav-link">Ministers</a></li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                          Events
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="{{ route('event') }}" class="dropdown-item">Events</a>
+
+                            <a href="{{ route('minister') }}" class="dropdown-item">Ministers</a>
+
+                        </div>
+                      </li>
+
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                          Gallery
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="{{ route('gallery') }}" class="dropdown-item">Gallery</a>
+                            <a href="{{ route('ourbooks') }}" class="dropdown-item">Shop</a>
+                        </div>
+                      </li>
+
+
+                      {{--  <li class="nav-item  {{ $pagename=="books"?"active":"" }}"><a href="{{ route('ourbooks') }}" class="nav-link">Shop</a></li>  --}}
 
   @guest
-  @if (Route::has('login'))
-  <li class="nav-item  {{ $pagename=="login"?"active":"" }}"><a href="{{ route('login') }}" class="nav-link">Login</a></li>
-  @endif
+ <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                            Login/Register
+                          </a>
+                          <div class="dropdown-menu ">
+                            @if (Route::has('login'))
+                            <a class="dropdown-item" href="{{ route('login') }}">Login</a>
+                            @endif
+
+                            @if (Route::has('register'))
+                            <a class="dropdown-item " href="{{ route('register') }}">Register</a>
+                            @endif
+                          </div>
+                        </li>
 
                         @else
                         @php
@@ -88,7 +121,6 @@
 
                             </li>
                         @endguest
-                      <button type="button" class="btn btn-warning mr-auto"><a href="#" class="text-dark" >Donate</a></button>
                   </ul>
               </div>
           </div>
@@ -99,24 +131,21 @@
     background-repeat: no-repeat;" >
         <div class="container mb-4">
         <div class="row align-items justify-content-center">
-            @guest
-                <div class="col-lg-10 text-center mt-2">
-                <button type="button" class="btn-lg  " style="background-color: #dba928;" >
+            <div class="col-lg-10 text-center mt-2">
+                {{--  <button type="button" class="btn-lg  " style="background-color: #dba928;" >
                 <a class="text-white"  href="{{ route('register') }}">Become a Member</a>
-                </button>
+                </button>  --}}
                 {{--  @if (Route::has('login'))
                 <button type="button" class="btn-sm  " style="background-color: #dba928;" >
                     <a class="text-white" href="{{ route('login') }}">{{ __('Login') }}</a>
                 </button>
                 @endif  --}}
                 </div>
-            @endguest
 
-
- <div class="row ">
+         <div class="row ">
             <div class="col-md-9 bottomleft ">
-             <p class="breadcrumbs mt-2"><span class="mr-2"><a href="{{ route('index') }}" class="text-white">Home <i class="fa fa-chevron-right"></i></a></span> <span>{{ $pagename=="index"?"":ucwords($pagename) }}</ <i class="fa fa-chevron-right"></i></span></p>
-             <h1 class="mb-4 bread">{{ $pagename=="index"?"":ucwords($pagename) }}</h1>
+             <p class="breadcrumbs mt-2"><span class="mr-2"><a href="{{ route('index') }}" class="text-white">Home <i class="fa fa-chevron-right"></i></a></span> <span>{!! $pagename=="index"?"":ucwords(str_replace("%20"," ", $pagename)) !!}</ <i class="fa fa-chevron-right"></i></span></p>
+             {{--  <h1 class="mb-4 bread">{{ $pagename=="index"?"":ucwords($pagename) }}</h1>  --}}
            </div>
          </div>
         </div>

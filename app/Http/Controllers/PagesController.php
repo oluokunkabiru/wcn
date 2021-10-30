@@ -22,13 +22,16 @@ class PagesController extends Controller
     public function index()
     {
         //
+        $today = date('Y-m-d');
         $blogs = Blog::orderBy('id', 'desc')->paginate(3);
-        $events = Event::orderBy('id', 'desc')->paginate(3);
-        $members = User::inRandomOrder()->paginate(12);
+        $events = Event::orderBy('id', 'desc')->whereDate( 'date', '>=', $today )->paginate(2);
+        $members = User::inRandomOrder()->where('status', 1)->paginate(12);
         $gallerys = File::OrderBy('id', 'desc')->where('status', 1)->paginate(6);
         $testimonys = Testimony::with('user')->orderBy('id', 'desc')->where('status', 1)->paginate(12);
+        $testimon = Testimony::with('user')->orderBy('id', 'desc')->where('status', 1)->paginate(3);
         // return $events;
-        return view('pages.index',  compact(['events', 'blogs', 'members', 'gallerys', 'testimonys']));
+        // return $testimon;
+        return view('pages.index',  compact(['events', 'testimon', 'blogs', 'members', 'gallerys', 'testimonys']));
     }
 
     public function about(){

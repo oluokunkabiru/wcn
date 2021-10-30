@@ -173,7 +173,7 @@
                     {!! $event->getLimitedContent($event->content) !!}
                 </div>
             </div>
-            <a href="{{ route('readEvent', [$event->id, str_replace(" ", '_', $event->title)]) }}" class="btn " style="background-color:#dba928 ;">Read More</a>
+            <a href="{{ route('readEvent', [$event->id, str_replace(" ", '_', $event->title)]) }}"  style="border: #dba928 solid " class="text-center mx-2 p-2 text-dark">Read More</a>
 
         </div>
       </div>

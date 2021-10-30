@@ -22,7 +22,7 @@ class Book extends Model implements HasMedia
         return $images[3];
     }
     public function getLimitedContent($content){
-        if(strlen($content) < 150){
+        if(strlen($content) < 100){
             echo $content;
         }else{
         preg_match_all('/<div>(.*?)<\/div>/s', html_entity_decode($content), $div);

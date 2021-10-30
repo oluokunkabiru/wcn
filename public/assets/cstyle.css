@@ -940,7 +940,7 @@ h1, h2, h3, h4, h5,
   border-radius: 7px;
   background: #fff;
   padding: 30px;
-  border-bottom: 4px solid #0779e4;
+  border-bottom: 4px solid #dba928;
   -webkit-box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.1); }
   .testimonial-2 blockquote {
@@ -1211,23 +1211,23 @@ h1, h2, h3, h4, h5,
     #service-h {
       padding: 120px 0 50px;
   }
-  
+
   .service-h-desc {
       padding: 50px 10px 90px 60px;
   }
-  
+
   .service-h-desc>h6 {
       color: green;
       font-weight: 700;
   }
-  
+
   .service-himg {
       background: #F0F0F0;
       height: 475px;
       margin-top: 30px;
       width: 70%;
   }
-  
+
   .service-himg iframe {
       height: 370px;
       width: 130%;
@@ -1235,12 +1235,12 @@ h1, h2, h3, h4, h5,
       box-shadow: 3px 3px 8px 1px #505050;
       border: 1px solid green;
   }
-  
+
   .service-h-tab {
       position: relative;
       margin: 20px 0;
   }
-  
+
   .service-h-tab .nav-tabs>a {
       border-radius: 0;
       width: 190px;
@@ -1249,17 +1249,17 @@ h1, h2, h3, h4, h5,
       line-height: 40px;
       border: 1px solid #ddd;
   }
-  
+
   .service-h-tab .nav-tabs>a.active {
       color: #fff;
       border: 1px solid blue;
       background: blue;
   }
-  
+
   .service-h-tab .tab-content .tab-pane {
       padding: 20px 20px 0px 10px;
   }
-  
+
   @media (min-width: 768px) and (max-width: 1199px) {
       .service-himg {
           background: #fff;
@@ -1279,7 +1279,7 @@ h1, h2, h3, h4, h5,
           border: 1px solid green;
       }
   }
-  
+
   @media (min-width: 768px) and (max-width: 991px) {
       .service-himg iframe {
           height: 370px;
@@ -1288,7 +1288,7 @@ h1, h2, h3, h4, h5,
           border: 1px solid green;
       }
   }
-  
+
   @media (max-width: 767px) {
       #service-h {
           padding: 30px 0 0px;
@@ -1314,7 +1314,7 @@ h1, h2, h3, h4, h5,
           border: 1px solid #ddd;
       }
   }
-  
+
   @media (max-width: 420px) {
       .service-himg iframe {
           height: 200px;

@@ -87,7 +87,7 @@ class ConfigController extends Controller
         $config->whatsapp = $request->whatsapp;
         $config->youtube = $request->youtube;
         $config->address = $request->address;
-        $config->pioneer_message = $request->pioneer;
+        // $config->pioneer_message = $request->pioneer;
         $config->youth_qoute = $request->youth;
         $config->youth_qoute_by = $request->quoteby;
         if($request->file('qouteimage')){
@@ -97,11 +97,11 @@ class ConfigController extends Controller
         }
         $config->youth_qoute1 = $request->youth1;
         $config->youth_qoute1_by = $request->quoteby1;
-        $config->conception = $request->conception;
-        $config->about_us = $request->about;
-        $config->core_value = $request->core;
-        $config->vision = $request->vision;
-        $config->mission = $request->mission;
+        // $config->conception = $request->conception;
+        // $config->about_us = $request->about;
+        // $config->core_value = $request->core;
+        // $config->vision = $request->vision;
+        // $config->mission = $request->mission;
         $config->pioneer_message1 = $request->pioneer1;
         $config->pioneer_message_by = $request->pioneerfrom;
 

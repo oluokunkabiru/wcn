@@ -29,12 +29,15 @@
                             </h5>
                             <small>{{ $book->created_at }}</small>
                         </a>
-                        {!! $book->description !!}
+                        {!! $book->getLimitedContent($book->description) !!}
 
                     </div>
                     <div class="card-footer">
                         <div class="d-flex align-items-center justify-content-between">
-                            <a href="#bookdetails" data-toggle="modal" class="btn btn-outline-primary btn-sm mb-0">
+                            <a href="#bookdetails"
+                            username="{{ ucwords($book->title )}}"
+                            img="{{ $book->getMedia('books')->first()->getFullUrl() }}"
+                              testimony="{{  $book->description  }}" data-toggle="modal"  style="border: #dba928 solid " class="text-center mx-2 p-2 text-dark">
                                 Full details <span class="fa fa-address-book-o"></span>
                             </a>
                             </div>
@@ -46,11 +49,47 @@
             {{ $books->links() }}
         </div>
     </div>
+    <div class="modal" id="bookdetails">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title text-uppercase">Book </h4>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body ">
+                    <div class="row">
+                        {{-- <div class="col-4"> --}}
+                        {{--  <img src="" style="width: 200px" class="card-img rounded" id="userimg" alt="">  --}}
+                        {{-- <div class="card"> --}}
+                        {{--  <h5 class="text-center my-1" id="username"></h5>  --}}
+                        {{-- </div> --}}
+                        {{-- </div> --}}
+                        <div class="container">
+                            <span id="full"></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
     </section>
 @endsection
 @section('script')
     <script>
+        $('#bookdetails').on('show.bs.modal', function(e) {
+            var name = $(e.relatedTarget).attr('username');
+            var img = $(e.relatedTarget).attr('img');
+            var testimony = $(e.relatedTarget).attr('testimony');
+            $("#full").html(testimony);
+            $("#username").text(name);
+            $("#userimg").attr("src", img);
 
-
+        })
     </script>
+
 @endsection

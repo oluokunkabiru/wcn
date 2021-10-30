@@ -1,6 +1,6 @@
 
 @extends('layouts.app')
-@section('title', 'Gallery')
+@section('title', 'Blogs')
 @section('style')
     <style>
 
@@ -40,7 +40,7 @@
                         <div class="d-flex align-items-center justify-content-between">
                             {{--  <button type="button" class="btn btn-outline-primary btn-sm mb-0">View
                                 Project</button>  --}}
-                                <a href="{{ route('readblog', [$blog->id, str_replace(" ", '_', $blog->title)]) }}" data-toggle="tooltip" title="Read full content" class="btn btn-success  ">... Continue reading</a>
+                                <a href="{{ route('readblog', [$blog->id, str_replace(" ", '_', $blog->title)]) }}" data-toggle="tooltip" title="Read full content"  style="border: #dba928 solid " class="text-center mx-2 p-2 text-dark">... Continue reading</a>
 
                         </div>
                     </div>
@@ -56,6 +56,7 @@
 
         </div>
     </div>
+    
     </section>
 @endsection
 @section('script')

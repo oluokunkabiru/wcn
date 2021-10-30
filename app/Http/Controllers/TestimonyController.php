@@ -129,7 +129,8 @@ class TestimonyController extends Controller
             }
 
           $testimony->forceDelete();
-          Notification::send(Auth::user(), new ActivatorNofification("Testimony","Testimony deleted"));
+          $avatar = Auth::user()->getMedia('avatar')->first()->getFullUrl('avatar');
+          Notification::send(Auth::user(), new ActivatorNofification($avatar, "Testimony","Testimony deleted", ""));
           return redirect()->back()->with('success', "Testimony deleted successfully");
 
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EventRequest;
+use App\Http\Requests\EventUpRequest;
 use App\Models\Event;
 use App\Models\Setting;
 use App\Notifications\ActivatorNofification;
@@ -98,7 +99,7 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EventRequest $request, $id)
+    public function update(EventUpRequest $request, $id)
     {
         //
         $title = $request->title;

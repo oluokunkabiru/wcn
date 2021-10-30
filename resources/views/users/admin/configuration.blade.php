@@ -149,7 +149,7 @@
            </div>
            <div class="col-md-6">
             <div class="form-group">
-                <label for="usr">Youth Quote:</label>
+                <label for="usr">First Quote:</label>
                 <textarea name="youth" id="youth" class="form-control {{ $errors->has('youth') ? ' is-invalid' : '' }}" cols="20" rows="10">
                     {{ $config->youth_qoute, old('youth') }}
                 </textarea>
@@ -186,7 +186,7 @@
            </div>
            <div class="col-md-6">
             <div class="form-group">
-                <label for="usr">Youth Quote 2:</label>
+                <label for="usr">Second Quote:</label>
                 <textarea name="youth1" id="youth1" class="form-control {{ $errors->has('youth1') ? ' is-invalid' : '' }}" cols="20" rows="10">
                     {{ $config->youth_qoute1, old('youth1') }}
                 </textarea>
@@ -210,7 +210,7 @@
                 </div>
             </div>
            </div>
-           <div class="col-md-6">
+           {{--  <div class="col-md-6">
             <div class="form-group">
                 <label for="usr">About us:</label>
                 <textarea name="about" id="about" class="form-control {{ $errors->has('about') ? ' is-invalid' : '' }}" cols="20" rows="10">
@@ -290,10 +290,10 @@
                </span>
                @endif
             </div>
-           </div>
+           </div>  --}}
            <div class="col-md-6">
             <div class="form-group">
-                <label for="usr">Pioneer Message 2:</label>
+                <label for="usr">Pioneer Message:</label>
                 <textarea name="pioneer1" id="pioneer1" class="form-control {{ $errors->has('pioneer1') ? ' is-invalid' : '' }}" cols="20" rows="10">
                     {{ $config->pioneer_message1, old('pioneer1') }}
                 </textarea>

@@ -37,7 +37,7 @@ class EventRequest extends FormRequest
             'title.required' => "Please provide event title",
             'content.required' => 'Please provide event content',
             'date.required' => 'Please provide event date',
-            'image.required' => 'Please provide event event image caption'
+            'image.required' => 'Please provide event image caption'
         ];
     }
 }
