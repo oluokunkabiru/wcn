@@ -4,21 +4,24 @@
 @section('style')
     <style>
 
-/* .backindex{
-      background-color: black;
-      color: #dba928;
-      border-radius:10px;
-      box-shadow: 0 4px 8px 0 #f1d48b, 0 6px 20px 0 #dba928;
+.backindex {
+            background-color: rgb(235, 232, 232);
+            color: black !important;
+            border-radius: 10px;
+            /* box-shadow: 0 4px 8px 0 #f1d48b, 0 6px 20px 0 #dba928; */
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
-    }
+        }
+        .backindexe {
+            /* background-color:#f1d48b; */
+            background-color: rgb(235, 232, 232);
 
-    .backindexe{
-      background-color:#f1d48b;
-      color: black;
-      border-radius:5px;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-      padding: 10px;
-    } */
+            color: black;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            padding: 10px;
+        }
+
 /*
     .imgs{
       max-width:100%;

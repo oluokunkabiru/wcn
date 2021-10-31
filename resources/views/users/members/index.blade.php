@@ -183,7 +183,7 @@
             </div>
 
         @else
-            <h2 class="text-danger font-weight-bold text-uppercase"><marquee behavior="" direction="">Your accound is not yet approved please contact admin for account approval</marquee></h2>
+            <h2 class="text-danger font-weight-bold text-uppercase"><marquee behavior="" direction="">Your account is not yet approved please contact admin for account approval</marquee></h2>
         @endif
 
         </div>

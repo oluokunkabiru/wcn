@@ -44,11 +44,14 @@ class TestimonyController extends Controller
     public function store(TestimonyRequest $request)
     {
         //
+        // return isset($request->anonymous) ? "hide": "show";
+
         $description = $request->content;
        $testimony =  new Testimony();
        $testimony->testimony = $description;
        $testimony->user_id = Auth::user()->id;
        $testimony->status = 0;
+       $testimony->anonymous = isset($request->anonymous) ? "hide": "show";
        $testimony->save();
        $avatar = Auth::user()->getMedia('avatar')->first()->getFullUrl('avatar');
        $url = "";//route('readblog', [$blog->id, str_replace(" ", '_', $blog->title)]);
@@ -97,6 +100,8 @@ class TestimonyController extends Controller
        $description = $request->content;
        $testimony =  Testimony::where('id', $id)->first();
        $testimony->testimony = $description;
+       $testimony->anonymous = isset($request->anonymous) ? "hide": "show";
+
        $testimony->update();
        $avatar = Auth::user()->getMedia('avatar')->first()->getFullUrl('avatar');
        $url = "";//route('readblog', [$blog->id, str_replace(" ", '_', $blog->title)]);

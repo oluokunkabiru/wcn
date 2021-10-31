@@ -10,17 +10,22 @@
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
         }
-        section{
-            padding: 10px;
-        }
 
         .backindexe {
             /* background-color:#f1d48b; */
+            background-color: rgb(235, 232, 232);
+
             color: black;
             border-radius: 5px;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
             padding: 10px;
         }
+
+
+        section {
+            padding: 10px;
+        }
+
 
         .imgs {
             max-width: 100%;
@@ -137,10 +142,10 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="box small h-100 backindexe">
+                            <div class="box small h-100 backin">
                                 @foreach ($blogs as $blog)
                                     <div class="d-flex align-items-center mb-2">
-                                        <div class="img" ><img
+                                        <div class="img"><img
                                                 src="{{ $blog->getMedia('blogs')->first()->getFullUrl() != ''
     ? $blog->getMedia('blogs')->first()->getFullUrl()
     : '../assets/img/home-decor-1.jpg' }}"
@@ -195,125 +200,125 @@
                 </div>
                 <div class="col-lg-6 ">
                     <div class="quotes pt-4">
-                      <h6 class=" quotes " style="  text-align:left;">
-                        Word Central Global Network (WCN) is a vibrant youth
-                        ministry dedicated <br> to liberating youths from the shackles
-                        of perversion, transforming <br> them to be lights in a perverse
-                        and crooked world, and releasing <br> them as guided missiles
-                        to impact their world in the  market place;<br> campuses,
-                        fellowships, Churches, families, etc.
-                        Word Central Global<br> Network, as the name implies, firmly
-                        believes in the efficacy of the Word<br> of God to transform
-                        lives and we have seen this happen over the years. <br>
-                      </h6>
+                        <h6 class=" quotes " style="  text-align:left;">
+                            Word Central Global Network (WCN) is a vibrant youth
+                            ministry dedicated <br> to liberating youths from the shackles
+                            of perversion, transforming <br> them to be lights in a perverse
+                            and crooked world, and releasing <br> them as guided missiles
+                            to impact their world in the market place;<br> campuses,
+                            fellowships, Churches, families, etc.
+                            Word Central Global<br> Network, as the name implies, firmly
+                            believes in the efficacy of the Word<br> of God to transform
+                            lives and we have seen this happen over the years. <br>
+                        </h6>
 
-                        <h4  style="color:#dba928; text-align:left;" >Conception </h4>
+                        <h4 style="color:#dba928; text-align:left;">Conception </h4>
                         <h6 class=" quotes " style="text-align:left;">
-                        Word Central was first conceived in 1999 as “Eagle’s Era” <br>
-                          - a Youth gathering which hosted as many as 400 Youths,
-                          praying,<br> praising and rediscovering identity together as
-                          the move of the<br> Holy Spirit in various dimensions was
-                          experience....
-                          <i type="text" class="text text-warning" data-toggle="modal" data-target="#myModal">
-                          Continue reading
-                           </i>
+                            Word Central was first conceived in 1999 as “Eagle’s Era” <br>
+                            - a Youth gathering which hosted as many as 400 Youths,
+                            praying,<br> praising and rediscovering identity together as
+                            the move of the<br> Holy Spirit in various dimensions was
+                            experience....
+                            <i type="text" class="text text-warning" data-toggle="modal" data-target="#myModal">
+                                Continue reading
+                            </i>
 
                         </h6>
 
                     </div>
 
 
-                      <!-- The Modal -->
-                <div class="modal fade" id="myModal">
-                  <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
+                    <!-- The Modal -->
+                    <div class="modal fade" id="myModal">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
 
-                      <!-- Modal Header -->
-                      <div class="modal-header">
-                        <h4 class="modal-title">About Word Central Global Network</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      </div>
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">About Word Central Global Network</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
 
-                      <!-- Modal body -->
-                      <div class="modal-body">
-                      <p> <strong> Word Central Global Network (WCN)</strong>
-                        is a vibrant youth
-                        ministry dedicated to liberating youths from the shackles
-                        of perversion, transforming them to be lights in a perverse
-                        and crooked world, and releasing them as guided missiles
-                        to impact their world in the market place; campuses,
-                        fellowships, Churches, families, etc.
-                        Word Central Global Network, as the name implies, firmly
-                        believes in the efficacy of the Word of God to transform
-                        lives and we have seen this happen over the years.
-                      </p>
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <p> <strong> Word Central Global Network (WCN)</strong>
+                                        is a vibrant youth
+                                        ministry dedicated to liberating youths from the shackles
+                                        of perversion, transforming them to be lights in a perverse
+                                        and crooked world, and releasing them as guided missiles
+                                        to impact their world in the market place; campuses,
+                                        fellowships, Churches, families, etc.
+                                        Word Central Global Network, as the name implies, firmly
+                                        believes in the efficacy of the Word of God to transform
+                                        lives and we have seen this happen over the years.
+                                    </p>
 
 
-                      <h1 style="color:#dba928" >Conception </h1>
-                      <p>Word Central was first conceived in 1999 as “Eagle’s Era”
-                          - a Youth gathering which hosted as many as 400 Youths,
-                          praying, praising and rediscovering identity together as
-                          the move of the Holy Spirit in various dimensions was
-                          experience.
-                          Apst Dr Faith Oniya has been burdened with a passion to
-                          see youths live godly lives for over two (2) decades now.
-                          He believes this burden can be adequately expressed
-                          towards seeing a transformed generation of youths
-                          on fire and he believes this is only possible when
-                          youths give themselves over and wholly to God
-                          as he transforms them, uses them for his glory
-                          and increase them in every ramification of their
-                          lives. He is sold out to helping many youths
-                          discover what their purpose in life truly is, teach
-                          them the nuggets and virtues they need to
-                          achieve purpose, help them understand
-                          the principles of instigation and their
-                          personal rules of engagement, and
-                          teach them to secure and have a
-                          deeper relationship with God.
-                          He was in a marathon prayer session
-                          early in the year 1998 and in one of those
-                          days he saw a vision of a flying eagle
-                          which dropped a pearl. He immediately
-                          understood the symbolisms of this vision;
-                        </p>
-                        <p>
+                                    <h1 style="color:#dba928">Conception </h1>
+                                    <p>Word Central was first conceived in 1999 as “Eagle’s Era”
+                                        - a Youth gathering which hosted as many as 400 Youths,
+                                        praying, praising and rediscovering identity together as
+                                        the move of the Holy Spirit in various dimensions was
+                                        experience.
+                                        Apst Dr Faith Oniya has been burdened with a passion to
+                                        see youths live godly lives for over two (2) decades now.
+                                        He believes this burden can be adequately expressed
+                                        towards seeing a transformed generation of youths
+                                        on fire and he believes this is only possible when
+                                        youths give themselves over and wholly to God
+                                        as he transforms them, uses them for his glory
+                                        and increase them in every ramification of their
+                                        lives. He is sold out to helping many youths
+                                        discover what their purpose in life truly is, teach
+                                        them the nuggets and virtues they need to
+                                        achieve purpose, help them understand
+                                        the principles of instigation and their
+                                        personal rules of engagement, and
+                                        teach them to secure and have a
+                                        deeper relationship with God.
+                                        He was in a marathon prayer session
+                                        early in the year 1998 and in one of those
+                                        days he saw a vision of a flying eagle
+                                        which dropped a pearl. He immediately
+                                        understood the symbolisms of this vision;
+                                    </p>
+                                    <p>
                                     <h1>The Eagle:</h1>
-                        Youthfulness, Waiting upon the Lord, Strength, Resilience,
-                        Vision. He immediately understood it was a ministry for
-                        the youths and youthful at heart and knew he was being
-                        tasked to raise a focused, adventurous, vibrant, benign
-                        and grounded crop of youths for the kingdom of God.
-                        This is even more needed at these times.
-                        </p>
+                                    Youthfulness, Waiting upon the Lord, Strength, Resilience,
+                                    Vision. He immediately understood it was a ministry for
+                                    the youths and youthful at heart and knew he was being
+                                    tasked to raise a focused, adventurous, vibrant, benign
+                                    and grounded crop of youths for the kingdom of God.
+                                    This is even more needed at these times.
+                                    </p>
 
-                        <p>
-                        He also began to understand most importantly that
-                        this was only going to be possible by the power
-                        and help of the Holy Spirit as the eagle perfectly
-                        symbolizes the swift move of God’s Spirit for
-                        a revival in power.
-                        </p>
+                                    <p>
+                                        He also began to understand most importantly that
+                                        this was only going to be possible by the power
+                                        and help of the Holy Spirit as the eagle perfectly
+                                        symbolizes the swift move of God’s Spirit for
+                                        a revival in power.
+                                    </p>
 
-                        <p>
-                        <h1>The Pearl:</h1>
-                        Value, Quality, Preciousness, spiritual
-                        wealth, promising future and a better
-                        tomorrow, purity, wisdom, patience,
-                        and peace.
-                        </p>
-                      </div>
+                                    <p>
+                                    <h1>The Pearl:</h1>
+                                    Value, Quality, Preciousness, spiritual
+                                    wealth, promising future and a better
+                                    tomorrow, purity, wisdom, patience,
+                                    and peace.
+                                    </p>
+                                </div>
 
-                      <!-- Modal footer -->
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-                      </div>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                                </div>
 
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                </div>
 
-                  </div>
+                </div>
             </div>
         </div>
 
@@ -325,58 +330,58 @@
                 <div class="offset-lg-1"></div>
 
                 <div class="col-md-3">
-                  <div class="services-2">
-                    <div><i class="fa fa-eye values" style="font-size:50px"></i></div>
-                    <div class="text values">
-                      <h4 style="color:#dba928">The Vision</h4>
-                      <p> To raise a crop of youths who would catch the fire of
-                        the Holy Ghost, come alive, be revived themselves,
-                        and then, begin to cause an unstoppable revival in our
-                        days towards seeing the continuity of the faith handed
-                        us by the fathers and an increase of the same through
-                        dedicated and calculated youth meetings, mentorship
-                        initiatives and discipleship programs.
-                      </p>
+                    <div class="services-2">
+                        <div><i class="fa fa-eye values" style="font-size:50px"></i></div>
+                        <div class="text values">
+                            <h4 style="color:#dba928">The Vision</h4>
+                            <p> To raise a crop of youths who would catch the fire of
+                                the Holy Ghost, come alive, be revived themselves,
+                                and then, begin to cause an unstoppable revival in our
+                                days towards seeing the continuity of the faith handed
+                                us by the fathers and an increase of the same through
+                                dedicated and calculated youth meetings, mentorship
+                                initiatives and discipleship programs.
+                            </p>
+                        </div>
                     </div>
-                  </div>
                 </div>
                 <div class="col-md-3">
-                  <div class="services-2">
-                    <div ><span class="fa fa-bullseye values" style="font-size:50px"></span></div>
-                    <div class="text values ">
-                      <h4 style="color:#dba928">The Mission</h4>
-                      <p> We help youths see the value heaven places on their soul,
-                        engage them in active service in God’s Kingdom, subject
-                        them to an environment of leadership and commission
-                        them to do the same at the appointed time thus producing
-                        men of purpose, focus, discipline, having themselves
-                        been products of the same.
-                      </p>
+                    <div class="services-2">
+                        <div><span class="fa fa-bullseye values" style="font-size:50px"></span></div>
+                        <div class="text values ">
+                            <h4 style="color:#dba928">The Mission</h4>
+                            <p> We help youths see the value heaven places on their soul,
+                                engage them in active service in God’s Kingdom, subject
+                                them to an environment of leadership and commission
+                                them to do the same at the appointed time thus producing
+                                men of purpose, focus, discipline, having themselves
+                                been products of the same.
+                            </p>
+                        </div>
                     </div>
-                  </div>
                 </div>
                 <div class="col-md-5 mt-3 d-flex">
-                  <div class="backindexe services-2">
-                    <div ><span class="pt-4 fa fa-key values" style="font-size:50px"></span></div>
+                    <div class="backindexe services-2">
+                        <div><span class="pt-4 fa fa-key values" style="font-size:50px"></span></div>
 
-                    <div class="text values">
-                      <h4 style="color:black;">Core Value</h4>
+                        <div class="text values">
+                            <h4 style="color:black;">Core Value</h4>
 
-                      We believe all members of Word Central Global Network; <br>
-                      a. Must be born again, <br>
-                      b. Must have a desire to grow spiritually, <br>
-                      c. Must be willing to be trained and well-rounded <br>
-                      d. Must be dedicated and sacrificial (spiritually and
-                      financially), and otherwise <br>
-                      e. Must be ministry-oriented and vision driven <br>
-                      f. Must be acquiescent to leadership and strive to
-                      be one<br>
-                      g. Must be oriented towards consistent service
-                      over the years.
+                            We believe all members of Word Central Global Network; <br>
+                            a. Must be born again, <br>
+                            b. Must have a desire to grow spiritually, <br>
+                            c. Must be willing to be trained and well-rounded <br>
+                            d. Must be dedicated and sacrificial (spiritually and
+                            financially), and otherwise <br>
+                            e. Must be ministry-oriented and vision driven <br>
+                            f. Must be acquiescent to leadership and strive to
+                            be one<br>
+                            g. Must be oriented towards consistent service
+                            over the years.
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
+            </div>
         </div>
         </div>
     </section>
@@ -403,126 +408,126 @@
                 <div class="col-lg-6">
                     <div class="quotes justify pt-4">
 
-                      <h6 class=" quotes " style="text-align:justify;">
+                        <h6 class=" quotes " style="text-align:justify;">
 
-                      <p>
-                                 <strong > “WHAT YOU SEE YOU GET”</strong> <br>
+                            <p>
+                                <strong> “WHAT YOU SEE YOU GET”</strong> <br>
 
-                          There is a lot of noise about how useless, ungodly and
-                          at some point, how lazy the youths are.
-                          Each time I hear this, my heart bleeds simply because it
-                          is an established fact that we immediately lose or begin
-                          to lose our ability to help whatever we have concluded as
-                          damaged and/or “useless”.
-                          You have to see the good to get the good.
-                          What you see you get!
-                      </p>
+                                There is a lot of noise about how useless, ungodly and
+                                at some point, how lazy the youths are.
+                                Each time I hear this, my heart bleeds simply because it
+                                is an established fact that we immediately lose or begin
+                                to lose our ability to help whatever we have concluded as
+                                damaged and/or “useless”.
+                                You have to see the good to get the good.
+                                What you see you get!
+                            </p>
 
-                      </h6>
+                        </h6>
 
                         <p class=" quotes " style="  text-align:justify;">
-                        If the youths have to become a better version of
-                        themselves or better still a splitting image of Jesus for
-                        in his light, can they truly discover themselves, we must
-                        begin to rid ourselves of the pessimistic phenomenon. If
-                        there is no glimmer of hope within
-                        us, how can we produce in them
-                        hope for their future. We cannot
-                        give what we do not have.
+                            If the youths have to become a better version of
+                            themselves or better still a splitting image of Jesus for
+                            in his light, can they truly discover themselves, we must
+                            begin to rid ourselves of the pessimistic phenomenon. If
+                            there is no glimmer of hope within
+                            us, how can we produce in them
+                            hope for their future. We cannot
+                            give what we do not have.
                         </p>
 
                         <p class=" quotes " style="  text-align:justify;">
-                        I once said at a youth meeting
-                        I had about 20 years ago
-                        which I tagged “Youth
-                        Expression” that
-                        “…the strength of an
-                        entire length of rope
-                        is determined by its
-                        weakest link… if we
-                        continue to call the
-                        <i type="text" class="text text-warning" data-toggle="modal" data-target="#pioneerModal">
-                          Continue reading
-                           </i>
+                            I once said at a youth meeting
+                            I had about 20 years ago
+                            which I tagged “Youth
+                            Expression” that
+                            “…the strength of an
+                            entire length of rope
+                            is determined by its
+                            weakest link… if we
+                            continue to call the
+                            <i type="text" class="text text-warning" data-toggle="modal" data-target="#pioneerModal">
+                                Continue reading
+                            </i>
                         </p>
                     </div>
 
 
-                      <!-- The Modal -->
-                <div class="modal fade" id="pioneerModal">
-                  <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
+                    <!-- The Modal -->
+                    <div class="modal fade" id="pioneerModal">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
 
-                      <!-- Modal Header -->
-                      <div class="modal-header">
-                        <h4 class="modal-title">Message from the Pioneer</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      </div>
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Message from the Pioneer</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
 
-                      <!-- Modal body -->
-                      <div class="modal-body">
-                      <strong> “WHAT YOU SEE YOU GET”</strong>
-                      <p>
-                          There is a lot of noise about how useless, ungodly and
-                          at some point, how lazy the youths are.
-                          Each time I hear this, my heart bleeds simply because it
-                          is an established fact that we immediately lose or begin
-                          to lose our ability to help whatever we have concluded as
-                          damaged and/or “useless”.
-                          You have to see the good to get the good.
-                          What you see you get!
-                      </p>
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <strong> “WHAT YOU SEE YOU GET”</strong>
+                                    <p>
+                                        There is a lot of noise about how useless, ungodly and
+                                        at some point, how lazy the youths are.
+                                        Each time I hear this, my heart bleeds simply because it
+                                        is an established fact that we immediately lose or begin
+                                        to lose our ability to help whatever we have concluded as
+                                        damaged and/or “useless”.
+                                        You have to see the good to get the good.
+                                        What you see you get!
+                                    </p>
 
-                      <p class="font-weight-bold quotes " style="  text-align:justify;">
-                        If the youths have to become a better version of
-                        themselves or better still a splitting image of Jesus for
-                        in his light, can they truly discover themselves, we must
-                        begin to rid ourselves of the pessimistic phenomenon. If
-                        there is no glimmer of hope within
-                        us, how can we produce in them
-                        hope for their future. We cannot
-                        give what we do not have.
-                        </p>
+                                    <p class="font-weight-bold quotes " style="  text-align:justify;">
+                                        If the youths have to become a better version of
+                                        themselves or better still a splitting image of Jesus for
+                                        in his light, can they truly discover themselves, we must
+                                        begin to rid ourselves of the pessimistic phenomenon. If
+                                        there is no glimmer of hope within
+                                        us, how can we produce in them
+                                        hope for their future. We cannot
+                                        give what we do not have.
+                                    </p>
 
-                        <p class="font-weight-bold quotes " style="  text-align:justify;">
-                        I once said at a youth meeting
-                        I had about 20 years ago
-                        which I tagged “Youth
-                        Expression” that
-                        “…the strength of an
-                        entire length of rope
-                        is determined by its
-                        weakest link… if we
-                        continue to call the youths corrupt and weak, we are indirectly describing
-                        our strength, our fate and the product that our best
-                        could leave behind. We are exactly what we call them.
-                        We cannot be better…”
-                        </p>
+                                    <p class="font-weight-bold quotes " style="  text-align:justify;">
+                                        I once said at a youth meeting
+                                        I had about 20 years ago
+                                        which I tagged “Youth
+                                        Expression” that
+                                        “…the strength of an
+                                        entire length of rope
+                                        is determined by its
+                                        weakest link… if we
+                                        continue to call the youths corrupt and weak, we are indirectly describing
+                                        our strength, our fate and the product that our best
+                                        could leave behind. We are exactly what we call them.
+                                        We cannot be better…”
+                                    </p>
 
-                        <p class="font-weight-bold quotes " style="  text-align:justify;">
-                        It is high time we all arise and get busy helping these
-                        young folks discover who they have been created to be in
-                        Christ rather than get busy complaining about the ills we
-                        observe. Afterall we are exactly what we complain about.
-                        </p>
-
-
+                                    <p class="font-weight-bold quotes " style="  text-align:justify;">
+                                        It is high time we all arise and get busy helping these
+                                        young folks discover who they have been created to be in
+                                        Christ rather than get busy complaining about the ills we
+                                        observe. Afterall we are exactly what we complain about.
+                                    </p>
 
 
 
 
-                      </div>
 
-                      <!-- Modal footer -->
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-                      </div>
 
+                                </div>
+
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
-                  </div>
+
                 </div>
-
-                  </div>
 
 
                 <div class="col-lg-6">
@@ -754,90 +759,112 @@
                     <!-- The slideshow -->
                     <div class="carousel-inner">
 
-                      <div class="carousel-item active  card-columns">
-                          @foreach ($testimon as $testimony)
-                          <div class="card">
-                            <div class="card-body">
-                                <div class="testimonial-2">
-                                    {{-- <h3 class="h5">God is Good</h3> --}}
-                                    <blockquote class="mb-4" style="max-height:200px; overflow:hidden">
-                                        {!! $testimony->testimony !!}
-                                    </blockquote>
-                                    <div class="d-flex v-card align-items-center">
-                                        <img src="{{ $testimony->user->getMedia('avatar')->first()->getFullUrl() }}"
-                                            alt="Image" class="img-fluid mr-3">
-                                        <div class="author-name">
-                                            <span class="d-block">{{ ucwords($testimony->user->name) }}</span>
-                                        </div>
-                                        <button style="border: #dba928 solid " class="text-center mx-2" data-target="#fulltestimony" data-toggle="modal" testimony="{!! $testimony->testimony !!}"
-                                            username="{{ ucwords($testimony->user->name) }}"
-                                            img="{{ $testimony->user->getMedia('avatar')->first()->getFullUrl() }}">Read full</button>
-                                        {{--  <a href="#fulltestimony" data-toggle="modal" testimony="{!! $testimony->testimony !!}"
+                        <div class="carousel-item active  card-columns">
+                            @foreach ($testimon as $testimony)
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="testimonial-2">
+                                            {{-- <h3 class="h5">God is Good</h3> isset($testimony->anonymous) ? "hide": "show"; --}}
+                                            <blockquote class="mb-4" style="max-height:200px; overflow:hidden">
+                                                {!! $testimony->testimony !!}
+                                            </blockquote>
+                                            <div class="d-flex v-card align-items-center">
+                                                <img src="{{ $testimony->anonymous == 'show'
+    ? $testimony->user->getMedia('avatar')->first()->getFullUrl()
+    : asset('assets/images/anonymous.png') }}"
+                                                    alt="Image" class="img-fluid mr-3">
+                                                <div class="author-name">
+                                                    <span
+                                                        class="d-block">{{ ucwords($testimony->anonymous == 'show' ? $testimony->user->name : 'Anonymous') }}</span>
+                                                </div>
+                                                <button style="border: #dba928 solid " class="text-center mx-2"
+                                                    data-target="#fulltestimony" data-toggle="modal"
+                                                    testimony="{!! $testimony->testimony !!}"
+                                                    username="{{ ucwords($testimony->anonymous == 'show' ? $testimony->user->name : 'Anonymous') }}"
+                                                    img="{{ $testimony->anonymous == 'show'
+    ? $testimony->user->getMedia('avatar')->first()->getFullUrl()
+    : asset('assets/images/anonymous.png') }}">Read
+                                                    full</button>
+                                                {{-- <a href="#fulltestimony" data-toggle="modal" testimony="{!! $testimony->testimony !!}"
                                             username="{{ ucwords($testimony->user->name) }}"
                                             img="{{ $testimony->user->getMedia('avatar')->first()->getFullUrl() }}"
-                                            class="btn btn-block" style="border: #dba928 solid ">Read full</a>  --}}
+                                            class="btn btn-block" style="border: #dba928 solid ">Read full</a> --}}
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>                            </div>
+                                </div>
+                            @endforeach
+
+
+
+
                         </div>
-                          @endforeach
 
 
+                        @for ($i = 0; $i < count($testimonys); $i += 3)
 
+                            <div class="carousel-item card-columns">
+                                @for ($j = 1; $j <= 3; $j++)
 
-                      </div>
-
-
-                      @for ($i =0; $i < count($testimonys); $i+=3)
-                        <div class="carousel-item card-columns">
-                                 @for ($j=1; $j <=3; $j++ )
-                                 <div class="card">
-                                    <div class="card-body">
-                            <div class="testimonial-2">
-                                {{-- <h3 class="h5">God is Good</h3> --}}
-                                <blockquote class="mb-4" style="max-height:200px; overflow:hidden">
-                                    {!! $testimonys[$i]->testimony !!}
-                                </blockquote>
-                                <div class="d-flex v-card align-items-center">
-                                    <img src="{{ $testimonys[$i]->user->getMedia('avatar')->first()->getFullUrl() }}"
-                                        alt="Image" class="img-fluid mr-3">
-                                    <div class="author-name">
-                                        <span class="d-block">{{ ucwords($testimonys[$i]->user->name) }}</span>
-                                    </div>
-                                    <button style="border: #dba928 solid " class="text-center mx-2" data-target="#fulltestimony" data-toggle="modal" testimony="{!! $testimonys[$i]->testimony !!}"
-                                        username="{{ ucwords($testimonys[$i]->user->name) }}"
-                                        img="{{ $testimonys[$i]->user->getMedia('avatar')->first()->getFullUrl() }}">Read full</button>
-                                    {{--  <a href="#fulltestimony" data-toggle="modal" testimony="{!! $testimony->testimony !!}"
+                                    @if (isset($testimonys[$i + $j]->id))
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="testimonial-2">
+                                                    {{-- <h3 class="h5">God is Good</h3> --}}
+                                                    <blockquote class="mb-4"
+                                                        style="max-height:200px; overflow:hidden">
+                                                        {!! $testimonys[$i + $j]->testimony !!}
+                                                    </blockquote>
+                                                    <div class="d-flex v-card align-items-center">
+                                                        <img src="{{ $testimonys[$i + $j]->anonymous == 'show'
+    ? $testimonys[$i + $j]->user->getMedia('avatar')->first()->getFullUrl()
+    : asset('assets/images/anonymous.png') }}"
+                                                            alt="Image" class="img-fluid mr-3">
+                                                        <div class="author-name">
+                                                            <span
+                                                                class="d-block">{{ ucwords($testimonys[$i + $j]->anonymous == 'show' ? $testimonys[$i + $j]->user->name : 'Anonymous') }}</span>
+                                                        </div>
+                                                        <button style="border: #dba928 solid " class="text-center mx-2"
+                                                            data-target="#fulltestimony" data-toggle="modal"
+                                                            testimony="{!! $testimonys[$i + $j]->testimony !!}"
+                                                            username="{{ ucwords($testimonys[$i + $j]->anonymous == 'show' ? $testimonys[$i + $j]->user->name : 'Anonymous') }}"
+                                                            img="{{ $testimonys[$i + $j]->anonymous == 'show'
+    ? $testimonys[$i + $j]->user->getMedia('avatar')->first()->getFullUrl()
+    : asset('assets/images/anonymous.png') }}">Read
+                                                            full</button>
+                                                        {{-- <a href="#fulltestimony" data-toggle="modal" testimony="{!! $testimony->testimony !!}"
                                         username="{{ ucwords($testimony->user->name) }}"
                                         img="{{ $testimony->user->getMedia('avatar')->first()->getFullUrl() }}"
-                                        class="btn btn-block" style="border: #dba928 solid ">Read full</a>  --}}
-                                </div>
-                            </div>
-                                    </div>
-                                </div>
+                                        class="btn btn-block" style="border: #dba928 solid ">Read full</a> --}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
                                 @endfor
-                        </div>
-                        {{--  @endif  --}}
+                            </div>
+                            {{-- @endif --}}
 
-                      @endfor
+                        @endfor
 
 
                     </div>
 
                     <!-- Left a
-                  nd right controls -->
+                          nd right controls -->
                     <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                      <span class="carousel-control-prev-icon"></span>
+                        <span class="carousel-control-prev-icon"></span>
                     </a>
                     <a class="carousel-control-next" href="#demo" data-slide="next">
-                      <span class="carousel-control-next-icon"></span>
+                        <span class="carousel-control-next-icon"></span>
                     </a>
 
-                  </div>
+                </div>
 
 
                 <div class="row">
 
-                    {{--  @forelse ($testimonys as $testimony)
+                    {{-- @forelse ($testimonys as $testimony)
                         <div class="col-lg-4 mb-4 mb-lg-0">
                             <div class="testimonial-2">
                                 <blockquote class="mb-4" style="max-height:200px; overflow:hidden">
@@ -858,7 +885,7 @@
 
                     @empty
                         <h3 class="text-danger font-weight-bold text-center">No recent testimony</h3>
-                    @endforelse  --}}
+                    @endforelse --}}
 
 
                 </div>
@@ -879,9 +906,9 @@
                     <div class="modal-body ">
                         <div class="row">
                             {{-- <div class="col-4"> --}}
-                            {{--  <img src="" style="width: 200px" class="card-img rounded" id="userimg" alt="">  --}}
+                            {{-- <img src="" style="width: 200px" class="card-img rounded" id="userimg" alt=""> --}}
                             {{-- <div class="card"> --}}
-                            {{--  <h5 class="text-center my-1" id="username"></h5>  --}}
+                            {{-- <h5 class="text-center my-1" id="username"></h5> --}}
                             {{-- </div> --}}
                             {{-- </div> --}}
                             <div class="container">

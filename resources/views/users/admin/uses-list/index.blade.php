@@ -35,6 +35,7 @@
                     <tr>
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">S/N</th>
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
+
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Role</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Last active</th>
@@ -60,8 +61,14 @@
                             <h6 class="mb-0 text-sm">{{ ucwords($user->name) }}</h6>
                             <p class="text-xs text-secondary mb-0">{{ $user->email }}</p>
                             <p class="text-xs text-secondary mb-0">{{ $user->phone }}</p>
+                            @if ($user->position != NULL)
+                            <p class="font-weight-bold">{{ ucwords($user->position)  }}</p>
+
+                          @endif
                           </div>
                         </div>
+
+
                       </td>
                       <td>
                         <p class="text-xs font-weight-bold mb-0">{{ ucwords($user->role) }}</p>
@@ -89,6 +96,16 @@
                                 @else
                                 <li class="nav-item">
                                     <a class="nav-link" href="#admin" data-toggle="modal"  role="{{ $user->role }}" username="{{ $user->name }}" url="{{ route('make-users-admin', [$user->id]) }}"><span class="btn btn-sm btn-rounded btn-secondary text-light">Make admin</span></a>
+                                </li>
+                                @endif
+
+                                @if ($user->position != NULL)
+                                 <li class="nav-item">
+                                    <a class="nav-link" about="{{ $user->about }}" position="{{ $user->position }}" href="#minister" data-toggle="modal" role="{{ $user->role }}" username="{{ $user->name }}" url="{{ route('ministers.update', [$user->id]) }}"><span class="btn btn-sm btn-rounded btn-info text-light">Withdraw Ministering</span></a>
+                                </li>
+                                @else
+                                <li class="nav-item">
+                                    <a class="nav-link" about="{{ $user->about }}" position="{{ $user->position }}" href="#minister" data-toggle="modal"  role="{{ $user->role }}" username="{{ $user->name }}" url="{{ route('ministers.update', [$user->id]) }}"><span class="btn btn-sm btn-rounded btn-info text-light">Make Minister</span></a>
                                 </li>
                                 @endif
 
@@ -170,6 +187,54 @@
             </div>
         </div>
       </div>
+
+
+      <div class="modal" id="minister">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title text-uppercase">are  <span id="minmsg"></span></h4>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form id="minform"  action="" method="POST">
+
+                        {{ csrf_field() }}
+                        @method("PUT")
+                        <div class="form-group">
+                            <label for="usr">Ministering Position:</label>
+                            <input type="text" id="position" name="position" class="form-control {{ $errors->has('position') ? ' is-invalid' : '' }}" id="usr">
+                            @if ($errors->has('position'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('position') }}</strong>
+                           </span>
+                           @endif
+                        </div>
+                        <div class="form-group">
+                            <label for="usr">About Minister:</label>
+                            <textarea name="about" id="about" class="form-control {{ $errors->has('about') ? ' is-invalid' : '' }}" cols="10" rows="5">
+                            </textarea>
+                            @if ($errors->has('about'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('about') }}</strong>
+                           </span>
+                           @endif
+                        </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                        <button  type="submit" class="btn btn-success text-uppercase">Update Ministering status</button>                </div>
+    </form>
+            </div>
+        </div>
+      </div>
+
+
 
 
       <div class="modal" id="message">
@@ -323,6 +388,26 @@ $(document).ready(function(){
         // $("#delname").text(mycat);
           $("#adminform").attr("action", url);
           $("#statusmsg").text(status);
+        //   $("#delna").text(name);
+
+     })
+
+
+     $('#minister').on('show.bs.modal', function(e){
+        var name = $(e.relatedTarget).attr('username');
+        var position = $(e.relatedTarget).attr('position');
+        var about = $(e.relatedTarget).attr('about');
+        //   alert(name)
+          var url = $(e.relatedTarget).attr('url');
+          var statis = $(e.relatedTarget).attr('role');
+        //   alert(statis);
+          var status = statis =="member" ? "you want make "+name+" as minister":"you want withdraw minister from " +name;
+            //  alert(status)
+        // $("#delname").text(mycat);
+          $("#minform").attr("action", url);
+          $("#minmsg").text(status);
+          $("#position").val(position);
+          $("#about").text(about);
         //   $("#delna").text(name);
 
      })

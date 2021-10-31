@@ -32,6 +32,8 @@ $configuration =App\Models\Configuration::where('id', 1)->first();
             <span class="nav-link-text ms-1">Dashboard</span>
           </a>
         </li>
+@if (Auth::user()->status !=0)
+
 
         <li class="nav-item">
             <a class="nav-link  " href="{{ route('testimony.index') }}">
@@ -74,7 +76,7 @@ $configuration =App\Models\Configuration::where('id', 1)->first();
               <span class="nav-link-text ms-1">Message</span>
             </a>
           </li>
-
+          @endif
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account setting</h6>
         </li>

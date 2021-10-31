@@ -27,7 +27,7 @@ class PagesController extends Controller
         $events = Event::orderBy('id', 'desc')->whereDate( 'date', '>=', $today )->paginate(2);
         $members = User::inRandomOrder()->where('status', 1)->paginate(12);
         $gallerys = File::OrderBy('id', 'desc')->where('status', 1)->paginate(6);
-        $testimonys = Testimony::with('user')->orderBy('id', 'desc')->where('status', 1)->paginate(12);
+        $testimonys = Testimony::with('user')->inRandomOrder()->where('status', 1)->paginate(12);
         $testimon = Testimony::with('user')->orderBy('id', 'desc')->where('status', 1)->paginate(3);
         // return $events;
         // return $testimon;
@@ -70,7 +70,10 @@ class PagesController extends Controller
     }
     public function minister()
     {
-        return view('pages.ministers');
+        $ministers = User::orderby('id', 'desc')->where('position', '!=', NULL)->get();
+        // return $ministers;
+
+        return view('pages.ministers', compact(['ministers']));
     }
     public function gallery()
     {

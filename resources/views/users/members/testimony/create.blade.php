@@ -22,6 +22,10 @@
                     </span>
                     @endif
                     </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="customCheck" name="anonymous">
+                        <label class="custom-control-label" for="customCheck">Stay Anonymous</label>
+                      </div>
                     <button type="submit" class="btn btn-primary text-uppercase">Add testimony</button>
               </form>
           </div>

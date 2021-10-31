@@ -7,6 +7,12 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
+                    @if (session('error'))
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Unapproved! </strong> {{ session('error') }}
+                    </div>
+                @endif
                     <h3>{{ __('Login') }}</h3>
 
                 </div>
