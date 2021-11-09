@@ -8,7 +8,14 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>WCN - @yield('title')</title>
+
 @include('layouts.style')
+<style>
+    html body, .container{
+        /* font-family:  Helvetica */
+        font-family: Helvetica,cursive,Arial,  sans-serif !important;
+    }
+</style>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 

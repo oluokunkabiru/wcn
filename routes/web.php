@@ -22,6 +22,7 @@ Route::get('/about', 'PagesController@about')->name('about');
 Route::get('/contact', 'PagesController@contact')->name('contact');
 Route::get('/become-a-member', 'PagesController@become_member')->name('become-a-member');
 Route::get('/event', 'PagesController@event')->name('event');
+
 Route::get('/gallery', 'PagesController@gallery')->name('gallery');
 Route::get('/Our books', 'PagesController@books')->name('ourbooks');
 Route::get('/nuggets', 'PagesController@nugget')->name('nuggetquote');
@@ -47,7 +48,7 @@ Route::resource('testimony', 'TestimonyController');
 
 // ============================================================================
 //======================= Messages ===========================
-Route::prefix('messages')->middleware(['auth'])->group(function () {
+Route::prefix('messages')->middleware(['auth', 'verified'])->group(function () {
     Route::resource('chat', 'Admin\PrivateMessageMemeber');
     Route::get('chat/{id}/conversation/{nam}' , 'Admin\PrivateMessageMemeber@privateMessages')->name('mychat');
 
@@ -81,7 +82,7 @@ Route::prefix('admin')->middleware(['auth', 'admin', 'verified'])->group(functio
 // , 'verified'
 // ============================================================================
 //=======================  member authentication===========================
-Route::prefix('members')->middleware(['auth', 'member'])->group(function () {
+Route::prefix('members')->middleware(['auth', 'member', 'verified'])->group(function () {
     Route::get('/dashboard','Members\MemberController@index')->name('memberdashboard');
     Route::resource('members', 'Members\MemberController');
 

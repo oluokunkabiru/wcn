@@ -1,21 +1,23 @@
- <!--     Fonts and icons     -->
+@php
+        $configuration =App\Models\Configuration::where('id', 1)->first();
 
- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
- <!-- Nucleo Icons -->
- <link href="{{ asset('assets/css/nucleo-icons.css') }}" rel="stylesheet" />
- <link href="{{ asset('assets/css/nucleo-svg.css') }}" rel="stylesheet" />
- <link rel="stylesheet" href="{{ asset('assets/jquery-ui-1.11.4/jquery-ui.min.css') }}">
-{{-- <link rel="stylesheet" href="{{ asset('assets/JavaScriptGallery/gallery.min.css') }}"> --}}
- <!-- Font Awesome Icons -->
- {{--  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>  --}}
-<link rel="stylesheet" href="{{ asset('assets/fontawesome-free/css/all.min.css') }}">
- <link href="{{ asset('assets/css/nucleo-svg.css') }}" rel="stylesheet" />
- <!-- CSS Files -->
- <link id="pagestyle" href="{{ asset('assets/css/soft-ui-dashboard.css?v=1.0.2') }}" rel="stylesheet" />
-<link rel="stylesheet" href="{{ asset('assets/summernote/summernote-bs4.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/dropzone/dropzone.min.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/css/lc_lightbox.min.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/css/minimal.css') }}">
-{{-- <link rel="stylesheet" href="{{ asset('assets/simple-lightbox/simple-lightbox.min.css') }}"> --}}
- <link rel="stylesheet" href="{{ asset('assets/bootsrap/bootstrap.min.css') }}">
- <link rel="stylesheet" href="{{ asset('assets/datatables/datatables.min.css') }}">
+@endphp
+<link rel="stylesheet" href="{{ asset('assets/users/assets/modules/bootstrap/css/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/users/assets/modules/dist/min/dropzone.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/users/assets/modules/datatables/datatables.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/users/assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
+
+<link rel="stylesheet" href="{{ asset('assets/users/assets/modules/fontawesome-free/css/all.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/users/assets/modules/chocolat/dist/css/chocolat.css') }}">
+
+<!-- CSS Libraries -->
+<link rel="stylesheet" href="{{ asset('assets/users/assets/modules/jqvmap/dist/jqvmap.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/users/assets/modules/weather-icon/css/weather-icons.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/users/assets/modules/weather-icon/css/weather-icons-wind.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/users/assets/modules/summernote/summernote-bs4.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/users/assets/modules/select2/dist/css/select2.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/users/assets/modules/select2/dist/css/select2.min.css') }}">
+<!-- Template CSS -->
+<link rel="stylesheet" href="{{ asset('assets/users/assets/css/style.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/users/assets/css/components.min.css') }}">
+<link rel="shortcut icon" href="{{ $configuration->getMedia('logo')->first()->getFullUrl()}} " type="image/x-icon">

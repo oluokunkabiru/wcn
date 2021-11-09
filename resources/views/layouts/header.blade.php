@@ -39,7 +39,7 @@
                   <ul class="navbar-nav ml-auto text-dark" style="color: #000;">
 
                       <li class="nav-item  {{ $pagename=="index"?"active":"" }}"><a href="{{ route('index') }}" class="nav-link">Home</a></li>
-                      {{--  <li class="nav-item {{ $pagename=="gallery"?"active":"" }}"><a href="{{ route('gallery') }}" class="nav-link">Gallery</a></li>  --}}
+                      <li class="nav-item {{ $pagename=="about"?"active":"" }}"><a href="{{ route('about') }}" class="nav-link">About</a></li>
                       {{--  <li class="nav-item  {{ $pagename=="contact"?"active":"" }}"><a href="{{ route('contact') }}" class="nav-link">Contact</a></li>  --}}
                       <li class="nav-item  {{ $pagename=="nuggets"?"active":"" }}"><a href="{{ route('nuggetquote') }}" class="nav-link">Nugget</a></li>
                       <li class="nav-item  {{ $pagename=="blogs"?"active":"" }}"><a href="{{ route('ourblogs') }}" class="nav-link">Blogs</a></li>

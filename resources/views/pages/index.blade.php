@@ -128,9 +128,9 @@
                                             </div>
                                         </div>
                                         <div class="col-md-8">
-                                            <div class="text-dark">
-                                                <h3 class="text-dark"><i class="fa fa-quote-left"
-                                                        style="font-size:48px;color:white"></i></h3>
+                                            <div style="color:black">
+                                                <h3 class="text-dark" ><i class="fa fa-quote-left"
+                                                        style="font-size:48px;color:black"></i></h3>
                                                 {!! $configuration->youth_qoute !!}
                                                 <p>
                                                     <i>{{ ucwords($configuration->youth_qoute_by) }}</i>
@@ -175,8 +175,8 @@
                 <div class="offset-lg-2"></div>
 
                 <div class="col-lg-8">
-                    <h4 class=" hede wow  fadeOutRightBig" data-wow-duration='2s' data-wow-delay='0.5s'>
-                        <i class="fa fa-info-circle" style="font-size:40px;color:#dba928"></i>
+                    <h4 class=" hede wow display-5 font-weight-bold fadeOutRightBig" data-wow-duration='2s' data-wow-delay='0.5s'>
+                        {{--  <i class="fa fa-info-circle" style="font-size:40px;color:#dba928"></i>  --}}
 
                         About Us
                     </h4>
@@ -186,9 +186,11 @@
             </div>
         </div>
 
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
+        <div class="container px-2">
+
+            <div class="row text-center">
+                <div class="col-md-1"></div>
+                {{--  <div class="col-lg-6">
                     <div class="backindexe font-weight-bold pb-4 ">
                         <h5 class="quotes">
                             <i class="fa fa-quote-left " style="font-size:40px;color:black; margin-right:250px"></i><br>
@@ -197,31 +199,31 @@
                         </h5>
 
                     </div>
-                </div>
-                <div class="col-lg-6 ">
+                </div>  --}}
+                <div class="col-md-10 text-justify">
                     <div class="quotes pt-4">
-                        <h6 class=" quotes " style="  text-align:left;">
+                        <h6 class=" quotes" style="">
                             Word Central Global Network (WCN) is a vibrant youth
-                            ministry dedicated <br> to liberating youths from the shackles
-                            of perversion, transforming <br> them to be lights in a perverse
-                            and crooked world, and releasing <br> them as guided missiles
-                            to impact their world in the market place;<br> campuses,
+                            ministry dedicated to liberating youths from the shackles
+                            of perversion, transforming  them to be lights in a perverse
+                            and crooked world, and releasing  them as guided missiles
+                            to impact their world in the market place; campuses,
                             fellowships, Churches, families, etc.
-                            Word Central Global<br> Network, as the name implies, firmly
-                            believes in the efficacy of the Word<br> of God to transform
-                            lives and we have seen this happen over the years. <br>
+                            Word Central Global Network, as the name implies, firmly
+                            believes in the efficacy of the Word of God to transform
+                            lives and we have seen this happen over the years.
                         </h6>
 
                         <h4 style="color:#dba928; text-align:left;">Conception </h4>
                         <h6 class=" quotes " style="text-align:left;">
-                            Word Central was first conceived in 1999 as “Eagle’s Era” <br>
+                            Word Central was first conceived in 1999 as “Eagle’s Era”
                             - a Youth gathering which hosted as many as 400 Youths,
-                            praying,<br> praising and rediscovering identity together as
-                            the move of the<br> Holy Spirit in various dimensions was
+                            praying, praising and rediscovering identity together as
+                            the move of the Holy Spirit in various dimensions was
                             experience....
-                            <i type="text" class="text text-warning" data-toggle="modal" data-target="#myModal">
+                            <a href="{{ route('about') }}#myModal" class="text text-warning" >
                                 Continue reading
-                            </i>
+                            </a>
 
                         </h6>
 
@@ -229,7 +231,7 @@
 
 
                     <!-- The Modal -->
-                    <div class="modal fade" id="myModal">
+                    {{--  <div class="modal fade" id="myModal">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
 
@@ -316,15 +318,16 @@
 
                             </div>
                         </div>
-                    </div>
+                    </div>  --}}
 
                 </div>
+                <div class="col-md-1"></div>
             </div>
         </div>
 
     </section>
 
-    <section>
+    {{--  <section>
         <div class="container">
             <div class="row no-gutters">
                 <div class="offset-lg-1"></div>
@@ -384,7 +387,7 @@
             </div>
         </div>
         </div>
-    </section>
+    </section>  --}}
 
     <section>
         <div class="container " style="margin-top: 50px; margin-bottom: 10px">
@@ -392,8 +395,8 @@
                 <div class="offset-lg-2"></div>
 
                 <div class="col-lg-8">
-                    <h4 class=" hede wow  fadeOutRightBig" data-wow-duration='2s' data-wow-delay='0.5s'>
-                        <i class="fa fa-envelope-open" style="font-size:40px;color:#dba928"></i>
+                    <h4 class=" hede wow  display-5 font-weight-bold  fadeOutRightBig" data-wow-duration='2s' data-wow-delay='0.5s'>
+                        {{--  <i class="fa fa-envelope-open" style="font-size:40px;color:#dba928"></i>  --}}
                         Pioneer's Message
                     </h4>
                 </div>
@@ -460,14 +463,14 @@
 
                                 <!-- Modal Header -->
                                 <div class="modal-header">
-                                    <h4 class="modal-title">Message from the Pioneer</h4>
+                                    <h4 class="modal-title font-weight-bold">Message from the Pioneer</h4>
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 </div>
 
                                 <!-- Modal body -->
                                 <div class="modal-body">
-                                    <strong> “WHAT YOU SEE YOU GET”</strong>
-                                    <p>
+                                    <strong class="font-weight-bold quotes " style="text-align:justify;"> “WHAT YOU SEE YOU GET”</strong>
+                                    <p class="quotes " style="text-align:justify;">
                                         There is a lot of noise about how useless, ungodly and
                                         at some point, how lazy the youths are.
                                         Each time I hear this, my heart bleeds simply because it
@@ -478,7 +481,7 @@
                                         What you see you get!
                                     </p>
 
-                                    <p class="font-weight-bold quotes " style="  text-align:justify;">
+                                    <p class="quotes " style="text-align:justify;">
                                         If the youths have to become a better version of
                                         themselves or better still a splitting image of Jesus for
                                         in his light, can they truly discover themselves, we must
@@ -489,7 +492,7 @@
                                         give what we do not have.
                                     </p>
 
-                                    <p class="font-weight-bold quotes " style="  text-align:justify;">
+                                    <p class=" quotes " style="  text-align:justify;">
                                         I once said at a youth meeting
                                         I had about 20 years ago
                                         which I tagged “Youth
@@ -504,7 +507,7 @@
                                         We cannot be better…”
                                     </p>
 
-                                    <p class="font-weight-bold quotes " style="  text-align:justify;">
+                                    <p class="quotes " style="  text-align:justify;">
                                         It is high time we all arise and get busy helping these
                                         young folks discover who they have been created to be in
                                         Christ rather than get busy complaining about the ills we
@@ -554,7 +557,7 @@
 
                 <div class="col-lg-8 ">
                     <h4 class=" hede wow font-weight-bold  fadeOutRightBig" data-wow-duration='2s' data-wow-delay='0.5s'>
-                        <i class="fa fa-calendar" style="font-size:40px;color:#dba928"></i>
+                        {{--  <i class="fa fa-calendar" style="font-size:40px;color:#dba928"></i>  --}}
                         Events
                     </h4>
                 </div>
@@ -697,8 +700,8 @@
                 <div class="offset-lg-2"></div>
 
                 <div class="col-lg-8">
-                    <h4 class=" hede wow  fadeOutRightBig" data-wow-duration='2s' data-wow-delay='0.5s'>
-                        <i class="fa fa-users" style="font-size:40px;color:#dba928"></i>
+                    <h4 class=" hede wow display-5 font-weight-bold   fadeOutRightBig" data-wow-duration='2s' data-wow-delay='0.5s'>
+                        {{--  <i class="fa fa-users" style="font-size:40px;color:#dba928"></i>  --}}
                         Our awesome member
                     </h4>
                 </div>
@@ -749,7 +752,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-7 text-center mb-5">
                         <div class="heading">
-                            <span class="caption" style="color: #dba928;">Testimonies</span>
+                            <span class="caption  display-5 font-weight-bold " style="color: #dba928;">Testimonies</span>
                         </div>
                     </div>
                 </div>
@@ -929,8 +932,8 @@
                 <div class="offset-lg-2"></div>
 
                 <div class="col-lg-8 ">
-                    <h4 class=" hede wow font-weight-bold  fadeOutRightBig" data-wow-duration='2s' data-wow-delay='0.5s'>
-                        <i class="fa fa-image" style="font-size:50px;color:#dba928"></i>
+                    <h4 class=" hede wow  display-5 font-weight-bold   fadeOutRightBig" data-wow-duration='2s' data-wow-delay='0.5s'>
+                        {{--  <i class="fa fa-image" style="font-size:50px;color:#dba928"></i>  --}}
                         Gallery
                     </h4>
                 </div>

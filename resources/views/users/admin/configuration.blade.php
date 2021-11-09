@@ -1,216 +1,252 @@
 @extends('users.admin.layouts.app')
 @section('title', 'Update site configuration')
 @section('content')
-<h1>Update site configuration</h1>
+    <section class="section">
+        <div class="section-header">
+            <h1>Update site configuration</h1>
+        </div>
 
-<div class="card mb-4">
-    <div class="card-header pb-0 p-3">
-        <h6 class="mb-1">Site configuration details</h6>
-    </div>
-    @if(session('danger'))
-    <div class="alert alert-danger alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <strong>Error ! </strong> {{ session('danger') }}
-    </div>
-@endif
-    <div class="card-body p-3">
-        <form action="{{ route('configurations.update', $config->id) }}" method="post" enctype="multipart/form-data">
-            @method('PUT')
-            @csrf
-        <div class="row">
-           <div class="col-md-6">
-            <div class="form-group">
-                <label for="usr">Site name:</label>
-                <input type="text" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ $config->name, old('name') }}" name="name">
-                @if ($errors->has('name'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('name') }}</strong>
-               </span>
-               @endif
+        <div class="card mb-4">
+            <div class="card-header pb-0 p-3">
+                <h6 class="mb-1">Site configuration details</h6>
             </div>
-           </div>
-           <div class="col-md-6">
-            <div class="form-group">
-                <label for="usr">Email:</label>
-                <input type="email" value="{{ $config->email, old('email') }}" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email">
-                @if ($errors->has('email'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('email') }}</strong>
-               </span>
-               @endif
-            </div>
-           </div>
-           <div class="col-md-6">
-            <div class="form-group">
-                <label for="usr">Phone:</label>
-                <input type="text" value="{{ $config->phone, old('phone') }}" name="phone" class="form-control {{ $errors->has('phone') ? ' is-invalid' : '' }}" id="usr">
-                @if ($errors->has('phone'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('phone') }}</strong>
-               </span>
-               @endif
-            </div>
-           </div>
+            @if (session('danger'))
+                <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Error ! </strong> {{ session('danger') }}
+                </div>
+            @endif
+            <div class="card-body p-3">
+                <form action="{{ route('configurations.update', $config->id) }}" method="post"
+                    enctype="multipart/form-data">
+                    @method('PUT')
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="usr">Site name:</label>
+                                <input type="text" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}"
+                                    value="{{ $config->name, old('name') }}" name="name">
+                                @if ($errors->has('name'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="usr">Email:</label>
+                                <input type="email" value="{{ $config->email, old('email') }}"
+                                    class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email">
+                                @if ($errors->has('email'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="usr">Phone:</label>
+                                <input type="text" value="{{ $config->phone, old('phone') }}" name="phone"
+                                    class="form-control {{ $errors->has('phone') ? ' is-invalid' : '' }}" id="usr">
+                                @if ($errors->has('phone'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('phone') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
-           <div class="col-md-6">
-            <div class="form-group">
-                <label for="usr">Logo picture:</label>
-                <input type="file" name="logo" class="form-control {{ $errors->has('logo') ? ' is-invalid' : '' }}" id="usr">
-                @if ($errors->has('logo'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('logo') }}</strong>
-               </span>
-               @endif
-            </div>
-           </div>
-           <div class="col-md-6">
-            <div class="form-group">
-                <label for="usr">Twitter Link:</label>
-                <input type="text" value="{{ $config->twitter, old('twitter') }}" class="form-control {{ $errors->has('twitter') ? ' is-invalid' : '' }}" name="twitter">
-                @if ($errors->has('twitter'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('twitter') }}</strong>
-               </span>
-               @endif
-            </div>
-           </div>
-           <div class="col-md-6">
-            <div class="form-group">
-                <label for="usr">Linkedin link:</label>
-                <input type="text" value="{{ $config->linkedin, old('linkedin') }}" name="linkedin" class="form-control {{ $errors->has('linkedin') ? ' is-invalid' : '' }}" id="usr">
-                @if ($errors->has('linkedin'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('linkedin') }}</strong>
-               </span>
-               @endif
-            </div>
-           </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="usr">Logo picture:</label>
+                                <input type="file" name="logo"
+                                    class="form-control {{ $errors->has('logo') ? ' is-invalid' : '' }}" id="usr">
+                                @if ($errors->has('logo'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('logo') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="usr">Twitter Link:</label>
+                                <input type="text" value="{{ $config->twitter, old('twitter') }}"
+                                    class="form-control {{ $errors->has('twitter') ? ' is-invalid' : '' }}"
+                                    name="twitter">
+                                @if ($errors->has('twitter'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('twitter') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="usr">Linkedin link:</label>
+                                <input type="text" value="{{ $config->linkedin, old('linkedin') }}" name="linkedin"
+                                    class="form-control {{ $errors->has('linkedin') ? ' is-invalid' : '' }}" id="usr">
+                                @if ($errors->has('linkedin'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('linkedin') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
-           <div class="col-md-6">
-               <div class="row">
-                   <div class="col-md-12">
-                    <div class="form-group">
-                        <label for="usr">Facebook link:</label>
-                        <input type="text" name="facebook" value="{{ $config->facebook, old('facebook') }}" class="form-control {{ $errors->has('facebook') ? ' is-invalid' : '' }}" id="usr">
-                        @if ($errors->has('facebook'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('facebook') }}</strong>
-                       </span>
-                       @endif
-                    </div>
-                   </div>
-                   <div class="col-md-12">
-                    <div class="form-group">
-                        <label for="usr">Whatsapp link:</label>
-                        <input type="text" name="whatsapp" value="{{ $config->whatsapp, old('whatsapp') }}" class="form-control {{ $errors->has('whatsapp') ? ' is-invalid' : '' }}" id="usr">
-                        @if ($errors->has('whatsapp'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('whatsapp') }}</strong>
-                       </span>
-                       @endif
-                    </div>
-                   </div>
-                   <div class="col-md-12">
-                    <div class="form-group">
-                        <label for="usr">Youtube link:</label>
-                        <input type="text" name="youtube" value="{{ $config->youtube, old('youtube') }}" class="form-control {{ $errors->has('youtube') ? ' is-invalid' : '' }}" id="usr">
-                        @if ($errors->has('youtube'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('youtube') }}</strong>
-                       </span>
-                       @endif
-                    </div>
-                   </div>
-                   <div class="col-md-12">
-                    <div class="form-group">
-                        <label for="usr">Instagram link:</label>
-                        <input type="text" name="instagram" value="{{ $config->instagram, old('instagram') }}" class="form-control {{ $errors->has('instagram') ? ' is-invalid' : '' }}" id="usr">
-                        @if ($errors->has('instagram'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('instagram') }}</strong>
-                       </span>
-                       @endif
-                    </div>
-                   </div>
-               </div>
-           </div>
-           <div class="col-md-6">
-            <div class="form-group">
-                <label for="usr">Address:</label>
-                <textarea name="address" id="address" class="form-control {{ $errors->has('address') ? ' is-invalid' : '' }}" cols="20" rows="10">
-                    {{ $config->address, old('address') }}
-                </textarea>
-                @if ($errors->has('address'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('address') }}</strong>
-               </span>
-               @endif
-            </div>
-           </div>
-           <div class="col-md-6">
-            <div class="form-group">
-                <label for="usr">First Quote:</label>
-                <textarea name="youth" id="youth" class="form-control {{ $errors->has('youth') ? ' is-invalid' : '' }}" cols="20" rows="10">
-                    {{ $config->youth_qoute, old('youth') }}
-                </textarea>
-                @if ($errors->has('youth'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('youth') }}</strong>
-               </span>
-               @endif
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="usr">Quote from:</label>
-                        <input type="text" name="quoteby" value="{{ $config->youth_qoute_by, old('quoteby') }}" class="form-control {{ $errors->has('quoteby') ? ' is-invalid' : '' }}" id="usr">
-                        @if ($errors->has('quoteby'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('quoteby') }}</strong>
-                       </span>
-                       @endif
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="usr">Quote by image:</label>
-                        <input type="file" name="qouteimage" class="form-control {{ $errors->has('qouteimage') ? ' is-invalid' : '' }}" id="usr">
-                        @if ($errors->has('qouteimage'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('qouteimage') }}</strong>
-                       </span>
-                       @endif
-                    </div>
-                </div>
-            </div>
-           </div>
-           <div class="col-md-6">
-            <div class="form-group">
-                <label for="usr">Second Quote:</label>
-                <textarea name="youth1" id="youth1" class="form-control {{ $errors->has('youth1') ? ' is-invalid' : '' }}" cols="20" rows="10">
-                    {{ $config->youth_qoute1, old('youth1') }}
-                </textarea>
-                @if ($errors->has('youth1'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('youth1') }}</strong>
-               </span>
-               @endif
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="usr">Quote from:</label>
-                        <input type="text" name="quoteby1" value="{{ $config->youth_qoute1_by, old('quoteby1') }}" class="form-control {{ $errors->has('quoteby1') ? ' is-invalid' : '' }}" id="usr">
-                        @if ($errors->has('quoteby1'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('quoteby1') }}</strong>
-                       </span>
-                       @endif
-                    </div>
-                </div>
-            </div>
-           </div>
-           {{--  <div class="col-md-6">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="usr">Facebook link:</label>
+                                        <input type="text" name="facebook"
+                                            value="{{ $config->facebook, old('facebook') }}"
+                                            class="form-control {{ $errors->has('facebook') ? ' is-invalid' : '' }}"
+                                            id="usr">
+                                        @if ($errors->has('facebook'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('facebook') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="usr">Whatsapp link:</label>
+                                        <input type="text" name="whatsapp"
+                                            value="{{ $config->whatsapp, old('whatsapp') }}"
+                                            class="form-control {{ $errors->has('whatsapp') ? ' is-invalid' : '' }}"
+                                            id="usr">
+                                        @if ($errors->has('whatsapp'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('whatsapp') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="usr">Youtube link:</label>
+                                        <input type="text" name="youtube" value="{{ $config->youtube, old('youtube') }}"
+                                            class="form-control {{ $errors->has('youtube') ? ' is-invalid' : '' }}"
+                                            id="usr">
+                                        @if ($errors->has('youtube'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('youtube') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="usr">Instagram link:</label>
+                                        <input type="text" name="instagram"
+                                            value="{{ $config->instagram, old('instagram') }}"
+                                            class="form-control {{ $errors->has('instagram') ? ' is-invalid' : '' }}"
+                                            id="usr">
+                                        @if ($errors->has('instagram'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('instagram') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="usr">Address:</label>
+                                <textarea name="address" id="address"
+                                    class="form-control {{ $errors->has('address') ? ' is-invalid' : '' }}" cols="20"
+                                    rows="10">
+                            {{ $config->address, old('address') }}
+                        </textarea>
+                                @if ($errors->has('address'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('address') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="usr">First Quote:</label>
+                                <textarea name="youth" id="youth"
+                                    class="form-control {{ $errors->has('youth') ? ' is-invalid' : '' }}" cols="20"
+                                    rows="10">
+                            {{ $config->youth_qoute, old('youth') }}
+                        </textarea>
+                                @if ($errors->has('youth'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('youth') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="usr">Quote from:</label>
+                                        <input type="text" name="quoteby"
+                                            value="{{ $config->youth_qoute_by, old('quoteby') }}"
+                                            class="form-control {{ $errors->has('quoteby') ? ' is-invalid' : '' }}"
+                                            id="usr">
+                                        @if ($errors->has('quoteby'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('quoteby') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="usr">Quote by image:</label>
+                                        <input type="file" name="qouteimage"
+                                            class="form-control {{ $errors->has('qouteimage') ? ' is-invalid' : '' }}"
+                                            id="usr">
+                                        @if ($errors->has('qouteimage'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('qouteimage') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="usr">Second Quote:</label>
+                                <textarea name="youth1" id="youth1"
+                                    class="form-control {{ $errors->has('youth1') ? ' is-invalid' : '' }}" cols="20"
+                                    rows="10">
+                            {{ $config->youth_qoute1, old('youth1') }}
+                        </textarea>
+                                @if ($errors->has('youth1'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('youth1') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="usr">Quote from:</label>
+                                        <input type="text" name="quoteby1"
+                                            value="{{ $config->youth_qoute1_by, old('quoteby1') }}"
+                                            class="form-control {{ $errors->has('quoteby1') ? ' is-invalid' : '' }}"
+                                            id="usr">
+                                        @if ($errors->has('quoteby1'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('quoteby1') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- <div class="col-md-6">
             <div class="form-group">
                 <label for="usr">About us:</label>
                 <textarea name="about" id="about" class="form-control {{ $errors->has('about') ? ' is-invalid' : '' }}" cols="20" rows="10">
@@ -290,58 +326,65 @@
                </span>
                @endif
             </div>
-           </div>  --}}
-           <div class="col-md-6">
-            <div class="form-group">
-                <label for="usr">Pioneer Message:</label>
-                <textarea name="pioneer1" id="pioneer1" class="form-control {{ $errors->has('pioneer1') ? ' is-invalid' : '' }}" cols="20" rows="10">
-                    {{ $config->pioneer_message1, old('pioneer1') }}
-                </textarea>
-                @if ($errors->has('pioneer1'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('pioneer1') }}</strong>
-               </span>
-               @endif
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="usr">Pioneer message from:</label>
-                        <input type="text" name="pioneerfrom" value="{{ $config->pioneer_message_by, old('pioneerfrom') }}" class="form-control {{ $errors->has('pioneerfrom') ? ' is-invalid' : '' }}" id="usr">
-                        @if ($errors->has('pioneerfrom'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('pioneerfrom') }}</strong>
-                       </span>
-                       @endif
+           </div> --}}
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="usr">Pioneer Message:</label>
+                                <textarea name="pioneer1" id="pioneer1"
+                                    class="form-control {{ $errors->has('pioneer1') ? ' is-invalid' : '' }}" cols="20"
+                                    rows="10">
+                            {{ $config->pioneer_message1, old('pioneer1') }}
+                        </textarea>
+                                @if ($errors->has('pioneer1'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('pioneer1') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="usr">Pioneer message from:</label>
+                                        <input type="text" name="pioneerfrom"
+                                            value="{{ $config->pioneer_message_by, old('pioneerfrom') }}"
+                                            class="form-control {{ $errors->has('pioneerfrom') ? ' is-invalid' : '' }}"
+                                            id="usr">
+                                        @if ($errors->has('pioneerfrom'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('pioneerfrom') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                </div>
+                    <button class="btn btn-primary float-right mr-4">Update configuration</button>
+                </form>
             </div>
-           </div>
+        </div>
 
-       </div>
-       <button class="btn btn-primary float-right mr-4">Update configuration</button>
-    </form>
-    </div>
-</div>
+    </section>
+    @endsection
+    @section('script')
+        <script>
+            $(function() {
+                //Initialize Select2 Elements
+                $('#address, #pioneer, #youth,  #youth1, #conception, #about, #core, #vision, #mission, #pioneer1')
+                    .summernote({
+                        height: 100,
+                        toolbar: [
+                            ['style', ['style']],
+                            ['font', ['bold', 'italic', 'underline', 'clear', 'superscript', 'subscript']],
+                            ['color', ['color']],
+                            ['insert', ['link']],
+                            ['view', ['fullscreen', 'codeview', 'help', 'undo', 'redo']],
+                        ]
 
+                    })
 
-@endsection
-@section('script')
-<script>
-    $(function () {
-    //Initialize Select2 Elements
-    $('#address, #pioneer, #youth,  #youth1, #conception, #about, #core, #vision, #mission, #pioneer1').summernote({
-      height: 100,
-      toolbar: [
-        ['style', ['style']],
-        ['font', ['bold', 'italic', 'underline', 'clear', 'superscript', 'subscript']],
-        ['color', ['color']],
-        ['insert', ['link']],
-        ['view', ['fullscreen','codeview', 'help', 'undo', 'redo']],
-      ]
+            })
+        </script>
 
-    })
-
-  })
-</script>
-@endsection
+    @endsection
