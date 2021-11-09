@@ -1,26 +1,39 @@
+{{-- @php
+        $configuration =App\Models\Setting::where('id', 1)->first();
+@endphp --}}
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>WCN - @yield('title')</title>
-@include('users.members.layouts.style')
-    <!-- Scripts -->
-    {{--  <script src="{{ asset('js/app.js') }}" defer></script>  --}}
-
-    <!-- Fonts -->
+    @include('users.members.layouts.style')
     @yield('style')
-
 </head>
-<body class="g-sidenav-show  bg-gray-100">
-    @include('users.members.layouts.header')
-      @yield('content')
-    @include('users.members.layouts.footer')
+<body class="layout-4">
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <span class="loader"><span class="loader-inner"><i class="fa fa-bus"></i></span></span>
+    </div>
+
+    <div id="app">
+        <div class="main-wrapper main-wrapper-1">
+            <div class="navbar-bg"></div>
+            @include('users.members.layouts.navbar')
+            <div class="main-content">
+
+            @yield('content')
+
+            </div>
+
+@include('users.members.layouts.footer')
+        </div>
+    </div>
+
+
     @include('users.members.layouts.script')
     @yield('script')
 </body>
 </html>
+

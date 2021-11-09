@@ -169,92 +169,92 @@
 
 
 
-                            <div class="card-header">
-                                <div id="success_activate"></div>
-                            </div>
+                        <div class="card-header">
+                            <div id="success_activate"></div>
+                        </div>
 
-                            <div class="card-body p-3">
-                                <h6 class="text-uppercase text-body text-xs font-weight-bolder">Account</h6>
-                                <p><small>Notify me when ....</small> </p>
-                                <ul class="list-group" id="refreshme">
-                                    <li class="list-group-item border-0 px-0">
-                                        <div class="form-check form-switch ps-0">
-                                            <input class="form-check-input ms-auto"
-                                                onchange="activateme(this.value, {{ $setting->blog_notification }})" status="#"
-                                                value="blog_notification" type="checkbox" id="flexSwitchCheckDefault"
-                                                {{ $setting->blog_notification == 1 ? 'checked' : '' }}>
-                                            <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
-                                                for="flexSwitchCheckDefault">New blog added</label>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item border-0 px-0">
-                                        <div class="form-check form-switch ps-0">
-                                            <input class="form-check-input ms-auto"
-                                                onchange="activateme(this.value, {{ $setting->comment_notification }})"
-                                                value="comment_notification " type="checkbox"
-                                                {{ $setting->comment_notification == 1 ? 'checked' : '' }}
-                                                id="flexSwitchCheckDefault1">
-                                            <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
-                                                for="flexSwitchCheckDefault1">Someone answers on blog</label>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item border-0 px-0">
-                                        <div class="form-check form-switch ps-0">
-                                            <input class="form-check-input ms-auto"
-                                                onchange="activateme(this.value, {{ $setting->gallery_notification }})"
-                                                value="gallery_notification" type="checkbox" id="flexSwitchCheckDefault2"
-                                                {{ $setting->gallery_notification == 1 ? 'checked' : '' }}>
-                                            <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
-                                                for="flexSwitchCheckDefault2">New photo add to gallery</label>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item border-0 px-0">
-                                        <div class="form-check form-switch ps-0">
-                                            <input class="form-check-input ms-auto"
-                                                onchange="activateme(this.value, {{ $setting->book_notification }}"
-                                                value="book_notification" type="checkbox" id="flexSwitchCheckDefault2"
-                                                {{ $setting->book_notification == 1 ? 'checked' : '' }}>
-                                            <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
-                                                for="flexSwitchCheckDefault2">New book</label>
-                                        </div>
-                                    </li>
+                        <div class="card-body p-3">
+                            <h6 class="text-uppercase text-body text-xs font-weight-bolder">Account</h6>
+                            <p><small>Notify me when ....</small> </p>
+                            <ul class="list-group" id="refreshme">
+                                <li class="list-group-item border-0 px-0">
+                                    <div class="form-check form-switch ps-0">
+                                        <input class="form-check-input ms-auto"
+                                            onchange="activateme(this.value, {{ $setting->blog_notification }})"
+                                            status="#" value="blog_notification" type="checkbox" id="flexSwitchCheckDefault"
+                                            {{ $setting->blog_notification == 1 ? 'checked' : '' }}>
+                                        <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
+                                            for="flexSwitchCheckDefault">New blog added</label>
+                                    </div>
+                                </li>
+                                <li class="list-group-item border-0 px-0">
+                                    <div class="form-check form-switch ps-0">
+                                        <input class="form-check-input ms-auto"
+                                            onchange="activateme(this.value, {{ $setting->comment_notification }})"
+                                            value="comment_notification " type="checkbox"
+                                            {{ $setting->comment_notification == 1 ? 'checked' : '' }}
+                                            id="flexSwitchCheckDefault1">
+                                        <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
+                                            for="flexSwitchCheckDefault1">Someone answers on blog</label>
+                                    </div>
+                                </li>
+                                <li class="list-group-item border-0 px-0">
+                                    <div class="form-check form-switch ps-0">
+                                        <input class="form-check-input ms-auto"
+                                            onchange="activateme(this.value, {{ $setting->gallery_notification }})"
+                                            value="gallery_notification" type="checkbox" id="flexSwitchCheckDefault2"
+                                            {{ $setting->gallery_notification == 1 ? 'checked' : '' }}>
+                                        <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
+                                            for="flexSwitchCheckDefault2">New photo add to gallery</label>
+                                    </div>
+                                </li>
+                                <li class="list-group-item border-0 px-0">
+                                    <div class="form-check form-switch ps-0">
+                                        <input class="form-check-input ms-auto"
+                                            onchange="activateme(this.value, {{ $setting->book_notification }}"
+                                            value="book_notification" type="checkbox" id="flexSwitchCheckDefault2"
+                                            {{ $setting->book_notification == 1 ? 'checked' : '' }}>
+                                        <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
+                                            for="flexSwitchCheckDefault2">New book</label>
+                                    </div>
+                                </li>
 
-                                    <li class="list-group-item border-0 px-0">
-                                        <div class="form-check form-switch ps-0">
-                                            <input class="form-check-input ms-auto"
-                                                onchange="activateme(this.value, {{ $setting->event_notification }}"
-                                                value="event_notification " type="checkbox" id="flexSwitchCheckDefault2"
-                                                {{ $setting->event_notification == 1 ? 'checked' : '' }}>
-                                            <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
-                                                for="flexSwitchCheckDefault2">New event</label>
-                                        </div>
-                                    </li>
+                                <li class="list-group-item border-0 px-0">
+                                    <div class="form-check form-switch ps-0">
+                                        <input class="form-check-input ms-auto"
+                                            onchange="activateme(this.value, {{ $setting->event_notification }}"
+                                            value="event_notification " type="checkbox" id="flexSwitchCheckDefault2"
+                                            {{ $setting->event_notification == 1 ? 'checked' : '' }}>
+                                        <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
+                                            for="flexSwitchCheckDefault2">New event</label>
+                                    </div>
+                                </li>
 
-                                    <li class="list-group-item border-0 px-0">
-                                        <div class="form-check form-switch ps-0">
-                                            <input class="form-check-input ms-auto"
-                                                onchange="activateme(this.value, {{ $setting->email_notification }}"
-                                                value="email_notification " type="checkbox" id="flexSwitchCheckDefault2"
-                                                {{ $setting->email_notification == 1 ? 'checked' : '' }}>
-                                            <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
-                                                for="flexSwitchCheckDefault2">Email notification</label>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item border-0 px-0">
-                                        <div class="form-check form-switch ps-0">
-                                            <input class="form-check-input ms-auto"
-                                                onchange="activateme(this.value, {{ $setting->nugget_notification }}"
-                                                value="nugget_notification " type="checkbox" id="flexSwitchCheckDefault2"
-                                                {{ $setting->nugget_notification == 1 ? 'checked' : '' }}>
-                                            <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
-                                                for="flexSwitchCheckDefault2">Nugget notification</label>
-                                        </div>
-                                    </li>
-                                </ul>
+                                <li class="list-group-item border-0 px-0">
+                                    <div class="form-check form-switch ps-0">
+                                        <input class="form-check-input ms-auto"
+                                            onchange="activateme(this.value, {{ $setting->email_notification }}"
+                                            value="email_notification " type="checkbox" id="flexSwitchCheckDefault2"
+                                            {{ $setting->email_notification == 1 ? 'checked' : '' }}>
+                                        <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
+                                            for="flexSwitchCheckDefault2">Email notification</label>
+                                    </div>
+                                </li>
+                                <li class="list-group-item border-0 px-0">
+                                    <div class="form-check form-switch ps-0">
+                                        <input class="form-check-input ms-auto"
+                                            onchange="activateme(this.value, {{ $setting->nugget_notification }}"
+                                            value="nugget_notification " type="checkbox" id="flexSwitchCheckDefault2"
+                                            {{ $setting->nugget_notification == 1 ? 'checked' : '' }}>
+                                        <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
+                                            for="flexSwitchCheckDefault2">Nugget notification</label>
+                                    </div>
+                                </li>
+                            </ul>
 
-                            </div>
                         </div>
                     </div>
+                </div>
 
 
 
@@ -387,8 +387,8 @@
                                     <div class="col-md-6">
                                         <textarea class="form-control @error('email') is-invalid @enderror" name="address"
                                             rows="5" id="comment">
-                                                       {{ Auth::user()->address, old('address') }}
-                                                   </textarea>
+                                                                   {{ Auth::user()->address, old('address') }}
+                                                               </textarea>
                                         @error('address')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -417,7 +417,8 @@
                                 <div class="form-group row">
                                     <label for="password"
                                         class="col-md-4 col-form-label text-md-right">{{ __('Password') }} <small
-                                            class="text-danger text-left">Leave password empty if not change</small></label>
+                                            class="text-danger text-left">Leave password empty if not
+                                            change</small></label>
 
                                     <div class="col-md-6">
                                         <input id="password" type="password"
