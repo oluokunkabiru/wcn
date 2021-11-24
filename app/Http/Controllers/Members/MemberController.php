@@ -106,7 +106,7 @@ class MemberController extends Controller
             }
         }
         $admin->save();
-        return redirect()->route('admindashboard')->with('success', 'Profile update successfully');
+        return redirect()->route('memberdashboard')->with('success', 'Profile update successfully');
     }
 
 
@@ -119,6 +119,6 @@ class MemberController extends Controller
     public function destroy($id)
     {
         //
-        
+
     }
 }

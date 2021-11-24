@@ -6,7 +6,23 @@
         <div class="section-header">
             <h1>Dashboard</h1>
         </div>
+        @if (session('success'))
+        <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Success! </strong> {{ session('success') }}
+        </div>
+    @endif
+    @if ($errors->any())
 
+    <div class="alert alert-danger alert-dismissible fade show">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong style="font-size:20px;">Oops!
+            {{ 'Kindly rectify below errors' }}</strong><br />
+        @foreach ($errors->all() as $error)
+            {{ $error }} <br />
+        @endforeach
+    </div>
+@endif
         <div class="row mt-sm-4">
                 <div class="col-12 col-md-12 col-lg-5">
                     <div class="card profile-widget">
@@ -173,7 +189,7 @@
                             <h4>{{ Auth::user()->name }} profile settings</h4>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('users.update', Auth::user()->id) }}" enctype="multipart/form-data"
+                            <form action="{{ route('members.update', Auth::user()->id) }}" enctype="multipart/form-data"
                                 method="post">
                                 @csrf
                                 @method('PUT')
@@ -201,7 +217,7 @@
 
                                     <div class="col-md-6">
                                         <input id="username" type="email"
-                                            class="form-control @error('email') is-invalid @enderror" name="email" disabled
+                                            class="form-control @error('email') is-invalid @enderror" name="email"
                                             value="{{ Auth::user()->email, old('email') }}" required
                                             autocomplete="email">
 

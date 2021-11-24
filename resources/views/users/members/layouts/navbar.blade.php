@@ -70,8 +70,8 @@
                 <img alt="image" src="{{ Auth::user()->getMedia('avatar')->first()->getFullUrl() }}" class="rounded-circle mr-1">
                 <div class="d-sm-none d-lg-inline-block"> {{ ucwords(Auth::user()->name) }}</div></a>
             <div class="dropdown-menu dropdown-menu-right">
-                <a href="" class="dropdown-item has-icon"><i class="fas fa-user"></i>New User</a>
-                <a href="" class="dropdown-item has-icon"><i class="fas fa-barcode"></i>New GIFMIS</a>
+                <a href="{{ route('testimony.index') }}" class="dropdown-item has-icon"><i class="fas fa-user"></i>Testimony</a>
+                {{-- <a href="" class="dropdown-item has-icon"><i class="fas fa-barcode"></i>New GIFMIS</a> --}}
                  <div class="dropdown-divider"></div>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
@@ -112,7 +112,7 @@
 
             <li class="menu-header">Messages</li>
             <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="fa fa-car"></i> <span>Messages</span></a>
+                <a href="#" class="nav-link has-dropdown"><i class="fa fa-envelope"></i> <span>Messages</span></a>
                 <ul class="dropdown-menu">
                     <li><a href="{{ route('chat.index') }}">My messages</a></li>
 
@@ -120,7 +120,7 @@
             </li>
                         <li class="menu-header">Profile</li>
             <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="fa fa-road"></i> <span>Profile</span></a>
+                <a href="#" class="nav-link has-dropdown"><i class="fa fa-user"></i> <span>Profile</span></a>
                 <ul class="dropdown-menu">
                      {{--  <li><a href="">Add motorcycle</a></li>  --}}
                     <li><a href="{{ route('members.edit', Auth::user()->id) }}">Profiles setting</a></li>

@@ -14,7 +14,7 @@
 <body class="layout-4">
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
-        <span class="loader"><span class="loader-inner"><i class="fa fa-bus"></i></span></span>
+        <span class="loader"><span class="loader-inner"><i class="fa fa-church"></i></span></span>
     </div>
 
     <div id="app">

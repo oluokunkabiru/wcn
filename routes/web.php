@@ -36,9 +36,9 @@ Route::get('nugget/{id}/quote/{title}', 'PagesController@viewNugget')->name('rea
 
 
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes(['verify' => true]);
-Route::prefix('comment')->middleware(['auth'])->group(function () {
+Route::prefix('comment')->middleware(['auth', 'verified'])->group(function () {
 Route::resource('comment', CommentController::class);
 Route::post('activate-notification', 'SettingsController@activate')->name('activate_notification');
 Route::get('mark-as-read/{id}', 'Admin\Users@readNotification')->name('mark-as-read');
@@ -48,7 +48,7 @@ Route::resource('testimony', 'TestimonyController');
 
 // ============================================================================
 //======================= Messages ===========================
-Route::prefix('messages')->middleware(['auth'])->group(function () {
+Route::prefix('messages')->middleware(['auth', 'verified'])->group(function () {
     Route::resource('chat', 'Admin\PrivateMessageMemeber');
     Route::get('chat/{id}/conversation/{nam}' , 'Admin\PrivateMessageMemeber@privateMessages')->name('mychat');
 
@@ -82,7 +82,7 @@ Route::prefix('admin')->middleware(['auth', 'admin', 'verified'])->group(functio
 // , 'verified'
 // ============================================================================
 //=======================  member authentication===========================
-Route::prefix('members')->middleware(['auth', 'member'])->group(function () {
+Route::prefix('members')->middleware(['auth', 'member', 'verified'])->group(function () {
     Route::get('/dashboard','Members\MemberController@index')->name('memberdashboard');
     Route::resource('members', 'Members\MemberController');
 

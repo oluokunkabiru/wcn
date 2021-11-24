@@ -35,11 +35,10 @@
                                     <table class="table align-items-center mb-0" id="table">
                                         <thead>
                                             <tr>
-                                                <th
-                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                    S/N</th>
-                                                <th
-                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                    S/N
+                                                </th>
+                                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                     Name</th>
 
                                                 <th class="text-secondary opacity-7">Action</th>
@@ -152,13 +151,15 @@
                 $("#table").dataTable({
                     "columnDefs": [{
                         "sortable": false,
-                        "targets": [2, 3]
+                        // "targets": [2, 3]
                     }]
                 });
 
                 $('#message').on('show.bs.modal', function(e) {
+                    // alert('ehhel')
                     var name = $(e.relatedTarget).attr('username');
                     var userid = $(e.relatedTarget).attr('userid');
+                    // alert(userid)
                     var url = $(e.relatedTarget).attr('url');
                     var img = $(e.relatedTarget).attr('img');
 
@@ -171,19 +172,19 @@
 
                 })
 
-                $('.blogarea').summernote({
-                    height: 100,
-                    toolbar: [
-                        ['style', ['style']],
-                        ['font', ['bold', 'italic', 'underline', 'clear', 'superscript', 'subscript']],
-                        ['color', ['color']],
-                        ['para', ['ol', 'ul', 'paragraph']],
-                        ['table', ['table']],
-                        ['insert', ['link', 'picture']],
-                        ['view', ['fullscreen', 'help', 'undo', 'redo']],
-                    ]
+                // $('.blogarea').summernote({
+                //     height: 100,
+                //     toolbar: [
+                //         ['style', ['style']],
+                //         ['font', ['bold', 'italic', 'underline', 'clear', 'superscript', 'subscript']],
+                //         ['color', ['color']],
+                //         ['para', ['ol', 'ul', 'paragraph']],
+                //         ['table', ['table']],
+                //         ['insert', ['link', 'picture']],
+                //         ['view', ['fullscreen', 'help', 'undo', 'redo']],
+                //     ]
 
-                })
+                // })
 
             });
         </script>

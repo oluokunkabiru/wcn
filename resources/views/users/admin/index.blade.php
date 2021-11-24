@@ -481,7 +481,9 @@
                                     <div class="position-relative">
                                         <a class="d-block shadow-xl border-radius-xl">
                                             <img style="height: 150px; width:100%"
-                                                src="{{ $blog->getImage($blog->content) != '' ? $blog->getImage($blog->content) : '../assets/img/home-decor-1.jpg' }}"
+                                                src="{{ $blog->getMedia('blogs')->first()->getFullUrl() != ''
+                                                ? $blog->getMedia('blogs')->first()->getFullUrl()
+                                                : '../assets/img/home-decor-1.jpg'}}"
                                                 alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">
                                         </a>
                                     </div>
