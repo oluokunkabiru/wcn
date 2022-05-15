@@ -50,9 +50,9 @@ class NuggetController extends Controller
     {
         $description = $request->content;
         $nugget = new Nugget();
-        $nugget->qoute = $description;
+        $nugget->qoute = "After removing content from nugget";
         $nugget->user_id = Auth::user()->id;
-        $nugget->addMediaFromRequest('image')->toMediaCollection("nuggets");
+        $nugget->addMediaFromRequest('file')->toMediaCollection("nuggets");
         $nugget->save();
         $settings = Setting::with('user')->where('nugget_notification', 1)->get();
         $avatar = Auth::user()->getMedia('avatar')->first()->getFullUrl('avatar');
@@ -60,7 +60,8 @@ class NuggetController extends Controller
        foreach($settings as $setting){
             Notification::send($setting->user, new ActivatorNofification($avatar, "Nugget","New nugget added", $url));
        }
-        return redirect()->route('nugget.index')->with('success', 'New nugget added successfully');
+       return "Negget added successfully";
+        // return redirect()->route('nugget.index')->with('success', 'New nugget added successfully');
 
     }
 

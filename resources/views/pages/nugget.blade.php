@@ -63,14 +63,13 @@
     <section>
     <div class="container">
 
-        <div class="row">
-
+        <div class="card-columns">
 @foreach ($nuggets as $nugget)
 
-            <div class="col-md-6 card" id="nugget{{ $nugget->id }}">
+            {{-- <div class="col-md-6 card" id="nugget{{ $nugget->id }}">
                 <div class="row card-body m-1 bg-black ">
                     <div class="col-md-4 ">
-                        {{-- $nugget->getMedia('nuggets')->first()->getFullUrl() != "" ?   $nugget->getMedia('nuggets')->first()->getFullUrl() --}}
+                        $nugget->getMedia('nuggets')->first()->getFullUrl() != "" ?   $nugget->getMedia('nuggets')->first()->getFullUrl()
                     <img src="{{ $nugget->user->getMedia('avatar')->first()->getFullUrl() }}" class="card-img" alt="{{ ucwords($nugget->user->name) }}">
                     </div>
                     <div class="col-md-8">
@@ -84,7 +83,19 @@
                         </div>
                     </div>
                   </div>
-            </div>
+            </div> --}}
+
+            <div class="card">
+                <a href="{{ $nugget->getMedia('nuggets')->first() ?   $nugget->getMedia('nuggets')->first()->getFullUrl():asset('assets/images/anonymous.png') }}" target="_top" rel="noopener noreferrer">
+                <img  class="card-img-top" src="{{ $nugget->getMedia('nuggets')->first() ?   $nugget->getMedia('nuggets')->first()->getFullUrl():asset('assets/images/anonymous.png') }}" alt="Card image">
+                <div class="card-img-overlay">
+                  {{-- <h1 class="card-title">John Doe</h1> --}}
+                  <a  class="btn btn-primary" href="{{ $nugget->getMedia('nuggets')->first() ?   $nugget->getMedia('nuggets')->first()->getFullUrl():asset('assets/images/anonymous.png') }}" target="_blank" rel="noopener noreferrer">
+                    View Nugget
+                </a>
+                </div>
+            {{-- </a> --}}
+              </div>
             @endforeach
 
     </div>
